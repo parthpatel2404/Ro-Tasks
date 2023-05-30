@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Components;
+using Stimulsoft.Report.Mvc;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -71,7 +75,7 @@ namespace CI_Platform.Controllers
 
             var token = new JwtSecurityToken(
                 _config["Jwt:Issuer"],
-                _config["Jwt:Audience"], 
+                _config["Jwt:Audience"],
                 claims,
                 expires: DateTime.Now.AddMinutes(2),
                 signingCredentials: credentials
@@ -107,7 +111,7 @@ namespace CI_Platform.Controllers
                 return RedirectToAction("dashboard", "Admin");
 
             }
-            HttpContext.Response.Cookies.Append("token", returnToken, new CookieOptions { HttpOnly = true, Secure = true, SameSite = SameSiteMode.None, Expires = DateTime.Now.AddMinutes(2) });
+            HttpContext.Response.Cookies.Append("token", returnToken, new CookieOptions { HttpOnly = true, Secure = true, SameSite = SameSiteMode.None, Expires = DateTime.Now.AddMinutes(20) });
             TempData["success"] = "Login Successfully...";
             return RedirectToAction("gridView", "Platform");
             //return Ok(returnToken);
@@ -334,6 +338,47 @@ namespace CI_Platform.Controllers
         public void ReadNotification(long NotificationId)
         {
             _UserRepository.ReadNotification(NotificationId);
+        }
+
+        public IActionResult ExportAsPdf()
+        {
+            long userId = (int)HttpContext.Session.GetInt32("UserId");
+            var report = StiReport.CreateNewReport();
+            var path = StiNetCoreHelper.MapPath(this, "Reports/EmployeeProfile.mrt");
+            report.Load(path);
+            report.Dictionary.Variables["UserId"].Value = userId.ToString();
+            //// Find the TextBox element by its name or other means
+            //StiText textBox = report.GetComponentByName("Text2") as StiText;
+            //// Update the value or expression of the TextBox
+            //textBox.Text.Value = "bablu";
+            //(report.GetComponentByName("Text2") as StiText).Text.Value = "BAaaaaaaaDMASS";
+            //(report.GetComponentByName("Text4") as StiText).Text.Value = "COMPANY";
+
+            //report.Compile();
+
+            return StiNetCoreReportResponse.ResponseAsPdf(report);
+        }
+
+        public IActionResult ExportAsWord()
+        {
+            long userId = (int)HttpContext.Session.GetInt32("UserId");
+            var report = StiReport.CreateNewReport();
+            var path = StiNetCoreHelper.MapPath(this, "Reports/EmployeeProfile.mrt");
+            report.Load(path);
+            report.Dictionary.Variables["UserId"].Value = userId.ToString();
+
+            return StiNetCoreReportResponse.ResponseAsWord2007(report);
+
+        }
+        public IActionResult ExportAsPng()
+        {
+            long userId = (int)HttpContext.Session.GetInt32("UserId");
+            var report = StiReport.CreateNewReport();
+            var path = StiNetCoreHelper.MapPath(this, "Reports/EmployeeProfile.mrt");
+            report.Load(path);
+            report.Dictionary.Variables["UserId"].Value = userId.ToString();
+
+            return StiNetCoreReportResponse.ResponseAsPng(report);
         }
     }
 }

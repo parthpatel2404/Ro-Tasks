@@ -9,40 +9,12 @@
 @Html.ActionLink("Export to Pdf", "ExportReport1")
 @Html.ActionLink("Export to Word", "ExportReport3")
 @Html.ActionLink("Export to PNG", "ExportReport2")
-@*@Html.ActionLink("View", "GetReport", "ControllerName", null, new { @class = "btn btn-primary" })
 
-@Html.StiNetCoreViewer(new StiNetCoreViewerOptions
+@Html.StiNetCoreViewer(new StiNetCoreViewerOptions()
 {
-    Actions =
-    {
-        GetReport = "GetReport",
-        ViewerEvent = "ViewerEvent"
-    }
+	Actions =
+	{
+		GetReport = "GetReport",
+		ViewerEvent = "ViewerEvent"
+	}
 })
-
-*@
-
-@*@Html.ActionLink("View", "#", null, new { @class = "btn btn-primary", id = "viewerLink" })
-
-<div id="viewerContainer"></div>
-
-    <script>
-        $(document).ready(function () {
-            $("#viewerLink").click(function (e) {
-                e.preventDefault();
-                createViewer();
-            });
-        });
-
-        function createViewer() {
-            var options = new Stimulsoft.Viewer.StiNetCoreViewerOptions();
-            options.actions = {
-                getReport: "GetReport",
-                viewerEvent: "ViewerEvent"
-            };
-
-            var viewer = new Stimulsoft.Viewer.StiViewer(options, "StiViewer", false);
-            viewer.renderHtml("viewerContainer");
-        }
-    </script>
-*@

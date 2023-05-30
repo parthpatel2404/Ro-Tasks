@@ -53,13 +53,13 @@
             }
 
         /* .footer {
-                                    position: fixed;
-                                    left: 0;
-                                    bottom: 0;
-                                    width: 100%;
-                                    background-color: lightgray;
-                                    color: white;
-                                }*/
+                                                            position: fixed;
+                                                            left: 0;
+                                                            bottom: 0;
+                                                            width: 100%;
+                                                            background-color: lightgray;
+                                                            color: white;
+                                                        }*/
     </style>
 </head>
 
@@ -84,7 +84,7 @@
                             <input type="password" name="OldDbPassword" class="form-control" onblur="checkOldpassword()" id="OldPassword" placeholder="Enter Old Password">
                             <span id="oldPasswordError" class=text-danger></span><br />
 
-                            <input type="password" name="Password" id="Password"  class="form-control mt-3" placeholder="Enter New Password">
+                            <input type="password" name="Password" id="Password" class="form-control mt-3" placeholder="Enter New Password">
                             <span id="passwordError" class=text-danger></span><br />
 
                             <input type="password" name="CnfPassword" id="CnfPassword" class="form-control mt-3" placeholder="Enter Confirm Password">
@@ -119,7 +119,16 @@
                         Change Password
                     </button>
                     @*Modal box is located above the main form tag of the page*@
-
+                    <a href="#" class="d-flex align-items-center text-dark text-decoration-none ms-3 dropdown-toggle" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        <span class="d-none d-sm-block">Save Profile</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Export to Pdf", "ExportAsPdf")</li>
+                        <li>@Html.ActionLink("Export to Word", "ExportAsWord")</li>
+                        <li>@Html.ActionLink("Export to PNG", "ExportAsPng")</li>
+                    </ul>
+                    <h3>Preview Profile Data</h3>
                 </div>
                 @*</div>*@
 
@@ -188,8 +197,8 @@
                                     <option value="@selectedCity.CityId" id="@selectedCity.CityId" selected>@selectedCity.Name</option>
                                     foreach (var ui in allcity)
                                     {
-                                    <option value="@ui.CityId" id="@ui.CityId">@ui.Name</option>
-                                        
+                                        <option value="@ui.CityId" id="@ui.CityId">@ui.Name</option>
+
                                     }
 
                                 }

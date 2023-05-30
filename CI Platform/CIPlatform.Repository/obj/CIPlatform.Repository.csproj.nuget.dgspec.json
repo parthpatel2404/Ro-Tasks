@@ -75,11 +75,15 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[6.0.12, )"
+              "version": "[6.0.13, )"
             },
             "MimeKit": {
               "target": "Package",
               "version": "[3.5.0, )"
+            },
+            "Stimulsoft.Reports.Web.NetCore": {
+              "target": "Package",
+              "version": "[2022.1.6.2, )"
             }
           },
           "imports": [
@@ -184,11 +188,15 @@
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
-              "version": "[6.0.12, )"
+              "version": "[6.0.13, )"
             },
             "MimeKit": {
               "target": "Package",
               "version": "[3.5.0, )"
+            },
+            "Stimulsoft.Reports.Web.NetCore": {
+              "target": "Package",
+              "version": "[2022.1.6.2, )"
             }
           },
           "imports": [

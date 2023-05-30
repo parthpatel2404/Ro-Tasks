@@ -66,3 +66,20 @@ D:\Tatvasoft\CIPlatform\CI-Platform\MVC\CI Platform\CIPlatform.Repository\obj\De
 D:\Tatvasoft\CIPlatform\CI-Platform\MVC\CI Platform\CIPlatform.Repository\obj\Debug\net6.0\ref\CIPlatform.Repository.dll
 D:\Tatvasoft\CIPlatform\CI-Platform\MVC\CI Platform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.pdb
 D:\Tatvasoft\CIPlatform\CI-Platform\MVC\CI Platform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.genruntimeconfig.cache
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Repository\bin\Debug\net6.0\CIPlatform.Repository.deps.json
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Repository\bin\Debug\net6.0\CIPlatform.Repository.runtimeconfig.json
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Repository\bin\Debug\net6.0\CIPlatform.Repository.dll
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Repository\bin\Debug\net6.0\ref\CIPlatform.Repository.dll
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Repository\bin\Debug\net6.0\CIPlatform.Repository.pdb
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Repository\bin\Debug\net6.0\CIPlatform.Entities.dll
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Repository\bin\Debug\net6.0\CIPlatform.Entities.pdb
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.csproj.AssemblyReference.cache
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.AssemblyInfoInputs.cache
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.AssemblyInfo.cs
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.csproj.CoreCompileInputs.cache
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.csproj.CopyComplete
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.dll
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Repository\obj\Debug\net6.0\ref\CIPlatform.Repository.dll
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.pdb
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Repository\obj\Debug\net6.0\CIPlatform.Repository.genruntimeconfig.cache

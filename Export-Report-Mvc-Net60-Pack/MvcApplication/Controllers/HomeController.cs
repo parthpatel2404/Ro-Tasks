@@ -79,7 +79,7 @@ namespace MvcApplication.Controllers
         public IActionResult GetReport()
         {
             var report = StiReport.CreateNewReport();
-            var path = StiNetCoreHelper.MapPath(this, "Reports/Invoice.mrt");
+            var path = StiNetCoreHelper.MapPath(this, "Reports/EmployeeProfile.mrt");
             report.Load(path);
 
             return StiNetCoreViewer.GetReportResult(this, report);

@@ -52,3 +52,17 @@ D:\Tatvasoft\CIPlatform\CI-Platform\MVC\CI Platform\CIPlatform.Entities\obj\Debu
 D:\Tatvasoft\CIPlatform\CI-Platform\MVC\CI Platform\CIPlatform.Entities\obj\Debug\net6.0\ref\CIPlatform.Entities.dll
 D:\Tatvasoft\CIPlatform\CI-Platform\MVC\CI Platform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.pdb
 D:\Tatvasoft\CIPlatform\CI-Platform\MVC\CI Platform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.genruntimeconfig.cache
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Entities\bin\Debug\net6.0\CIPlatform.Entities.deps.json
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Entities\bin\Debug\net6.0\CIPlatform.Entities.runtimeconfig.json
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Entities\bin\Debug\net6.0\CIPlatform.Entities.dll
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Entities\bin\Debug\net6.0\ref\CIPlatform.Entities.dll
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Entities\bin\Debug\net6.0\CIPlatform.Entities.pdb
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.csproj.AssemblyReference.cache
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.AssemblyInfoInputs.cache
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.AssemblyInfo.cs
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.csproj.CoreCompileInputs.cache
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.dll
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Entities\obj\Debug\net6.0\ref\CIPlatform.Entities.dll
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.pdb
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.genruntimeconfig.cache
