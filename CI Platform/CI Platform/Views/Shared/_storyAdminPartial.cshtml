@@ -1,0 +1,157 @@
+﻿
+<div class="row gx-0">
+    <table class="table table-hover table-bordered" style="width: 99%;margin-inline: auto;">
+        <thead>
+            <tr class="table-light" style="height: 70px;">
+                <th scope="col" class="thforcmstable">Story Title</th>
+                <th scope="col" class="thforcmstable">Full Name</th>
+                <th scope="col" class="thforcmstable">Mission Title</th>
+                <th scope="col" class="thforcmstable">Action</th>
+            </tr>
+        </thead>
+        @foreach (var item in @Model.stories)
+        {
+            <tbody class="table-border">
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.User.FirstName @item.User.LastName</td>
+                    <td>@item.Mission.Title</td>
+                    <td>
+                        <a type="button" class="btn applyButton" asp-controller="Story" asp-action="storyDetail" asp-route-id="@item.StoryId">
+                            View
+                        </a>
+                        &nbsp;
+                        <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#approveStory" onclick="getViaAdmin(@item.StoryId,'story')">
+                            <i class="bi bi-check-circle" style="color: green;"></i>
+                        </button>
+                        &nbsp;
+                        <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#declineStory" onclick="getViaAdmin(@item.StoryId,'story')">
+                            <i class="bi bi-x-circle" style="color: red;"></i>
+                        </button>
+                        <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#deleteStory" onclick="getViaAdmin(@item.StoryId,'story')">
+                            <i class="bi bi-trash ms-3"></i>
+                        </button>
+
+                        <div class="modal fade" id="approveStory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Approve Story</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="text" id="storyId" hidden class="form-control">
+                                        Are You Sure!!!
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary" onclick="deleteViaAdmin('approveStory')">Approve</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="declineStory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Decline Story</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="text" id="storyId" hidden class="form-control">
+                                        Are You Sure!!!
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary" onclick="deleteViaAdmin('declineStory')">Decline</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal fade" id="deleteStory" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Approve Application</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <input type="text" id="storyId" hidden class="form-control">
+                                        Are You Sure!!!
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary" onclick="deleteViaAdmin('deleteStory')">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end" onchange="searchOnAdmin(1,'story')">
+        <li class="page-item">
+            <button class="page-link" aria-label="Previous" onclick="searchOnAdmin(1,'story')">
+                <span aria-hidden="true">&laquo;</span>
+            </button>
+        </li>
+        <li class="page-item">
+            @if (@ViewBag.pg_no != 1)
+            {
+                <button class="page-link" aria-label="Previous" onclick="searchOnAdmin(((@ViewBag.pg_no) - 1),'story')">
+                    <span aria-hidden="true">&lt;</span>
+                </button>
+            }
+            else
+            {
+                <button class="page-link" aria-label="Previous">
+                    <span aria-hidden="true">&lt;</span>
+                </button>
+            }
+        </li>
+        @{
+            double totalpages = ViewBag.Totalpages7;
+
+            for (int ii = 1; ii <= totalpages; ii++)
+            {
+                @if (ii == ViewBag.pg_no)
+                {
+                    <li class="page-item">
+                        <button class="page-link active" onclick="searchOnAdmin(@ii,'story')">@ii</button>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item">
+                        <button class="page-link" onclick="searchOnAdmin(@ii,'story')">@ii</button>
+                    </li>
+                }
+            }
+        }
+        <li class="page-item">
+            @if (@ViewBag.pg_no != @ViewBag.Totalpages7)
+            {
+                <button class="page-link" aria-label="Next" onclick="searchOnAdmin(((@ViewBag.pg_no) + 1),'story')">
+                    <span aria-hidden="true">&gt;</span>
+                </button>
+            }
+            else
+            {
+                <button class="page-link" aria-label="Next">
+                    <span aria-hidden="true">&gt;</span>
+                </button>
+            }
+        </li>
+        <li class="page-item">
+            <button class="page-link" aria-label="Next" onclick="searchOnAdmin(@ViewBag.Totalpages7,'story')">
+                <span aria-hidden="true">&raquo;</span>
+            </button>
+        </li>
+    </ul>
+</nav>

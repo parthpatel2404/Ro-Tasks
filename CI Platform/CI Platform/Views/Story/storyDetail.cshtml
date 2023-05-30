@@ -1,0 +1,339 @@
+﻿@using Microsoft.AspNetCore.Html
+@model CIPlatform.Entities.ViewModel.MissionViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteering Story Detail Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <link rel="stylesheet" href="/css/volunteeringMissionPage.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <style>
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .swiper-slide img {
+                display: block;
+                width: 75%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+
+
+        .swiper {
+            width: 100%;
+            height: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .swiper-slide {
+            background-size: cover;
+            background-position: center;
+        }
+
+        .mySwiper2 {
+            height: 80%;
+            width: 100%;
+        }
+
+        .mySwiper {
+            height: 20%;
+            box-sizing: border-box;
+            padding: 10px 0;
+        }
+
+            .mySwiper .swiper-slide {
+                width: 25%;
+                height: 100%;
+                opacity: 0.4;
+            }
+
+            .mySwiper .swiper-slide-thumb-active {
+                opacity: 1;
+            }
+
+        .swiper-slide img {
+            display: block;
+            width: 75%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: lightgray;
+            color: white;
+        }
+    </style>
+    @*<link rel="stylesheet" href="~/css/StoryListing.css">*@
+</head>
+
+<body>
+    <partial name="_Notification" />
+
+    <partial name="_firstHeaderPartial" />
+
+    <div class="container pt-3">
+        <div class="row">
+            @* <div class="col-lg-6">
+                <div class="mb-2 h-75 main-img">
+
+                @foreach (var i in @Model.ListMediaPath)
+                {
+                <img class="mySlides h-100 " src="~/Assets/@i.Path"
+                style="width:100%;">
+
+                }
+                </div>
+
+                <div class="row h-25">
+                @{var j = 1;}
+                @foreach (var i in @Model.ListMediaPath)
+                {
+                <div class="col-3 ">
+                <img class="demo w3-opacity w3-hover-opacity-off h-75"
+                src="~/Assets/@i.Path"
+                style="width:100%;cursor:pointer" onclick="currentDiv(@j)">
+                </div>
+                j++;
+                }
+                </div>
+
+                <script>
+                function currentDiv(n) {
+                showDivs(slideIndex = n);
+                }
+
+                function showDivs(n) {
+                var i;
+                var x = document.getElementsByClassName("mySlides");
+                var dots = document.getElementsByClassName("demo");
+                if (n > x.length) { slideIndex = 1 }
+                if (n < 1) { slideIndex = x.length }
+                for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+                }
+                for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+                }
+                x[slideIndex - 1].style.display = "block";
+                dots[slideIndex - 1].className += " w3-opacity-off";
+                }
+                </script>
+
+                </div>*@
+
+            <div class="col-xl-6 col-lg-6 col-12 ">
+                <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
+                    <div class="swiper-wrapper pb-5" style="height:100%">
+
+                        @if (Model != null)
+                        {
+                            @if (Model.URL != null)
+                            {
+                                @foreach (var i in Model.URL)
+                                {
+                                    <div class="swiper-slide">
+                                        <iframe class="h-100 w-100" src="@i" title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                }
+                            }
+
+                        }
+                        @foreach (var imageUrl in Model.ListMediaPath)
+                        {
+                            <div class="swiper-slide">
+                                <img class="h-100 w-100" src="~/Assets/Story/@imageUrl.Path" />
+                            </div>
+
+                        }
+
+
+                    </div>
+                    <div class="swiper-button-next" style="color:black"></div>
+                    <div class="swiper-button-prev" style="color:black"></div>
+                </div>
+                <div thumbsSlider="" class="swiper mySwiper row d-flex flex-row">
+                    <div class="swiper-wrapper ">
+                        @if (Model != null)
+                        {
+                            @if (Model.URL != null)
+                            {
+                                @foreach (var i in Model.URL)
+                                {
+                                    <div class="swiper-slide">
+                                        <iframe class="h-100 w-75" src="@i" title="YouTube video player" frameborder="1" allowfullscreen></iframe>
+                                    </div>
+                                }
+                            }
+
+                        }
+                        @foreach (var imageUrl in Model.ListMediaPath)
+                        {
+                            <div class="swiper-slide">
+                                <img class="h-100 w-100" src="~/Assets/Story/@imageUrl.Path" />
+                            </div>
+
+                        }
+
+                    </div>
+                </div>
+
+                <!-- Swiper JS -->
+                <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+                <!-- Initialize Swiper -->
+                <script>
+                    var swiper = new Swiper(".mySwiper", {
+                    loop: true,
+                    spaceBetween: 10,
+                    slidesPerView: 4,
+                    freeMode: true,
+                    watchSlidesProgress: true,
+                    });
+                    var swiper2 = new Swiper(".mySwiper2", {
+                    loop: true,
+                    spaceBetween: 10,
+                    navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                    },
+                    thumbs: {
+                    swiper: swiper,
+                    },
+                    });
+                </script>
+            </div>
+            <div class="col-lg-6">
+                <div class="row ">
+                    <div class="col-lg-8 col-md-4 col-sm-4 col-xs-4 volunteer-profile">
+                        <img src="~/Assets/@Model.Avatar" class="rounded-circle" width="80" height="80"><br>
+                        <p class="text-muted">@Model.UserName</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <button class="views btn btn-outline-warning">
+                            <i class="bi bi-eye-fill"></i> @Model.views Views
+                        </button>
+                    </div>
+                </div>
+                <div class="row">
+                    <p>
+                        @Model.whyIVolunteer;
+                    </p>
+                    <div class="col-lg-6">
+                        <button type="button" class="main-btn btn" data-bs-toggle="modal" data-bs-target="#exampleModal3">
+                            <i class="bi bi-person-plus-fill"></i> &nbsp;Recommend to a
+                            Co-Worker
+                        </button>
+                        <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Recommend to a Co-Worker</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table class="table table-hover table-striped table-info">
+                                            <thead>
+                                                <tr>
+                                                    <th>Mark/UnMark</th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var i in Model.alreadyInvited)
+                                                {
+                                                    <tr>
+                                                        <td><i class="bi bi-check-circle-fill text-black"></i></td>
+                                                        <td>@i.ToUser.FirstName</td>
+                                                        <td> <label class="form-check-lable" for="@i.ToUser.Email">@i.ToUser.Email</label></td>
+                                                    </tr>
+                                                }@foreach (var i in Model.userList)
+                                                {
+                                                    <tr>
+                                                        <td><input class="form-check-input" type="checkbox" value="@i.UserId" name="email" id="@i.Email">
+                                                        <td>@i.FirstName</td>
+                                                        <td> <label class="form-check-lable" for="@i.Email">@i.Email</label></td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary" onclick="sendStoryMail(@Model.StoryId)">Send Mail</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <a class="btn btn-outline-warning applyButton w-100" id="applyMission" asp-controller="Platform" asp-action="missionDetails" asp-route-id="@Model.MissionId">
+                            Open Mission <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+
+            <h5 style="color:#414141;">@Model.StoryTitle</h5><hr>
+            <p>
+                @{
+                    string Description = @Model.Description;
+                    HtmlString renderedHtml = new HtmlString(Description);
+                }
+                @renderedHtml
+            </p>
+
+            <hr style="border-top:3px solid #414141;">
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="row">
+            <div class="col-12 mt-3 " style="margin-left:15%">
+                <a asp-controller="User" asp-action="privacyPolicy" style="color: #333333;text-decoration:none;">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/index.js"></script>
+
+</body>
+
+</html>

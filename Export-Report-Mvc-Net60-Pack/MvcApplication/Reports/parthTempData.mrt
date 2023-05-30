@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <CalculationMode>Interpretation</CalculationMode>
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <MS_x0020_SQL Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>MS SQL</Alias>
+        <ConnectionStringEncrypted>9FrR601UQlnia+XJdwDhp9E+3UlOS7uBaWEl7PkV4HuNxGmI7xirCWtf5YBhmONn0VqVK9dxe81Ce/1I5VzgStlsccLFXrPdQ3ulgeH4pC/5ePUJVWw6pEVOhI1pcOFj4Xr/48YF04FvHCmlwwTnf8Ig/4lPSnv17UelvekJJX/fWJUrxVkx3Ws=</ConnectionStringEncrypted>
+        <Key>6cc21c23ad0141e3adb28107ce64da9f</Key>
+        <Name>MS SQL</Name>
+      </MS_x0020_SQL>
+    </Databases>
+    <DataSources isList="true" count="3">
+      <city Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>city</Alias>
+        <Columns isList="true" count="6">
+          <value>city_id,System.Int64</value>
+          <value>country_id,System.Int64</value>
+          <value>name,System.String</value>
+          <value>created_at,System.DateTime</value>
+          <value>updated_at,System.DateTime</value>
+          <value>deleted_at,System.DateTime</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Key>2d38b9b0471e4522ab1621f639e82c5d</Key>
+        <Name>city</Name>
+        <NameInSource>MS SQL</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>select * from city 
+	inner join [user] on
+	[user].city_id = city.city_id
+	where [user].user_id = @UserId</SqlCommand>
+      </city>
+      <country Ref="4" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>country</Alias>
+        <Columns isList="true" count="6">
+          <value>ORIGINAL,country_id,country_id,country_id,System.Int64,_x0037_c140fbc0c8847d5990f5322491c66e7</value>
+          <value>ORIGINAL,name,name,name,System.String,_x0034_5ec84d1876047eeb873879a4cb95d8f</value>
+          <value>ORIGINAL,created_at,created_at,created_at,System.DateTime,c30507a0f9b9437c9b77d2afe65d3828</value>
+          <value>ORIGINAL,updated_at,updated_at,updated_at,System.DateTime,a05b3419571a4041bab0d29952074483</value>
+          <value>ORIGINAL,deleted_at,deleted_at,deleted_at,System.DateTime,_x0030_401914a37e14af6bc6628de8f2abfec</value>
+          <value>ORIGINAL,ISO,ISO,ISO,System.String,_x0031_868873036054fe7970286391b5df267</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Key>c23157ba501c48a394be8d07cf86b066</Key>
+        <Name>country</Name>
+        <NameInSource>MS SQL</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>select * from country 
+	inner join [user] on
+	[user].country_id = country.country_id 
+	where [user].user_id = @UserId</SqlCommand>
+      </country>
+      <usertable Ref="5" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>usertable</Alias>
+        <Columns isList="true" count="23">
+          <value>ORIGINAL,status,status,status,System.String,_x0038_88a7c20eb7d461f960bc1bcd33d4d51</value>
+          <value>ORIGINAL,created_at,created_at,created_at,System.DateTime,_x0039_42139e249204a04afbf3d8d9c0f1d5b</value>
+          <value>ORIGINAL,user_id,user_id,user_id,System.Int64,_x0037_d895e14106b4f9c988f4e67e9c14df1</value>
+          <value>ORIGINAL,email,email,email,System.String,_x0030_866914f265a4e9bb48b6904232af3bf</value>
+          <value>ORIGINAL,password,password,password,System.String,_x0032_7f84a30cb654c7abf12382592a8e444</value>
+          <value>ORIGINAL,phone_number,phone_number,phone_number,System.Int64,_x0037_4bc232ef45745308d91089713acf33d</value>
+          <value>ORIGINAL,Role,Role,Role,System.String,b18a8c3556534cde8c45aca4209d7214</value>
+          <value>ORIGINAL,avatar,avatar,avatar,System.String,_x0031_44f0efdca0e44eda8c0ff90677cd6a9</value>
+          <value>ORIGINAL,why_i_volunteer,why_i_volunteer,why_i_volunteer,System.String,fa0f3f9ba9a849a8b3b9efec8eec0d56</value>
+          <value>ORIGINAL,employee_id,employee_id,employee_id,System.String,eaf5469f3cd34862a9b30e68227a2546</value>
+          <value>ORIGINAL,department,department,department,System.String,b9a2e7becd6b4e289be9f19581bfbfda</value>
+          <value>ORIGINAL,city_id,city_id,city_id,System.Int64,_x0038_657d8b670764c47b02f7a75ccf5928c</value>
+          <value>ORIGINAL,country_id,country_id,country_id,System.Int64,_x0035_eac665729e941abb87d85326bd817a6</value>
+          <value>ORIGINAL,profile_text,profile_text,profile_text,System.String,a367228d6c40400eb78712b7ebe810b2</value>
+          <value>ORIGINAL,linked_in_url,linked_in_url,linked_in_url,System.String,d6c4dfea6a3b4f2ead42786033d6086e</value>
+          <value>ORIGINAL,title,title,title,System.String,_x0036_bafd38f9f904ebc993ad22f3b0134a8</value>
+          <value>ORIGINAL,first_name,first_name,first_name,System.String,_x0033_41e6fff199e4325a5a408dde24abaf3</value>
+          <value>ORIGINAL,last_name,last_name,last_name,System.String,f13fb69cae884622b97c464519ec16a6</value>
+          <value>ORIGINAL,updated_at,updated_at,updated_at,System.DateTime,_x0036_704b48cd00948d9b536833c835bc028</value>
+          <value>ORIGINAL,deleted_at,deleted_at,deleted_at,System.DateTime,_x0038_53668e003714ff083959e08b92e5bec</value>
+          <value>ORIGINAL,availability,availability,availability,System.String,_x0032_d72b460404548ff887eecf012940d74</value>
+          <value>ORIGINAL,manager,manager,manager,System.String,_x0033_28563d3f849433096d88d1b5a3986bf</value>
+          <value>ORIGINAL,returnUrl,returnUrl,returnUrl,System.String,_x0036_938cc0970de4d5ca68e2ad7450e03db</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Key>bff66c0c05004ddf98be1878930a032c</Key>
+        <Name>usertable</Name>
+        <NameInSource>MS SQL</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>select * from [user] where user_id = @UserId</SqlCommand>
+      </usertable>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Resources isList="true" count="0" />
+    <Variables isList="true" count="1">
+      <value>,UserId,UserId,,System.Int64,_x0037_,False,False,False,False,,_x0030_d5ac67eaff34231a478ed27504bd52a,True</value>
+    </Variables>
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <Key>037df6cbfdb34c69b9ae25427a6c87b0</Key>
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="6" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="11">
+        <Text1 Ref="7" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>4.6,2.8,1.6,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Expressions isList="true" count="0" />
+          <Font>Arial,8,Bold</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Text>First Name</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text1>
+        <Text2 Ref="8" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>8,2.8,1.6,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Expressions isList="true" count="0" />
+          <Font>Arial,8,Bold</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text2</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Pointer>{country.name}</Pointer>
+          <Text>{usertable.first_name}</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>DataColumn</Type>
+        </Text2>
+        <Text3 Ref="9" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>11.6,2.8,1.6,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Expressions isList="true" count="0" />
+          <Font>Arial,8,Bold</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text3</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Text>Last Name</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text3>
+        <Text4 Ref="10" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>15,2.8,1.6,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Expressions isList="true" count="0" />
+          <Font>Arial,8,Bold</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text4</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Pointer>{country.name}</Pointer>
+          <Text>{usertable.last_name}</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>DataColumn</Type>
+        </Text4>
+        <Text5 Ref="11" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>4.6,4.6,1.6,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Expressions isList="true" count="0" />
+          <Font>Arial,8,Bold</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text5</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Text>Country</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text5>
+        <Text6 Ref="12" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>8,4.6,2.2,0.4</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Expressions isList="true" count="0" />
+          <Font>Arial,8,Bold</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text6</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Pointer>{country.name}</Pointer>
+          <Text>{country.name}</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>DataColumn</Type>
+        </Text6>
+        <Text7 Ref="13" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>11.6,4.6,1.6,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Expressions isList="true" count="0" />
+          <Font>Arial,8,Bold</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text7</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Text>City</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text7>
+        <Text8 Ref="14" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>15,4.6,2.2,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Expressions isList="true" count="0" />
+          <Font>Arial,8,Bold</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text8</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Pointer>{country.name}</Pointer>
+          <Text>{city.name}</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>DataColumn</Type>
+        </Text8>
+        <Text9 Ref="15" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>8,7.2,1.6,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Expressions isList="true" count="0" />
+          <Font>Arial,8,Bold</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text9</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Text>Email Id</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>Expression</Type>
+        </Text9>
+        <Text10 Ref="16" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>11.4,7.2,6.6,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Expressions isList="true" count="0" />
+          <Font>Arial,8,Bold</Font>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text10</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Pointer>{country.name}</Pointer>
+          <Text>{usertable.email}</Text>
+          <TextBrush>Black</TextBrush>
+          <Type>DataColumn</Type>
+        </Text10>
+        <DataBand1 Ref="17" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,19,0.8</ClientRectangle>
+          <Components isList="true" count="1">
+            <Text11 Ref="18" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>8,0,1.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Expressions isList="true" count="0" />
+              <Font>Arial,8,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text11</Name>
+              <Page isRef="6" />
+              <Parent isRef="17" />
+              <Text>{usertable.title}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+            </Text11>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>usertable</DataSourceName>
+          <Expressions isList="true" count="0" />
+          <Filters isList="true" count="0" />
+          <Name>DataBand1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Sort isList="true" count="0" />
+        </DataBand1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Expressions isList="true" count="0" />
+      <Guid>c67f27db93594c7ea76930c1acc58e0b</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>Page1</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>21</PageWidth>
+      <Report isRef="0" />
+    </Page1>
+  </Pages>
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>5/29/2023 4:08:36 PM</ReportChanged>
+  <ReportCreated>5/29/2023 12:36:11 PM</ReportCreated>
+  <ReportFile>C:\Users\pci148\Downloads\Export-Report-Mvc-Net60-Pack\MvcApplication\Reports\parthTempData.mrt</ReportFile>
+  <ReportGuid>cac1f63cee6f42368222ccc7a3505749</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2023.2.5.0</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+		#endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

@@ -1,0 +1,859 @@
+﻿@model CIPlatform.Entities.ViewModel.MissionViewModel
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteering Mission Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <link rel="stylesheet" href="/css/volunteeringMissionPage.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <style>
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            .swiper-slide img {
+                display: block;
+                width: 75%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+
+
+        .swiper {
+            width: 100%;
+            height: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .swiper-slide {
+            background-size: cover;
+            background-position: center;
+        }
+
+        .mySwiper2 {
+            height: 80%;
+            width: 100%;
+        }
+
+        .mySwiper {
+            height: 20%;
+            box-sizing: border-box;
+            padding: 10px 0;
+        }
+
+            .mySwiper .swiper-slide {
+                width: 25%;
+                height: 100%;
+                opacity: 0.4;
+            }
+
+            .mySwiper .swiper-slide-thumb-active {
+                opacity: 1;
+            }
+
+        .swiper-slide img {
+            display: block;
+            width: 75%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: lightgray;
+            color: white;
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <partial name="_Notification" />
+    <partial name="_firstHeaderPartial" />
+
+
+    <div class="container pt-1">
+        <div class="row">
+
+            <div class="col-xl-6 col-lg-6 col-12 ">
+                <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
+                    <div class="swiper-wrapper pb-5">
+
+                        @foreach (var imageUrl in Model.missionListMediaPath)
+                        {
+                            <div class="swiper-slide">
+                                <img class="h-100 w-100" src="~/Assets/@imageUrl.MediaPath" />
+                            </div>
+
+                        }
+
+                    </div>
+                    <div class="swiper-button-next" style="color:black"></div>
+                    <div class="swiper-button-prev" style="color:black"></div>
+                </div>
+                <div thumbsSlider="" class="swiper mySwiper row d-flex flex-row">
+                    <div class="swiper-wrapper ">
+                        @foreach (var imageUrl in Model.missionListMediaPath)
+                        {
+                            <div class="swiper-slide">
+                                <img class="h-100 w-100" src="~/Assets/@imageUrl.MediaPath" />
+                            </div>
+
+                        }
+                    </div>
+                </div>
+
+                <!-- Swiper JS -->
+                <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+                <!-- Initialize Swiper -->
+                <script>
+                    var swiper = new Swiper(".mySwiper", {
+                    loop: true,
+                    spaceBetween: 10,
+                    slidesPerView: 4,
+                    freeMode: true,
+                    watchSlidesProgress: true,
+                    });
+                    var swiper2 = new Swiper(".mySwiper2", {
+                    loop: true,
+                    spaceBetween: 10,
+                    navigation: {
+                    nextEl: ".swiper-button-next",
+                    prevEl: ".swiper-button-prev",
+                    },
+                    thumbs: {
+                    swiper: swiper,
+                    },
+                    });
+                </script>
+            </div>
+
+            <div class="col-lg-6">
+                <div>
+                    <p class="text-muted text1 mt-4"> @Model.Title </p>
+                    <p class="text-muted text2" style="font-size: 17px;">
+                        @Model.ShortDescription
+                    </p>
+                </div>
+
+                <div class="goal-info mt-4">
+                    <div class="duration1">
+                        <p id="duration-txt" style="margin-bottom: 0;">
+                            @if (Model.MissionType == "Goal")
+                            {
+                                <span>@Model.GoalObjectiveText</span>
+                            }
+                            else
+                            {
+                                <span>From @Model.StartDate.ToString("dd/MM/yyyy") until @Model.EndDate.ToString("dd/MM/yyyy")</span>
+
+                                @*@if (Model.StartDate < DateTime.Now && DateTime.Now < Model.EndDate)
+                                    {
+                                    <span>Ongoing Opportunity</span>
+                                    }
+                                    else
+                                    {
+                                    <span>From @Model.StartDate.ToString("dd/MM/yyyy") until @Model.EndDate.ToString("dd/MM/yyyy")</span>
+                                    }*@
+                            }
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="d-flex seats1 justify-content-between mt-4 ms-5">
+                    @if (Model.MissionType == "Goal")
+                    {
+                        <div class="deadline d-flex align-items-center w-50">
+                            <img src="~/Assets/achieved.png" alt="">
+                            <div class="w-100 pr-2">
+                                <div class="progress" style="width:900; margin-left: 10px;">
+                                    <div class="progress-bar" role="progressbar" style="width: @Model.progressRatio%"> </div>
+                                </div>
+                                <p class="text-muted"> @Model.achievedValue achieved </p>
+                            </div>
+                        </div>
+
+                        <div class="deadline d-flex align-items-center w-50">
+                            <img src="~/Assets/deadline.png" alt="">
+                            <span>
+                                @Model.Deadline.ToString("dd/MM/yyyy")
+                                <p>Deadline</p>
+                            </span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="seats d-flex align-items-center ms-4">
+                            <img src="~/Assets/Seats-left.png">
+                            <span>
+                                @Model.SeatLeft
+                                <p class="text-muted">Seats left</p>
+                            </span>
+
+                        </div>
+
+                        <div class="deadline d-flex align-items-center w-50">
+                            <img src="~/Assets/deadline.png" alt="">
+                            <span>
+                                @Model.Deadline.ToString("dd/MM/yyyy")
+                                <p>Deadline</p>
+                            </span>
+                        </div>
+
+                    }
+                </div>
+
+                <div class="row text-center mt-4">
+                    <div class="btns">
+
+                        @if (@Model.favMission == 1)
+                        {
+                            <button type="submit" class="main-btn btn" onclick="addToFavourite(@Model.MissionId)" id="favBtn11">
+                                <i class="bi bi-heart-fill text-danger" id="missionFav"></i>&nbsp; Remove from
+                                Favourite
+                            </button>
+                        }
+                        else
+                        {
+                            <button type="submit" class="main-btn btn" onclick="addToFavourite(@Model.MissionId)">
+                                <i class="bi bi-heart-fill" id="missionFav"></i>&nbsp; Add to
+                                Favourite
+                            </button>
+                        }
+
+                        <button type="button" class="main-btn btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            @*data-url="@Url.Action(" SuggestCoWorker", "Platform" ,new{id=Model.MissionId})">*@
+
+                            <i class="bi bi-person-plus-fill"></i> &nbsp;Recommend to a
+                            Co-Worker
+                        </button>
+
+
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Recommend to a Co-Worker</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <table class="table table-hover table-striped table-info">
+                                            <thead>
+                                                <tr>
+                                                    <th>Mark/UnMark</th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var i in Model.alreadyMisInvited)
+                                                {
+                                                    <tr>
+                                                        <td><i class="bi bi-check-circle-fill text-black"></i></td>
+                                                        <td>@i.ToUser.FirstName</td>
+                                                        <td> <label class="form-check-lable" for="@i.ToUser.Email">@i.ToUser.Email</label></td>
+                                                    </tr>
+                                                }
+                                                @foreach (var i in Model.userList)
+                                                {
+                                                    <tr>
+                                                        <td><input class="form-check-input" type="checkbox" value="@i.UserId" name="email" id="@i.Email">
+                                                        <td>@i.FirstName</td>
+                                                        <td> <label class="form-check-lable" for="@i.Email">@i.Email</label></td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary" onclick="sendMail(@Model.MissionId)">Send Mail</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+                    <div class="ratings mt-3">
+                        @if (true)
+                        {
+                            for (var j = 1; j <= (@ViewBag.oUser); j++)
+                            {
+                                @if (@Model.appMission == 1)
+                                {
+                                    <i class="bi bi-star-fill rtcolor text-warning checked" id="rating_@j"></i>
+                                }
+                                else
+                                {
+                                    <i class="bi bi-star-fill rtcolor text-warning checked"></i>
+                                }
+                            }
+                            for (int j = (@ViewBag.oUser) + 1; j <= 5; j++)
+                            {
+                                @if (@Model.appMission == 1)
+                                {
+                                    <i class="bi bi-star rtcolor" id="rating_@j"></i>
+                                }
+                                else
+                                {
+                                    <i class="bi bi-star rtcolor"></i>
+                                }
+                            }
+
+                        }
+                    </div>
+                </div>
+
+
+                <div class="row mt-3">
+                    <div class="col-lg-3 col-md-6 resBox border">
+                        <div class="d-flex flex-column">
+                            <div class="pt-1">
+                                <img src="~/Assets/pin1.png">
+                            </div>
+                            <div class="mt-4" style="font-size: 12px;">
+                                <p class="text-muted mb-0"> <span> @Model.CountryName </span></p>
+                                <span> @Model.CityName </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 resBox border">
+                        <div class="d-flex flex-column">
+                            <div class="pt-1">
+                                <img src="~/Assets/web.png">
+                            </div>
+                            <div class="mt-4" style="font-size: 12px;">
+                                <p class="text-muted mb-0"> <span> Theme </span></p>
+                                <span> @Model.Theme </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 resBox border">
+                        <div class="d-flex flex-column">
+                            <div class="pt-1">
+                                <img src="~/Assets/calender.png">
+                            </div>
+                            <div class="mt-4" style="font-size: 12px;">
+                                <p class="text-muted mb-0"> <span> Date </span></p>
+                                @if (Model.MissionType == "goal")
+                                {
+                                    <span>Ongoing Opportunity</span>
+                                }
+                                else
+                                {
+                                    <span>@DateTime.Now.ToString("dd/MM/yyyy")</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 resBox border">
+                        <div class="d-flex flex-column">
+                            <div class="pt-1">
+                                <img src="~/Assets/organization.png">
+                            </div>
+                            <div class="mt-4" style="font-size: 12px;">
+                                <p class="text-muted mb-0"> <span> organization </span></p>
+                                <span> @Model.OrganizationName</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center pb-3 mt-4">
+                    @if (@Model.appMission == 1)
+                    {
+                        <button type="submit" class="btn btn-outline-warning applyButton" id="applyMission" onclick="applyMission(@Model.MissionId)" disabled>
+                            Applied<i class="bi bi-arrow-right"></i>
+                        </button>
+                    }
+                    else if (@Model.Deadline < DateTime.Now || @Model.SeatLeft == 0)
+                    {
+                        <button type="submit" class="btn btn-outline-warning applyButton" id="applyMission" onclick="applyMission(@Model.MissionId)" disabled>
+                            Closed<i class="bi bi-arrow-right"></i>
+                        </button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn btn-outline-warning applyButton" id="applyMission" onclick="applyMission(@Model.MissionId)">
+                            Apply Now<i class="bi bi-arrow-right"></i>
+                        </button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- content -->
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-lg-7  col-sm-12">
+                <nav>
+                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home"
+                                aria-selected="true">
+                            Mission
+                        </button>
+                        <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                                type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+                            Organization
+                        </button>
+                        <button class="nav-link" id="nav-comments-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-comments" type="button" role="tab" aria-controls="nav-comments"
+                                aria-selected="false">
+                            Comments
+                        </button>
+                    </div>
+                </nav>
+
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="tab-pane fade show active mt-4" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <h5> Introduction </h5>
+                        <p style="font-family: NotoSans-Light; font-size: 14px;" class="text-muted">
+                            @Model.Description
+                        </p>
+
+
+                        <h5 class="mt-1"> Challenge </h5>
+                        <p style="font-family: NotoSans-Light; font-size: 14px;" class="text-muted">
+                            @Model.Description
+                        </p>
+
+                        <h5 class="mt-1"> Documents</h5>
+                        <div class="row">
+                            @if (Model.Documents != null)
+                            {
+                                @foreach (var i in Model.Documents)
+                                {
+                                    <div class="col-4">
+                                        <p style="font-family: NotoSans-Light; font-size: 15px;" class="text-muted">
+                                            <a href="/Assets/Documents/@i.DocumentPath" target="_blank" class="text-dark text-decoration-none">
+                                                <i class="bi bi-filetype-pdf"></i> @i.DocumentPath
+                                            </a>
+                                        </p>
+                                    </div>
+                                }
+                            }
+                        </div>
+
+                    </div>
+                    <div class="tab-pane fade mt-4" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <p style="font-family: NotoSans-Light; font-size: 15px;">
+                            @Model.OrganizationDescription
+                        </p>
+                    </div>
+
+                    <div class="tab-pane fade" id="nav-comments" role="tabpanel" aria-labelledby="nav-comments-tab">
+                        <div class="form-group">
+
+                            <textarea class="form-control" id="comment" rows="3" maxlength="600"
+                                      placeholder="Enter your comments"></textarea>
+                            <p id="comment-msg"></p>
+                        </div>
+                        <div class=" mt-3 mb-3">
+                            <button type="submit" class="btn btn-outline-warning rounded-pill" onclick="addComments(@Model.MissionId)">
+                                Post Comment
+                            </button>
+                        </div>
+                        <div class="row ex1">
+                            <div class="container">
+                                <div class="col-12">
+                                    @if (@Model.commentList != null)
+                                    {
+                                        @foreach (var i in @Model.commentList)
+                                        {
+                                            <div class="row mt-4" style="background-color: white;">
+
+                                                <div class="col-md-3 col-12 d-flex justify-content-center align-items-center">
+                                                    <img src="~/Assets/@i.User.Avatar"
+                                                 style="border-radius: 50%; height: 4.5em;" alt="">
+                                                </div>
+                                                <div class="col-md-9 col-12">
+                                                    <p>@i.User.FirstName @i.User.LastName</p>
+                                                    <p>@i.CreatedAt.DayOfWeek, @i.CreatedAt.ToString("MMMM"), @i.CreatedAt.Year, @i.CreatedAt.ToString("h.mm tt")</p>
+                                                    <p>@i.Comments</p>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- right side content  -->
+            <div class="col-lg-5  col-sm-12">
+                <div class="row border">
+                    <h5 class="mt-2 ms-2"> Information </h5>
+                    <hr>
+                    <div class="row ">
+                        <div class="col-3 text-muted">Skills</div>
+                        <div class="col text-muted">
+                            @foreach (var i in @Model.MissionSkills)
+                            {
+                                @i.Skill.SkillName <span>,</span>
+                            }
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row ">
+                        <div class="col-3 text-muted">Days</div>
+                        <div class="col text-muted">@Model.Availability only</div>
+                    </div>
+                    <hr>
+                    <div class="row ">
+                        <div class="col-3 text-muted">Rating</div>
+                        <div class="col text-muted">
+                            @if (true)
+                            {
+                                for (var j = 0; j < (@Model.Rating); j++)
+                                {
+                                    <i class="bi bi-star-fill checked" style="color:#F8D441"></i>
+                                }
+                                for (var j = 0; j < 5 - (@Model.Rating); j++)
+                                {
+                                    <i class="bi bi-star"></i>
+                                }
+
+                            }
+                            <br> (by @Model.RatingUser volunteers)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row border mt-5" id="recentVolunteers">
+                    @* <h5 class="mt-2 ms-2"> Recent Volunteers </h5>
+                        <hr>*@
+
+                    <partial name="_recentVolunteers">
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <hr>
+
+
+    <!-- related missions -->
+    <div class="container mb-5">
+        <div class="text-center mt-5">
+            <p class="text-muted" style="font-size: 30px;"> Related Missions </p>
+        </div>
+
+        <div class="row">
+            @{
+                int n;
+                if (ViewBag.relatedMissions.Count < 3)
+                {
+                    n = ViewBag.relatedMissions.Count;
+
+                }
+                else
+                {
+                    n = 3;
+                }
+            }
+            @for (int i = 0; i < n; i++)
+            {
+                <div class="col-lg-4 col-md-6 col-sm-12 mt-3">
+                    <div class="card">
+                        <div class="img-event">
+                            <img src="~/Assets/@ViewBag.relatedMissions[i].MediaPath" class="card-img-top"
+                             alt="...">
+                            <div class="location-img">
+                                <img src="~/Assets/pin.png">
+                                <span class="text-light">@ViewBag.relatedMissions[i].CityName</span>
+                            </div>
+                            @if (@ViewBag.relatedMissions[i].favMission == 1)
+                            {
+                                <button type="submit" class="like-img border-0" onclick="addToFavourite(@ViewBag.relatedMissions[i].MissionId)">
+                                    <i class="bi bi-heart-fill text-danger" id="addFav_@ViewBag.relatedMissions[i].MissionId"></i>
+                                </button>
+                            }
+                            else
+                            {
+                                <button type="submit" class="unlike-img border-0" onclick="addToFavourite(@ViewBag.relatedMissions[i].MissionId)">
+                                    <i class="bi bi-heart-fill" id="addFav_@ViewBag.relatedMissions[i].MissionId"></i>
+                                </button>
+                            }
+
+                            <button type="button" class="stop-img border-0" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                <i class="bi bi-person-plus-fill"></i>
+                            </button>
+
+                            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Recommend to a Co-Worker</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table table-hover table-striped table-info">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Mark/UnMark</th>
+                                                        <th>Name</th>
+                                                        <th>Email</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach (var iii in @ViewBag.relatedMissions[i].userList)
+                                                    {
+                                                        <tr>
+                                                            <td><input class="form-check-input" type="checkbox" value="@iii.UserId" name="email" id="@iii.Email">
+                                                            <td>@iii.FirstName</td>
+                                                            <td> <label class="form-check-lable" for="@iii.Email">@iii.Email</label></td>
+                                                        </tr>
+                                                    }
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-primary" onclick="sendMail(@ViewBag.relatedMissions[i].MissionId)">Send Mail</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center">
+                                <button type="button" class="btn btn-outline text-muted img-btn">
+                                    @ViewBag.relatedMissions[i].Theme
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="card-body ">
+                            <h6 class="card-title" style="line-height: 24px;">
+                                @ViewBag.relatedMissions[i].Title
+                            </h6>
+                            <p class="card-text">
+                                @ViewBag.relatedMissions[i].ShortDescription
+                            </p>
+
+                            <div class="container">
+                                <div class="row d-flex flex-row">
+                                    <div class="col-5"> @ViewBag.relatedMissions[i].OrganizationName </div>
+
+                                    <div class="col">
+                                        @if (true)
+                                        {
+                                            for (var j = 0; j < (@ViewBag.relatedMissions[i].Rating); j++)
+                                            {
+                                                <i class="bi bi-star-fill checked" style="color:#F8D441"></i>
+                                            }
+                                            for (var j = 0; j < 5 - (@ViewBag.relatedMissions[i].Rating); j++)
+                                            {
+                                                <i class="bi bi-star"></i>
+                                            }
+
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="line  mt-4">
+                            <div class="duration ">
+                                <p id="duration-text" style="margin-bottom: 0;">
+                                    @if (@ViewBag.relatedMissions[i].MissionType == "Goal")
+                                    {
+                                        <span>@ViewBag.relatedMissions[i].GoalObjectiveText</span>
+                                    }
+                                    else
+                                    {
+                                        <span>From @ViewBag.relatedMissions[i].StartDate.ToString("dd/MM/yyyy") until @ViewBag.relatedMissions[i].EndDate.ToString("dd/MM/yyyy")</span>
+
+                                    }
+                                </p>
+
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between border-bottom mt-4 pb-2">
+                            @if (@ViewBag.relatedMissions[i].MissionType == "Goal")
+                            {
+                                <div class="deadline d-flex align-items-center w-50 mt-2 mb-1">
+                                    <img src="~/Assets/achieved.png" alt="">
+                                    <div class="w-100 pr-2">
+                                        <div class="progress" style="width:900; margin-left: 10px;">
+                                            <div class="progress-bar" role="progressbar" style="width: @ViewBag.relatedMissions[i].progressRatio%"> </div>
+                                        </div>
+                                        <p class="text-muted"> @ViewBag.relatedMissions[i].achievedValue achieved </p>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="Seats d-flex align-items-center">
+                                    <img src="~/Assets/Seats-left.png" alt="">
+                                    <span>
+                                        @ViewBag.relatedMissions[i].SeatLeft <p>seats left</p>
+                                    </span>
+                                </div>
+                                <div class="deadline d-flex align-items-center">
+                                    <img src="~/Assets/deadline.png" alt="">
+                                    <span>
+                                        @ViewBag.relatedMissions[i].Deadline.ToString("dd/MM/yyyy")
+                                        <p>Deadline</p>
+                                    </span>
+                                </div>
+                            }
+                        </div>
+
+                        <div class="d-flex justify-content-center mt-3 mb-3">
+                            <form>
+                                @if (@ViewBag.relatedMissions[i].appMission == 1 || @ViewBag.relatedMissions[i].Deadline < DateTime.Now || @ViewBag.relatedMissions[i].SeatLeft == 0)
+                                {
+                                    <button type="submit" class="btn btn-outline-warning applyButton" id="applyMission" asp-controller="Platform" asp-action="missionDetails" asp-route-id="@ViewBag.relatedMissions[i].MissionId">
+                                        View Details<i class="bi bi-arrow-right"></i>
+                                    </button>
+
+                                }
+                                else
+                                {
+                                    <button type="submit" class="btn btn-outline-warning applyButton" id="applyMission" asp-controller="Platform" asp-action="missionDetails" asp-route-id="@ViewBag.relatedMissions[i].MissionId">
+                                        Apply Now<i class="bi bi-arrow-right"></i>
+                                    </button>
+                                }
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+
+
+    <footer class="footer">
+
+        <a asp-controller="User" asp-action="privacyPolicy" style="color: #333333;text-decoration:none;margin-left:16%;">Privacy Policy</a>
+
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+    <script>
+
+        $(document).ready(function () {
+                $("#rating_1").click(function () {
+                    //$(".rtcolor").removeClass("text-warning");
+                    //$("#rating_1").addClass("text-warning");
+                    RateMission(1);
+                });
+                $("#rating_2").click(function () {
+                    //$(".rtcolor").removeClass("text-warning");
+                    //$("#rating_1, #rating_2").addClass("text-warning");
+                    RateMission(2);
+                });
+                $("#rating_3").click(function () {
+                    //console.log("ittttttttttt")
+                    //$(".rtcolor").removeClass("text-warning");
+                    //$("#rating_1, #rating_2, #rating_3").addClass("text-warning");
+                    RateMission(3);
+                });
+                $("#rating_4").click(function () {
+                    //$(".rtcolor").removeClass("text-warning");
+                    //$("#rating_1, #rating_2, #rating_3, #rating_4").addClass("text-warning");
+                    RateMission(4);
+                });
+                $("#rating_5").click(function () {
+                    //debugger
+                    //console.log($('#rating_5'));
+                    //$(".rtcolor").removeClass("text-warning");
+                    //$("#rating_1, #rating_2, #rating_3, #rating_4, #rating_5").addClass("text-warning");
+                    RateMission(5);
+                });
+        });
+        function RateMission(Rate) {
+                debugger
+                $.ajax({
+                    url: '/Platform/RateMission',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { missionId: @Model.MissionId , rate: Rate},
+                    success: function(data) {
+                        //location.reload();
+                        if(data){
+            toastr.options = {
+                "positionClass": "toast-bottom-right"
+            }
+
+                        for(i=1;i<=Rate;i++){
+                            $('#rating_'+i).removeClass("bi-star");
+                            $('#rating_'+i).addClass("bi-star-fill text-warning");
+
+                        }
+                        for(i=Rate+1;i<=5;i++){
+                            $('#rating_'+i).removeClass("bi-star-fill text-warning");
+                            $('#rating_'+i).addClass("bi-star");
+
+                        }
+                toastr.success(Rate+" Rating applied Successfully...");
+
+                        }
+                    },
+                    error: function() {
+                        alert('Error');
+                    }
+                });
+            }
+
+    </script>
+    <script src="~/js/index.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,444 @@
+﻿
+
+<style>
+    .rating {
+        display: flex;
+        justify-content: center;
+        background-color: white;
+    }
+
+        .rating > label {
+            position: relative;
+            width: 1em;
+            font-size: 20px;
+            color: #F88634;
+            cursor: pointer
+        }
+
+</style>
+
+<div class="container ">
+    <div class="row">
+        <span class="explore">Explore <b>@ViewBag.totalMission Missions</b></span>
+        @foreach (var item in ViewBag.missionListing)
+        {
+            <div class="col-lg-3 col-md-5 col-sm-6">
+                <div class="thumbnail h-100">
+                    <div class="card h-100">
+                        <img src="~/Assets/@item.MediaPath" style="height:200px;">
+                        <div class="position-relative">
+                            <div class="position-absolute top-100 start-50 translate-middle rounded-5 p-2" style="background-color: white;">@item.Theme</div>
+                        </div>
+                        <div class="card-img-overlay ">
+                            <div class="d-flex flex-column text-end pb-5" style="margin-inline: auto;">
+
+                                <div class="d-flex justify-content-between">
+                                    @if (@item.appMission == 1)
+                                    {
+                                        <label style="background-color:green; color:aliceblue; padding:5px;margin-left:-16px">APPLIED</label>
+                                    }
+                                    else
+                                    {
+                                        @if (@item.Deadline < DateTime.Now)
+                                        {
+                                            <label style="background-color:red; color:aliceblue; padding:5px;margin-left:-16px">CLOSED</label>
+                                        }
+                                        else
+                                        {
+                                            <label></label>
+
+                                        }
+                                    }
+
+                                    <button class="btn btn-box rounded-5" style="background-color: black ; opacity: 50%;">
+                                        <img src="~/Assets/pin.png" class="img-fluid cancle-img" alt="">
+                                        <span style="color:white;">@item.CityName</span>
+                                    </button>
+                                </div>
+
+                                <div class="pt-1">
+                                    @if (@item.favMission == 1)
+                                    {
+                                        @*                    <button type="submit" class="like-img border-0" onclick="addToFavourite(@i.MissionId)">
+                                            <i class="bi bi-heart-fill text-danger" id="addFav_@i.MissionId"></i>
+                                            </button>
+                                        *@
+                                        <button type="submit" onclick="addToFavourite(@item.MissionId)" class="btn rounded-5 border-light" style="background-color:black; opacity:50%;">
+                                            <i class="bi bi-heart-fill text-danger" id="addFav_@item.MissionId"></i>
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        @*                    <button type="submit" class="unlike-img border-0" onclick="addToFavourite(@i.MissionId)">
+                                            <i class="bi bi-heart-fill" id="addFav_@i.MissionId"></i>
+                                            </button>
+                                        *@
+                                        <button type="submit" onclick="addToFavourite(@item.MissionId)" class="btn rounded-5 border-light" style="background-color:black; opacity:50%;">
+                                            <i id="addFav_@item.MissionId" class="bi bi-heart text-white"></i>
+                                        </button>
+                                    }
+                                </div>
+
+                                <div class="">
+
+                                    <button type="button" class="btn rounded-5 border-light" data-bs-toggle="modal" data-bs-target="#exampleModal1" style="background-color:black; opacity:50%;">
+                                        <i class="bi bi-person-plus-fill text-white"></i>
+                                    </button>
+
+
+                                    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Recommend to a Co-Worker</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <table class="table table-hover table-striped table-info">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Mark/UnMark</th>
+                                                                <th>Name</th>
+                                                                <th>Email</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var ii in item.alreadyMisInvited)
+                                                            {
+                                                                <tr>
+                                                                    <td><i class="bi bi-check-circle-fill text-black"></i></td>
+                                                                    <td>@ii.ToUser.FirstName</td>
+                                                                    <td> <label class="form-check-lable" for="@ii.ToUser.Email">@ii.ToUser.Email</label></td>
+                                                                </tr>
+                                                            }
+
+                                                            @foreach (var ii in item.userList)
+                                                            {
+                                                                <tr>
+                                                                    <td><input class="form-check-input" type="checkbox" value="@ii.UserId" name="email" id="@ii.Email">
+                                                                    <td>@ii.FirstName</td>
+                                                                    <td> <label class="form-check-lable" for="@ii.Email">@ii.Email</label></td>
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-primary" onclick="sendMail(@item.MissionId)">Send Mail</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="col-lg-9 col-md-7 col-sm-6">
+
+                <div class="row">
+                    <div class="col-md-8 ">
+                        <div class=" float-start pe-2">
+                            <i class="bi bi-geo-alt"></i>
+                            <span style="font-size: smaller;">@item.CityName</span>
+                        </div>
+                        <div class=" float-start pe-2">
+                            <i class="bi bi-globe"></i>
+                            <span style="font-size: smaller;">@item.Theme</span>
+                        </div>
+                        <div class="d-inline-block align-items-center">
+                            <i class="bi bi-people"></i>
+                            <span style="font-size: smaller;">@item.OrganizationName</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex rating1">
+                            <div class="col d-flex justify-content-end">
+                                <span class="rating text-center">
+
+                                    @for (var i = 0; i < (@item.Rating); i++)
+                                    {
+                                        <label style="color: #F88634; text-shadow: 0 0 0 #F88634;">&#9733;</label>
+                                    }
+                                    @for (var i = 0; i < 5 - (@item.Rating); i++)
+                                    {
+                                        <label style="color: black;">☆</label>
+                                    }
+
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row pt-2">
+                    <h5 style="margin-bottom:0px;">@item.Title</h5>
+                </div>
+
+                <div class="row">
+                    <span style="font-size:smaller;">@item.ShortDescription</span>
+                </div>
+
+                <div class="pt-3 row">
+                    <div class="col-lg-12 col-md-9 ">
+                        <div class="row">
+                            @if (@item.MissionType == "Goal")
+                            {
+                                <div class="col-3 ">
+                                    <div class="card border-0">
+                                        <div class="d-flex align-items-center">
+                                            <img src="~/Assets/achieved.png" />
+                                            <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: @item.progressRatio%; background-color:#F88634;"></div>
+                                                </div>
+                                                <div> <span class="">@item.achievedValue achieved</span> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="card border-0">
+                                        <div class=" d-flex flex-row">
+                                            <div><img src="~/Assets/Seats-left.png"></div>
+                                            <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
+                                                <h6 class="card-title mb-0"> @item.SeatLeft</h6>
+                                                <p class="card-text mb-0">Seates Left</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="card border-0">
+                                        <div class="d-flex align-items-center">
+                                            <img src="~/Assets/calender.png" />
+                                            <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
+                                                <p class="mb-0 ">From @item.StartDate.ToString("dd/MM/yyyy")</p>
+                                                <p class="mb-0 " style="margin-top: -5px;">Until @item.EndDate.ToString("dd/MM/yyyy")</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="card border-0">
+                                        <div class=" d-flex align-items-center">
+                                            <div class=""><i class="bi bi-tools"></i></div>
+                                            <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
+                                                <p class="card-text mb-0">Skill</p>
+                                                <h6 class="card-title mb-0">
+                                                    @foreach (var y in @item.MissionSkills)
+                                                    {
+                                                        @if (true)
+                                                        {
+                                                            @y.Skill.SkillName
+                                                            break;
+
+                                                        }
+
+                                                    }
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+                            else
+                            {
+                                <div class="col-3 ">
+                                    <div class="card border-0">
+                                        <div class="d-flex align-items-center">
+                                            <img src="~/Assets/Seats-left.png" />
+                                            <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
+                                                <p class="mb-0 ">@item.SeatLeft</p>
+                                                <p class="mb-0 " style="margin-top: -5px;">Seates Left</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="card border-0">
+                                        <div class=" d-flex flex-row">
+                                            <div><img src="~/Assets/deadline.png"></div>
+                                            <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
+                                                <h6 class="card-title mb-0"> @item.Deadline.ToString("dd/MM/yyyy")</h6>
+                                                <p class="card-text mb-0">Deadline</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="card border-0">
+                                        <div class="d-flex align-items-center">
+                                            <img src="~/Assets/calender.png" />
+                                            <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
+                                                <p class="mb-0 ">From @item.StartDate.ToString("dd/MM/yyyy")</p>
+                                                <p class="mb-0 " style="margin-top: -5px;">Until @item.EndDate.ToString("dd/MM/yyyy")</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-3">
+                                    <div class="card border-0">
+                                        <div class=" d-flex align-items-center">
+                                            <div class=""><i class="bi bi-tools"></i></div>
+                                            <div class="flex-column px-2" style="font-size:smaller; font-weight:400">
+                                                <p class="card-text mb-0">Skill</p>
+                                                <h6 class="card-title mb-0">
+                                                    @foreach (var y in @item.MissionSkills)
+                                                    {
+                                                        @if (true)
+                                                        {
+                                                            @y.Skill.SkillName
+                                                            break;
+
+                                                        }
+
+                                                    }
+                                                </h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-3 pt-lg-3 d-flex justify-content-center">
+                        <div class="d-inline-flex justify-content-center ">
+                            <form>
+                                @if (item.appMission == 1 || item.Deadline < DateTime.Now || item.SeatLeft == 0)
+                                {
+                                    <button type="submit" class="btn btn-outline-warning applyButton" id="applyMission" asp-controller="Platform" asp-action="missionDetails" asp-route-id="@item.MissionId">
+                                        View Details<i class="bi bi-arrow-right"></i>
+                                    </button>
+
+                                }
+                                else
+                                {
+                                    <button type="submit" class="btn btn-outline-warning applyButton" id="applyMission" asp-controller="Platform" asp-action="missionDetails" asp-route-id="@item.MissionId">
+                                        Apply Now<i class="bi bi-arrow-right"></i>
+                                    </button>
+                                }
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <hr style=" height:20px; opacity: 0;" />
+        }
+
+    </div>
+    <div class="container">
+        <select id="pagerList" onchange="changePgIndex('list')">
+            <option disabled selected>select pageSize...</option>
+            @*<option value="1">1</option>*@
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+    </div>
+    <nav aria-label="Page navigation example" class=mt-5>
+        <ul class="pagination justify-content-center" onchange="searchMission()">
+            <li class="page-item">
+                @if (@ViewBag.pg_no != 1)
+                {
+                    <a class="page-link" href="#" aria-label="Previous" onclick="searchMission(1)">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                }
+                else
+                {
+                    <button class="page-link" href="#" disabled aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </button>
+                }
+
+            </li>
+            <li class="page-item">
+
+                @if (@ViewBag.pg_no != 1)
+                {
+                    <a class="page-link" href="#" aria-label="Previous" onclick="searchMission(((@ViewBag.pg_no) - 1))">
+                        <span aria-hidden="true">&lt;</span>
+                    </a>
+                }
+                else
+                {
+                    <button class="page-link" href="#" disabled aria-label="Previous">
+                        <span aria-hidden="true">&lt;</span>
+                    </button>
+                }
+            </li>
+            @{
+                double totalpages = ViewBag.Totalpages;
+
+
+
+                for (int i = 1; i <= totalpages; i++)
+                {
+                    @if (i == ViewBag.pg_no)
+                    {
+                        <li class="page-item ">
+                            <button class="page-link active" onclick="searchMission(@i)">@i </button>
+
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="page-item">
+                            <button class="page-link" onclick="searchMission(@i)">@i</button>
+                        </li>
+                    }
+
+
+                }
+            }
+
+
+
+            <li class="page-item">
+                @if (@ViewBag.pg_no != @ViewBag.Totalpages)
+                {
+                    <a class="page-link" href="#" aria-label="Next" onclick="searchMission(((@ViewBag.pg_no) + 1))">
+                        <span aria-hidden="true">&gt;</span>
+                    </a>
+                }
+                else
+                {
+                    <button class="page-link" disabled href="#" aria-label="Next">
+                        <span aria-hidden="true">&gt;</span>
+                    </button>
+
+                }
+            </li>
+            <li class="page-item">
+                @if (@ViewBag.pg_no != @ViewBag.Totalpages)
+                {
+                    <a class="page-link" href="#" aria-label="Next" onclick="searchMission(@ViewBag.Totalpages)">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                }
+                else
+                {
+                    <button class="page-link" disabled href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </button>
+
+                }
+
+            </li>
+        </ul>
+    </nav>
+</div>

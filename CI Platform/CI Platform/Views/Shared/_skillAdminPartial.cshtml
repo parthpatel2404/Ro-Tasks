@@ -1,0 +1,102 @@
+﻿
+
+<div class="row gx-0">
+    <table class="table table-hover table-bordered" style="width: 99%;margin-inline: auto;">
+        <thead>
+            <tr class="table-light" style="height: 70px;">
+                <th scope="col" class="thforcmstable">Skill Name</th>
+                <th scope="col" class="thforcmstable">Status</th>
+                <th scope="col" class="thforcmstable">Action</th>
+            </tr>
+        </thead>
+        @foreach (var item in @Model.skills)
+        {
+            <tbody class="table-border">
+                <tr>
+                   <td>@item.SkillName</td>
+                   @if (@item.Status == "Active")
+                    {
+                        <td class="text-success">@item.Status</td>
+                    }
+                    else
+                    {
+                        <td class="text-danger">@item.Status</td>
+                    }
+                    <td>
+                        <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#addSkill" onclick="getViaAdmin(@item.SkillId,'skill')">
+                            <i class="bi bi-pencil-square" style="color: coral;"></i>
+                        </button>
+                        <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#deleteSkill" onclick="getViaAdmin(@item.SkillId,'skill')">
+                            <i class="bi bi-trash ms-3"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>
+
+
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end" onchange="searchOnAdmin(1,'skill')">
+        <li class="page-item">
+            <button class="page-link" aria-label="Previous" onclick="searchOnAdmin(1,'skill')">
+                <span aria-hidden="true">&laquo;</span>
+            </button>
+        </li>
+        <li class="page-item">
+            @if (@ViewBag.pg_no != 1)
+            {
+                <button class="page-link" aria-label="Previous" onclick="searchOnAdmin(((@ViewBag.pg_no) - 1),'skill')">
+                    <span aria-hidden="true">&lt;</span>
+                </button>
+            }
+            else
+            {
+                <button class="page-link" aria-label="Previous">
+                    <span aria-hidden="true">&lt;</span>
+                </button>
+            }
+        </li>
+        @{
+            double totalpages = ViewBag.Totalpages5;
+
+            for (int ii = 1; ii <= totalpages; ii++)
+            {
+                @if (ii == ViewBag.pg_no)
+                {
+                    <li class="page-item">
+                        <button class="page-link active" onclick="searchOnAdmin(@ii,'skill')">@ii</button>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item">
+                        <button class="page-link" onclick="searchOnAdmin(@ii,'skill')">@ii</button>
+                    </li>
+                }
+            }
+        }
+        <li class="page-item">
+            @if (@ViewBag.pg_no != @ViewBag.Totalpages5)
+            {
+                <button class="page-link" aria-label="Next" onclick="searchOnAdmin(((@ViewBag.pg_no) + 1),'skill')">
+                    <span aria-hidden="true">&gt;</span>
+                </button>
+            }
+            else
+            {
+                <button class="page-link" aria-label="Next">
+                    <span aria-hidden="true">&gt;</span>
+                </button>
+            }
+        </li>
+        <li class="page-item">
+            <button class="page-link" aria-label="Next" onclick="searchOnAdmin(@ViewBag.Totalpages5,'skill')">
+                <span aria-hidden="true">&raquo;</span>
+            </button>
+        </li>
+    </ul>
+</nav>
+
