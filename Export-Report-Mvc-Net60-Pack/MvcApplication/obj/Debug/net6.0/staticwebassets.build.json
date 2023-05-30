@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "5SQbqa9i8KecyfBlI0ff1sjhCbwsY7+S+zkss8iR1Ps=",
+  "Hash": "iJ0CPsfHLQ43zVTNTxB0bAXzH92iT0zeSY1tYMvMTCQ=",
   "Source": "MvcApplication",
   "BasePath": "_content/MvcApplication",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "MvcApplication\\wwwroot",
       "Source": "MvcApplication",
-      "ContentRoot": "C:\\Users\\pci148\\Downloads\\Export-Report-Mvc-Net60-Pack\\MvcApplication\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\RO Task\\Export-Report-Mvc-Net60-Pack\\MvcApplication\\wwwroot\\",
       "BasePath": "_content/MvcApplication",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\pci148\\Downloads\\Export-Report-Mvc-Net60-Pack\\MvcApplication\\wwwroot\\css\\site.css",
+      "Identity": "D:\\Tatvasoft\\RO Task\\Export-Report-Mvc-Net60-Pack\\MvcApplication\\wwwroot\\css\\site.css",
       "SourceId": "MvcApplication",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pci148\\Downloads\\Export-Report-Mvc-Net60-Pack\\MvcApplication\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\RO Task\\Export-Report-Mvc-Net60-Pack\\MvcApplication\\wwwroot\\",
       "BasePath": "_content/MvcApplication",
       "RelativePath": "css/site.css",
       "AssetKind": "All",
@@ -34,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\pci148\\Downloads\\Export-Report-Mvc-Net60-Pack\\MvcApplication\\wwwroot\\favicon.ico",
+      "Identity": "D:\\Tatvasoft\\RO Task\\Export-Report-Mvc-Net60-Pack\\MvcApplication\\wwwroot\\favicon.ico",
       "SourceId": "MvcApplication",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pci148\\Downloads\\Export-Report-Mvc-Net60-Pack\\MvcApplication\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\RO Task\\Export-Report-Mvc-Net60-Pack\\MvcApplication\\wwwroot\\",
       "BasePath": "_content/MvcApplication",
       "RelativePath": "favicon.ico",
       "AssetKind": "All",
@@ -51,10 +51,10 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\pci148\\Downloads\\Export-Report-Mvc-Net60-Pack\\MvcApplication\\wwwroot\\js\\site.js",
+      "Identity": "D:\\Tatvasoft\\RO Task\\Export-Report-Mvc-Net60-Pack\\MvcApplication\\wwwroot\\js\\site.js",
       "SourceId": "MvcApplication",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\pci148\\Downloads\\Export-Report-Mvc-Net60-Pack\\MvcApplication\\wwwroot\\",
+      "ContentRoot": "D:\\Tatvasoft\\RO Task\\Export-Report-Mvc-Net60-Pack\\MvcApplication\\wwwroot\\",
       "BasePath": "_content/MvcApplication",
       "RelativePath": "js/site.js",
       "AssetKind": "All",

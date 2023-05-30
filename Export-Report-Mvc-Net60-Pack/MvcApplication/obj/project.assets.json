@@ -9296,11 +9296,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pci148\\Downloads\\Export-Report-Mvc-Net60-Pack\\MvcApplication\\MvcApplication.csproj",
+      "projectUniqueName": "D:\\Tatvasoft\\RO Task\\Export-Report-Mvc-Net60-Pack\\MvcApplication\\MvcApplication.csproj",
       "projectName": "MvcApplication",
-      "projectPath": "C:\\Users\\pci148\\Downloads\\Export-Report-Mvc-Net60-Pack\\MvcApplication\\MvcApplication.csproj",
+      "projectPath": "D:\\Tatvasoft\\RO Task\\Export-Report-Mvc-Net60-Pack\\MvcApplication\\MvcApplication.csproj",
       "packagesPath": "C:\\Users\\pci148\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pci148\\Downloads\\Export-Report-Mvc-Net60-Pack\\MvcApplication\\obj\\",
+      "outputPath": "D:\\Tatvasoft\\RO Task\\Export-Report-Mvc-Net60-Pack\\MvcApplication\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

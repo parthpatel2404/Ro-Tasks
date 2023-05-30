@@ -44,25 +44,18 @@ namespace MvcApplication.Controllers
             report.Load(path);
             List<string> vs = new List<string>() { "Cricket", "Hockey", "Volley Ball", "Chess", "Basket Ball", "Cricket", "Hockey", "Volley Ball", "Chess", "Basket Ball", "Cricket", "Hockey", "Volley Ball", "Chess", "Basket Ball", "Cricket", "Hockey", "Volley Ball", "Chess", "Basket Ball" };
 
-            StiDataBand dataBand = report.GetComponentByName("DataBand2") as StiDataBand;
+            StiDataBand dataBand = report.GetComponentByName("cBand") as StiDataBand;
 
-            // Access the TextBox element within the Data band
-
-            // Clear the existing value of the TextBox
             for (int i = 0; i < vs.Count; i++)
             {
-                StiText textBox = dataBand.Components[$"Text14{i}"] as StiText;
+                StiText textBox = dataBand.Components[$"cList{i}"] as StiText;
 
                 textBox.Text.Value = vs[i];
             }
-            // Compile the report
+
             report.Compile();
 
-            // Export or display the report as needed
 
-
-
-            //return StiNetCoreReportResponse.ResponseAsWord2007(report);
             return StiNetCoreReportResponse.ResponseAsPdf(report);
 
         }

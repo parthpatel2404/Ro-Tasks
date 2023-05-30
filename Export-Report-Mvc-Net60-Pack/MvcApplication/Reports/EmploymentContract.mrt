@@ -93,35 +93,36 @@
           <Parent isRef="4" />
           <Sort isList="true" count="0" />
         </DataBand1>
-        <DataBand2 Ref="8" type="DataBand" isKey="true">
+        <cBand Ref="8" type="DataBand" isKey="true">
           <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
           <ClientRectangle>0,90,749,30</ClientRectangle>
           <Components isList="true" count="1">
-            <Text14 Ref="9" type="Text" isKey="true">
+            <cList Ref="9" type="Text" isKey="true">
               <Brush>Transparent</Brush>
               <ClientRectangle>40,0,680,30</ClientRectangle>
               <Conditions isList="true" count="0" />
               <Expressions isList="true" count="0" />
               <Font>Arial,14</Font>
               <Margins>0,0,0,0</Margins>
-              <Name>Text14</Name>
+              <Name>cList</Name>
               <Page isRef="4" />
               <Parent isRef="8" />
               <Text>{country.name}</Text>
               <TextBrush>[0:0:0]</TextBrush>
               <Type>DataColumn</Type>
-            </Text14>
+            </cList>
           </Components>
           <Conditions isList="true" count="0" />
           <DataRelationName isNull="true" />
           <DataSourceName>country</DataSourceName>
           <Expressions isList="true" count="0" />
           <Filters isList="true" count="0" />
-          <Name>DataBand2</Name>
+          <Name>cBand</Name>
           <Page isRef="4" />
           <Parent isRef="4" />
           <Sort isList="true" count="0" />
-        </DataBand2>
+        </cBand>
       </Components>
       <Conditions isList="true" count="0" />
       <Expressions isList="true" count="0" />
@@ -144,10 +145,10 @@
   </ReferencedAssemblies>
   <ReportAlias>Employment Contract</ReportAlias>
   <ReportAuthor>Stimulsoft</ReportAuthor>
-  <ReportChanged>5/29/2023 4:17:11 PM</ReportChanged>
+  <ReportChanged>5/30/2023 9:50:20 AM</ReportChanged>
   <ReportCreated>6/10/2021 1:10:36 PM</ReportCreated>
-  <ReportFile>C:\Users\pci148\Downloads\Export-Report-Mvc-Net60-Pack\MvcApplication\Reports\EmploymentContract.mrt</ReportFile>
-  <ReportGuid>3421d1842c1347a49aa6c94708f38bdc</ReportGuid>
+  <ReportFile>D:\Tatvasoft\RO Task\Export-Report-Mvc-Net60-Pack\MvcApplication\Reports\EmploymentContract.mrt</ReportFile>
+  <ReportGuid>8936f1e3d18946148b9b50cde8b6b2b2</ReportGuid>
   <ReportIcon>iVBORw0KGgoAAAANSUhEUgAAASAAAAGWCAMAAADvzq7aAAAAAXNSR0IArs4c6QAAAARnQU1BAACx
 jwv8YQUAAAAwUExURRUSF/H2+LLZ+p6cmlRXXZO20mmFm8rS1s/o9I96a8izoeLNuvHm2xh+5qfR
 9f///19FLp8AAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAfgElEQVR4Xu1d
