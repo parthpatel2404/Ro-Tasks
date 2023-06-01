@@ -9,7 +9,8 @@
 @Html.ActionLink("Export to Pdf", "ExportReport1")
 @Html.ActionLink("Export to Word", "ExportReport3")
 @Html.ActionLink("Export to PNG", "ExportReport2")
-
+@Html.ActionLink("PREVIEW", "ExportReport2")
+ <a href="#" target="_blank">PREVIEW</a> 
 @Html.StiNetCoreViewer(new StiNetCoreViewerOptions()
 {
 	Actions =
@@ -18,3 +19,10 @@
 		ViewerEvent = "ViewerEvent"
 	}
 })
+@*@{
+    var viewerUrl = Url.Action("GetReport", "Home");
+}
+
+<a href="@viewerUrl" target="_blank">Preview Profile Data</a>*@
+
+@*<a href="@Url.Action("GenerateReport")" target="_blank">Preview Profile Data</a>*@

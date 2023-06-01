@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using MvcApplication.Data;
 using Stimulsoft.Report;
 using Stimulsoft.Report.Components;
 using Stimulsoft.Report.Dictionary;
@@ -15,6 +17,11 @@ namespace MvcApplication.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly CIPlatformDbContext _context;
+        public HomeController(CIPlatformDbContext dbContext)
+        {
+            _context = dbContext;
+        }
         public IActionResult Index()
         {
             return View();
@@ -78,9 +85,24 @@ namespace MvcApplication.Controllers
         }
         public IActionResult GetReport()
         {
+            StiNetCoreViewer.ViewerEventResult(this);
             var report = StiReport.CreateNewReport();
-            var path = StiNetCoreHelper.MapPath(this, "Reports/EmployeeProfile.mrt");
+            var path = StiNetCoreHelper.MapPath(this, "Reports/BusinessData.mrt");
             report.Load(path);
+            //var dataa = new MyDataObject
+            //{
+            //    Name = "John Doe",
+            //    Age = 30,
+            //};
+            //var userData = _context.Users.Where(x=>x.UserId == 9).Include(x=>x.Country).Include(x => x.City).FirstOrDefault();
+            var userData = _context.Users.Where(x => x.UserId == 9).Include(x => x.Country).Include(x => x.City).Select(x => new
+            {
+                x.FirstName, x.LastName, x.Email, x.LinkedInUrl, x.PhoneNumber, x.ProfileText, x.Availability,
+                CountryName = x.Country.Name, CityName = x.City.Name, x.Department, x.EmployeeId, x.Role, x.Title, x.WhyIVolunteer,
+                Country=x.Country
+            });
+            //var cc = userData.Country.Name;
+            report.RegBusinessObject("data", userData);
 
             return StiNetCoreViewer.GetReportResult(this, report);
         }

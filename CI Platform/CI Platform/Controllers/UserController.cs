@@ -77,7 +77,7 @@ namespace CI_Platform.Controllers
                 _config["Jwt:Issuer"],
                 _config["Jwt:Audience"],
                 claims,
-                expires: DateTime.Now.AddMinutes(2),
+                expires: DateTime.Now.AddMinutes(20),
                 signingCredentials: credentials
                 );
             var returnToken = new JwtSecurityTokenHandler().WriteToken(token);
@@ -344,15 +344,15 @@ namespace CI_Platform.Controllers
         {
             long userId = (int)HttpContext.Session.GetInt32("UserId");
             var report = StiReport.CreateNewReport();
-            var path = StiNetCoreHelper.MapPath(this, "Reports/EmployeeProfile.mrt");
+            var path = StiNetCoreHelper.MapPath(this, "Reports/DataViaBusinessObject.mrt");
             report.Load(path);
-            report.Dictionary.Variables["UserId"].Value = userId.ToString();
+            //report.Dictionary.Variables["UserId"].Value = userId.ToString();
             //// Find the TextBox element by its name or other means
             //StiText textBox = report.GetComponentByName("Text2") as StiText;
             //// Update the value or expression of the TextBox
             //textBox.Text.Value = "bablu";
             //(report.GetComponentByName("Text2") as StiText).Text.Value = "BAaaaaaaaDMASS";
-            //(report.GetComponentByName("Text4") as StiText).Text.Value = "COMPANY";
+            (report.GetComponentByName("Text13") as StiText).Text.Value = "TATVASOFT";
 
             //report.Compile();
 

@@ -95,7 +95,7 @@
     <Report isRef="0" />
     <Resources isList="true" count="0" />
     <Variables isList="true" count="1">
-      <value>,UserId,UserId,,System.Int64,_x0037_,False,False,False,False,,c53e7e55a4a1415ba4f5cd5b99989967,True</value>
+      <value>,UserId,UserId,,System.Int64,,False,False,False,False,,c53e7e55a4a1415ba4f5cd5b99989967,True</value>
     </Variables>
   </Dictionary>
   <EngineVersion>EngineV2</EngineVersion>
@@ -930,10 +930,10 @@ i5/AmJsKZt0AAAAASUVORK5CYII=</ImageBytes>
   </ReferencedAssemblies>
   <ReportAlias>Application For Employment</ReportAlias>
   <ReportAuthor>Stimulsoft</ReportAuthor>
-  <ReportChanged>5/30/2023 3:19:07 PM</ReportChanged>
+  <ReportChanged>5/31/2023 4:39:20 PM</ReportChanged>
   <ReportCreated>12/27/2021 1:35:54 PM</ReportCreated>
   <ReportFile>D:\Tatvasoft\RO Task\CI Platform\CI Platform\Reports\EmployeeProfile.mrt</ReportFile>
-  <ReportGuid>ffc168c200f447aead69b639d5dfdd83</ReportGuid>
+  <ReportGuid>bc057ad7d58b4b30b40181037f2b9470</ReportGuid>
   <ReportIcon>iVBORw0KGgoAAAANSUhEUgAAASAAAAGWCAMAAADvzq7aAAAAAXNSR0IArs4c6QAAAARnQU1BAACx
 jwv8YQUAAAGAUExURcvd7dTo9oyZraeKcWeKo/jn176+vvTX05VyYnJwcvb7/6ioqbLI2F92i+vn
 6dK7r5iYmf+8z5Glta+Zkdzb3O7z/46OjtnGtrm9yebt98jP2VBMULHS6relmMfFxbOzszAwMP/2

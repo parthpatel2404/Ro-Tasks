@@ -58,29 +58,29 @@
       <user Ref="5" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
         <Alias>user</Alias>
         <Columns isList="true" count="23">
-          <value>status,System.String</value>
-          <value>created_at,System.DateTime</value>
-          <value>user_id,System.Int64</value>
-          <value>email,System.String</value>
-          <value>password,System.String</value>
-          <value>phone_number,System.Int64</value>
-          <value>Role,System.String</value>
-          <value>avatar,System.String</value>
-          <value>why_i_volunteer,System.String</value>
-          <value>employee_id,System.String</value>
-          <value>department,System.String</value>
-          <value>city_id,System.Int64</value>
-          <value>country_id,System.Int64</value>
-          <value>profile_text,System.String</value>
-          <value>linked_in_url,System.String</value>
-          <value>title,System.String</value>
-          <value>first_name,System.String</value>
-          <value>last_name,System.String</value>
-          <value>updated_at,System.DateTime</value>
-          <value>deleted_at,System.DateTime</value>
-          <value>availability,System.String</value>
-          <value>manager,System.String</value>
-          <value>returnUrl,System.String</value>
+          <value>ORIGINAL,status,status,status,System.String,_x0030_03894d32f394546aa166a774d1d563a</value>
+          <value>ORIGINAL,created_at,created_at,created_at,System.DateTime,_x0035_537b8e87b7648618c3aacea76d23343</value>
+          <value>ORIGINAL,user_id,user_id,user_id,System.Int64,f6cae875b5fd4a37b557a413442e2c35</value>
+          <value>ORIGINAL,email,email,email,System.String,e9b7c0ce97d94793879ba93c3c222124</value>
+          <value>ORIGINAL,password,password,password,System.String,_x0033_8a34298466d474a97afec9e5b28960b</value>
+          <value>ORIGINAL,phone_number,phone_number,phone_number,System.Int64,_x0032_0641046ac974cdba1213a0899ee33b4</value>
+          <value>ORIGINAL,Role,Role,Role,System.String,_x0035_508965317724d0191619aecaf0850ba</value>
+          <value>ORIGINAL,avatar,avatar,avatar,System.String,e1dc6db69bd5493a83e09155243cc36a</value>
+          <value>ORIGINAL,why_i_volunteer,why_i_volunteer,why_i_volunteer,System.String,_x0039_e6642888cc6429ea57c20a88b6befe4</value>
+          <value>ORIGINAL,employee_id,employee_id,employee_id,System.String,f88c035ae07941698d793f1b8a515e55</value>
+          <value>ORIGINAL,department,department,department,System.String,_x0039_143245d602442f5a32aceb4219cef53</value>
+          <value>ORIGINAL,city_id,city_id,city_id,System.Int64,_x0030_9f756187e26401081a39e77d01c6c03</value>
+          <value>ORIGINAL,country_id,country_id,country_id,System.Int64,d94c712eccfe4ca886a1640b038b1d95</value>
+          <value>ORIGINAL,profile_text,profile_text,profile_text,System.String,f4870e86b68b4b478c2d0682738b99a3</value>
+          <value>ORIGINAL,linked_in_url,linked_in_url,linked_in_url,System.String,ed6c2e1d5f5a44bb8c07878f571b00dd</value>
+          <value>ORIGINAL,title,title,title,System.String,_x0032_84dc082a18a408b89e7895bd6a8f68f</value>
+          <value>ORIGINAL,first_name,first_name,first_name,System.String,_x0036_37ed9442e934cf39e9388ea5058c9ac</value>
+          <value>ORIGINAL,last_name,last_name,last_name,System.String,_x0034_d836a9d6e3b4551b88a3c94145512ef</value>
+          <value>ORIGINAL,updated_at,updated_at,updated_at,System.DateTime,e6a2481f58d345cb8becbe142a4de716</value>
+          <value>ORIGINAL,deleted_at,deleted_at,deleted_at,System.DateTime,_x0034_be6cf8cac1a433cabbada75b078697b</value>
+          <value>ORIGINAL,availability,availability,availability,System.String,bd91a5d020d74923a00f7e74d37ceb66</value>
+          <value>ORIGINAL,manager,manager,manager,System.String,_x0039_ee50b5b6b854f88be673a74ee6c6ae5</value>
+          <value>ORIGINAL,returnUrl,returnUrl,returnUrl,System.String,_x0039_cbca19ab0604869bfe367bfb55b4e2a</value>
         </Columns>
         <CommandTimeout>30</CommandTimeout>
         <Dictionary isRef="1" />
@@ -95,7 +95,7 @@
     <Report isRef="0" />
     <Resources isList="true" count="0" />
     <Variables isList="true" count="1">
-      <value>,UserId,UserId,,System.Int64,_x0037_,False,False,False,False,,c53e7e55a4a1415ba4f5cd5b99989967,True</value>
+      <value>,UserId,UserId,,System.Int64,,False,False,False,False,,c53e7e55a4a1415ba4f5cd5b99989967,True</value>
     </Variables>
   </Dictionary>
   <EngineVersion>EngineV2</EngineVersion>
@@ -930,10 +930,10 @@ i5/AmJsKZt0AAAAASUVORK5CYII=</ImageBytes>
   </ReferencedAssemblies>
   <ReportAlias>Application For Employment</ReportAlias>
   <ReportAuthor>Stimulsoft</ReportAuthor>
-  <ReportChanged>5/30/2023 3:19:07 PM</ReportChanged>
+  <ReportChanged>6/1/2023 12:30:02 PM</ReportChanged>
   <ReportCreated>12/27/2021 1:35:54 PM</ReportCreated>
   <ReportFile>D:\Tatvasoft\RO Task\Export-Report-Mvc-Net60-Pack\MvcApplication\Reports\EmployeeProfile.mrt</ReportFile>
-  <ReportGuid>ffc168c200f447aead69b639d5dfdd83</ReportGuid>
+  <ReportGuid>575e22980f4146cda7566f90f7778440</ReportGuid>
   <ReportIcon>iVBORw0KGgoAAAANSUhEUgAAASAAAAGWCAMAAADvzq7aAAAAAXNSR0IArs4c6QAAAARnQU1BAACx
 jwv8YQUAAAGAUExURcvd7dTo9oyZraeKcWeKo/jn176+vvTX05VyYnJwcvb7/6ioqbLI2F92i+vn
 6dK7r5iYmf+8z5Glta+Zkdzb3O7z/46OjtnGtrm9yebt98jP2VBMULHS6relmMfFxbOzszAwMP/2
