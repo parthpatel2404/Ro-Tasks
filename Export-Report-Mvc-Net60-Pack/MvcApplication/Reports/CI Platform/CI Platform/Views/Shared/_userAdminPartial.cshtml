@@ -1,0 +1,208 @@
+﻿<style>
+    .page-item.active .page-link {
+        background-color: #F88634;
+        border-color: #F88634;
+    }
+
+    .page-item > .page-link {
+        color: black;
+    }
+</style>
+
+
+<div class="row gx-0">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr class="table-light" style="height: 70px;">
+                <th scope="col" class="thforcmstable">First Name</th>
+                <th scope="col" class="thforcmstable">Last Name</th>
+                <th scope="col" class="thforcmstable">Email</th>
+                <th scope="col" class="thforcmstable">Employee Id</th>
+                <th scope="col" class="thforcmstable">Department</th>
+                <th scope="col" class="thforcmstable">Status</th>
+                <th scope="col" class="thforcmstable">Action</th>
+            </tr>
+        </thead>
+        @foreach (var i in Model.users)
+        {
+            <tbody class="table-border">
+                <tr>
+                    <td>@i.FirstName</td>
+                    <td>@i.LastName</td>
+                    <td>@i.Email</td>
+                    <td>@i.EmployeeId</td>
+                    <td>@i.Department</td>
+                    @if (@i.Status == "Active")
+                    {
+                        <td class="text-success">@i.Status</td>
+                    }
+                    else
+                    {
+                        <td class="text-danger">@i.Status</td>
+                    }
+                    <td>
+
+                        <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#editUser" onclick="getViaAdmin(@i.UserId,'user')">
+                            <i class="bi bi-pencil-square" style="color: coral;"></i>
+                        </button>
+                        <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#deleteUser" onclick="getViaAdmin(@i.UserId,'user')">
+                            <i class="bi bi-trash ms-3"></i>
+                        </button>
+
+                        <div class="modal fade" id="editUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Add User</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body d-flex flex-column align-items-center justufy-content-center">
+                                        <div class="col-lg-3 col-md-4 profile-photo  d-flex flex-column  position-relative align-items-center">
+                                            <input type="file" class="h-50 w-50" accept="/images/*" onchange="uploadProfile()" id="profile-image" style="opacity:0;position:absolute;top:10%;cursor:pointer;" />
+                                            <img style="cursor:pointer;" class="w-100 h-100 rounded-circle" id="old-profile-image" src="~/Assets/user1.png" alt="" />
+
+                                        </div>
+                                        <div class="row">
+                                            <input type="text" id="userId" hidden class="form-control">
+                                            <div class="col-lg-6 col-md-6 mt-2">
+                                                <label class="form-label mt-2">FirstName</label>
+                                                <input type="text" class="form-control" disabled id="getfirstName" required />
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 mt-2">
+                                                <label class="form-label mt-2">LastName</label>
+                                                <input type="text" class="form-control" id="getlastName" disabled required />
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 mt-2">
+                                                <label class="form-label mt-2">Email</label>
+                                                <input  class="form-control" id="getemail" disabled required />
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 mt-2">
+                                                <label class="form-label mt-2">Password</label>
+                                                <input type="password" class="form-control" id="getpassword" disabled required />
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 mt-2">
+                                                <label class="form-label mt-2">PhoneNumber</label>
+                                                <input type="tel" class="form-control" id="getphoneNumber" disabled required />
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 mt-2">
+                                                <label class="form-label mt-2">Role</label>
+                                                <select id="getrole" class="form-select me-3" aria-label="Select Mission">
+
+                                                    <option value="Admin">Admin</option>
+                                                    <option value="User">User</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 mt-2">
+                                                <label class="form-label">Employee ID</label>
+                                                <input placeholder="Enter Your Employee ID" type="number" class="form-control" id='getemployeeId' />
+                                                <span id="getemployeeIdError" class=text-danger></span><br />
+                                           
+                                            </div>
+
+                                            <div class="col-lg-6 col-md-6 mt-2">
+                                                <label class="form-label">Department</label>
+                                                <input placeholder="Enter Your Department" type="text" class="form-control" id='getdepartment' />
+                                                <span id="getdepartmentError" class=text-danger></span><br />
+                                            
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 mt-2">
+                                                <label class="form-label">City</label>
+                                                <input id="getcity" disabled type="text" class="form-control city me-3" />
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 mt-2">
+                                                <label class="form-label">Country</label>
+                                                <input id="getcountry" disabled type="text" class="form-control city me-3"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <label class="form-label">Status</label>
+                                            <select id='statusUser' class="form-select me-3" aria-label="Select Mission">
+                                                 <option value="0">Select status</option>
+                                                    <option value="Active">Active</option>
+                                                    <option value="InActive">InActive</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <label class="form-label">My Profile</label><textarea disabled rows=5 class="form-control" id='getprofileText'></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary" onclick="addViaAdmin('user')">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>
+
+
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end" onchange="searchOnAdmin(1,'user')">
+        <li class="page-item">
+            <button class="page-link" aria-label="Previous" onclick="searchOnAdmin(1,'user')">
+                <span aria-hidden="true">&laquo;</span>
+            </button>
+        </li>
+        <li class="page-item">
+            @if (@ViewBag.pg_no != 1)
+            {
+                <button class="page-link" aria-label="Previous" onclick="searchOnAdmin(((@ViewBag.pg_no) - 1),'user')">
+                    <span aria-hidden="true">&lt;</span>
+                </button>
+            }
+            else
+            {
+                <button class="page-link" aria-label="Previous">
+                    <span aria-hidden="true">&lt;</span>
+                </button>
+            }
+        </li>
+        @{
+            double totalpages = ViewBag.Totalpages1;
+
+            for (int ii = 1; ii <= totalpages; ii++)
+            {
+                @if (ii == ViewBag.pg_no)
+                {
+                    <li class="page-item">
+                        <button class="page-link active" onclick="searchOnAdmin(@ii,'user')">@ii</button>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item">
+                        <button class="page-link" onclick="searchOnAdmin(@ii,'user')">@ii</button>
+                    </li>
+                }
+            }
+        }
+        <li class="page-item">
+            @if (@ViewBag.pg_no != @ViewBag.Totalpages1)
+            {
+                <button class="page-link" aria-label="Next" onclick="searchOnAdmin(((@ViewBag.pg_no) + 1),'user')">
+                    <span aria-hidden="true">&gt;</span>
+                </button>
+            }
+            else
+            {
+                <button class="page-link" aria-label="Next">
+                    <span aria-hidden="true">&gt;</span>
+                </button>
+            }
+        </li>
+        <li class="page-item">
+            <button class="page-link" aria-label="Next" onclick="searchOnAdmin(@ViewBag.Totalpages1,'user')">
+                <span aria-hidden="true">&raquo;</span>
+            </button>
+        </li>
+    </ul>
+</nav>

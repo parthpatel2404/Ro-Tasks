@@ -1,0 +1,149 @@
+.search-div{
+  width:35%;
+}
+.search-input{
+  border:none;
+}
+.filters{
+  width:60%;
+}
+.filters span,img{
+  cursor:pointer;
+}
+.filters div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+.filter-image{
+  display:none;
+}
+
+.transparent-overlay{
+  background-color: #000000;
+  opacity: 0.6;
+}
+
+.story-listing-title{
+  color: white;
+}
+
+.share-your-story{
+  width: fit-content;
+  color: #ffffff;
+  border: 1px solid;
+  border-color: #ffffff;
+  border-radius: 30px;
+}
+
+.share-your-story:hover{
+  background-color: #ffffff;
+}
+
+.img-btn{
+  height: 35px;
+  width: fit-content;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: 18px;
+  color: #414141;
+  border: 2px solid #F88634;
+  margin-top:-17px;
+  background-color: white;
+  border: none;
+  font-size: 14px;
+  z-index: 3;
+  }
+
+.user-image{
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+}
+
+.card-transparent-overlay{
+  position: relative;
+  opacity: 0;
+  background-color: #000000;
+  transition: opacity 0.8s;
+  transition-timing-function: ease;
+}
+
+.card-transparent-overlay:hover{
+  background-color: #000000;
+  opacity: 0.6;
+  
+}
+
+
+.card-transparent-overlay button{
+  opacity: 1;
+}
+
+
+
+
+.page-link{
+  color:gray;
+}
+.pagination li{
+  margin-right:10px;
+}
+
+.page-link:hover{
+      background-color: #F88634;
+      color:white;
+}
+.active {
+  background-color: #F88634;
+  color:white
+}
+
+@media (max-width:576px){
+  .dropdown-toggle::after {
+      content: none;
+  }
+}
+
+
+
+@media (max-width:576px) {
+
+  .offcanvas-start {
+      width: 40%;
+  }
+}
+
+@media (max-width:992px) and (min-width:768px) {
+  .search {
+      width: 15px;
+  }
+}
+@media (max-width:768px) and (min-width:576px){
+  .home{
+      height:40px;
+  }
+  .search{
+      width:12px;
+  }
+  .filter-dropdown{
+      width:7px;
+  }
+}
+@media (max-width:576px){
+  .filters{
+      display: none!important;
+  }
+  .search-div {
+      width: 70%;
+  }
+  .filter-image{
+      display:block;
+      width:20px;
+      height:20px;
+  }
+  .filter-dropdown {
+      width: 7px;
+      height:5px;
+  }
+}

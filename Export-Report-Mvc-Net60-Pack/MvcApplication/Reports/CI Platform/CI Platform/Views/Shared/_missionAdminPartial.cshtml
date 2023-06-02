@@ -1,0 +1,94 @@
+﻿<div class="row gx-0">
+    <table class="table table-hover table-bordered">
+        <thead>
+            <tr class="table-light" style="height: 70px;">
+                <th scope="col" class="thforcmstable">Mission Title</th>
+                <th scope="col" class="thforcmstable">Mission Type</th>
+                <th scope="col" class="thforcmstable">Start Date</th>
+                <th scope="col" class="thforcmstable">End Date</th>
+                <th scope="col" class="thforcmstable">Action</th>
+            </tr>
+        </thead>
+        @foreach (var i in @Model.missions)
+        {
+            <tbody class="table-border">
+                <tr>
+                    <td>@i.Title</td>
+                    <td>@i.MissionType</td>
+                    <td>@i.StartDate</td>
+                    <td>@i.EndDate</td>
+                    <td>
+                        <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#addMission" onclick="getViaAdmin(@i.MissionId,'mission')">
+                            <i class="bi bi-pencil-square" style="color: coral;"></i>
+                        </button>
+                        <button type="button" class="btn p-0" data-bs-toggle="modal" data-bs-target="#deleteMission" onclick="getViaAdmin(@i.MissionId,'mission')">
+                            <i class="bi bi-trash ms-3"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>
+
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-end" onchange="searchOnAdmin(1,'mission')">
+        <li class="page-item">
+            <button class="page-link" aria-label="Previous" onclick="searchOnAdmin(1,'mission')">
+                <span aria-hidden="true">&laquo;</span>
+            </button>
+        </li>
+        <li class="page-item">
+            @if (@ViewBag.pg_no != 1)
+            {
+                <button class="page-link" aria-label="Previous" onclick="searchOnAdmin(((@ViewBag.pg_no) - 1),'mission')">
+                    <span aria-hidden="true">&lt;</span>
+                </button>
+            }
+            else
+            {
+                <button class="page-link" aria-label="Previous">
+                    <span aria-hidden="true">&lt;</span>
+                </button>
+            }
+        </li>
+        @{
+            double totalpages = ViewBag.Totalpages3;
+
+            for (int ii = 1; ii <= totalpages; ii++)
+            {
+                @if (ii == ViewBag.pg_no)
+                {
+                    <li class="page-item">
+                        <button class="page-link active" onclick="searchOnAdmin(@ii,'mission')">@ii</button>
+                    </li>
+                }
+                else
+                {
+                    <li class="page-item">
+                        <button class="page-link" onclick="searchOnAdmin(@ii,'mission')">@ii</button>
+                    </li>
+                }
+            }
+        }
+        <li class="page-item">
+            @if (@ViewBag.pg_no != @ViewBag.Totalpages3)
+            {
+                <button class="page-link" aria-label="Next" onclick="searchOnAdmin(((@ViewBag.pg_no) + 1),'mission')">
+                    <span aria-hidden="true">&gt;</span>
+                </button>
+            }
+            else
+            {
+                <button class="page-link" aria-label="Next">
+                    <span aria-hidden="true">&gt;</span>
+                </button>
+            }
+        </li>
+        <li class="page-item">
+            <button class="page-link" aria-label="Next" onclick="searchOnAdmin(@ViewBag.Totalpages3,'mission')">
+                <span aria-hidden="true">&raquo;</span>
+            </button>
+        </li>
+    </ul>
+</nav>

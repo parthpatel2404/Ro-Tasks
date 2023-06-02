@@ -1,0 +1,197 @@
+@model CIPlatform.Entities.ViewModel.RegistrationViewModel;
+@{
+    ViewData["Title"] = "reset Page";
+}
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+
+<body>
+    <partial name="_Notification" />
+    <div class="container-fluid">
+        <div class="row mt-3">
+      @*      <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
+                                class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="/Assets/Grow-Trees-On-the-path-to-environment-sustainability-login.png"
+                                 class="img-responsive img-fluid d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block text-start">
+                                <h5>
+                                    Sed ut perspiciatis unde omnis <br>
+                                    iste natus voluptatem.
+                                </h5>
+                                <p class="text-white-50 small">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                    sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                    deserunt mollit anim id est laborum.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/Assets/Grow-Trees-On-the-path-to-environment-sustainability-login.png"
+                                 class="img-responsive img-fluid d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block text-start">
+                                <h5>
+                                    Sed ut perspiciatis unde omnis <br>
+                                    iste natus voluptatem.
+                                </h5>
+                                <p class="text-white-50 small">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                    sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                    deserunt mollit anim id est laborum.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/Assets/Grow-Trees-On-the-path-to-environment-sustainability-login.png"
+                                 class="img-responsive img-fluid d-block w-100" alt="...">
+                            <div class="carousel-caption d-none d-md-block text-start">
+                                <h5>
+                                    Sed ut perspiciatis unde omnis <br>
+                                    iste natus voluptatem.
+                                </h5>
+                                <p class="text-white-50 small">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                    sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                                    irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                    pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                                    deserunt mollit anim id est laborum.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                            data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                            data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>*@
+                        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
+                <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        @{
+                            for (var i = 0; i < @ViewBag.Banner.Count; i++)
+                            {
+                                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="@i"
+                                    class="@((i == 0) ? "active" : "")" aria-current="@((i == 0) ? "true" : "false")" aria-label="Slide @(i+1)">
+                                </button>
+                            }
+                        }
+                    </div>
+                    <div class="carousel-inner">
+                        @{
+                            for (var i = 0; i < @ViewBag.Banner.Count; i++)
+                            {
+                                <div class="carousel-item @(i == 0 ? "active" : "")" style="height:98vh" >
+                                    <img src="/Assets/@ViewBag.Banner[i].Image"
+                                     class="img-responsive img-fluid d-block w-100" style="height:100%;object-fit:cover"  alt="...">
+                                    <div class="carousel-caption d-none d-md-block text-start">
+                                        <h5>
+                                            @ViewBag.Banner[i].Text
+                                        </h5>
+                                        <p class="text-white-50 small">
+                                            @ViewBag.Banner[i].Text
+                                        </p>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                            data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                            data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-8 resetForm col-sm-12 d-flex flex-column justify-content-center">
+                <form style="margin-top: auto;margin-bottom: auto;" method="post">
+                    <div class="form-group text-center">
+                        <h5>New Password</h5>
+                        <p class=" text-secondary small">Please enter a new password in the fields below.</p>
+                    </div>
+                    <div class="form-group pt-2">
+                        <label for="exampleInputEmail1">New Password</label>
+                        <input id="txtPassword" type="password" class="form-control rounded-1 mt-2" asp-for="Password" id="exampleInputEmail1"
+                               placeholder="**********">
+                        <span asp-validation-for=Password class=text-danger></span><br />
+
+                    </div>
+                    <div class="form-group pt-2">
+                        <label for="exampleInputEmail1">Confirm New Password</label>
+                        <input id="txtConfirmPassword" type="password" asp-for="CnfPassword" class="form-control rounded-1 mt-2" id="exampleInputEmail1"
+                               placeholder="**********">
+                        <span asp-validation-for=CnfPassword class=text-danger></span><br />
+                           </div>
+                    <div class="d-grid gap-2 pt-4">
+                        <button class="btn btn-outline-danger rounded-5" onclick="return Validate()" type="submit"
+                                style="color: #F88634;border-color: #F88634;">
+                            Change Password
+                        </button>
+                    </div>
+                    <div class="form-group text-center pt-3">
+                        <a asp-action="Index" style="--bs-link-opacity: .5;text-decoration: none;color: #414141;">Login</a>
+                    </div>
+                </form>
+
+                <div class="text-center">
+                    <a style="text-decoration: none;" asp-controller=User asp-action=privacyPolicy>Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+   <script src="~/lib/jquery/dist/jquery.min.js"></script>
+            <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</body>
+
+</html>
