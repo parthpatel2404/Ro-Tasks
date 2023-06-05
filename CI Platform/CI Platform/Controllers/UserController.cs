@@ -122,18 +122,20 @@ namespace CI_Platform.Controllers
             ViewBag.Banner = _UserRepository.BannerList();
             return View();
         }
+        
         [Authorize]
         public IActionResult Invalid()
         {
             return View();
         }
-
+        
         public IActionResult UsersData()
         {
             var user = _UserRepository.GetUserTableList();
             ViewBag.User = user;
             return View();
         }
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult registration(RegistrationViewModel obj)
@@ -210,6 +212,7 @@ namespace CI_Platform.Controllers
             Response.Cookies.Delete("token");
             return RedirectToAction("Index");
         }
+        
         [Authorize]
         public IActionResult privacyPolicy()
         {
@@ -225,6 +228,7 @@ namespace CI_Platform.Controllers
             mv.cmsPages = cmsPage;
             return View(mv);
         }
+        
         [Authorize]
         public IActionResult editProfile(int id)
         {
@@ -322,6 +326,7 @@ namespace CI_Platform.Controllers
             var data = _UserRepository.addTimeSheets(userId, MissionId, goalAction, Date, Message, timeHour, timeMinute, TimesheetId);
             return Json(data);
         }
+        
         public JsonResult getTimeSheets(long TimesheetId)
         {
             var data1 = _UserRepository.getTimeSheets(TimesheetId);
@@ -342,6 +347,7 @@ namespace CI_Platform.Controllers
             _UserRepository.UpdateSetting(settingList, userId);
             return Json(true);
         }
+        
         public void ReadNotification(long NotificationId)
         {
             _UserRepository.ReadNotification(NotificationId);
@@ -377,6 +383,7 @@ namespace CI_Platform.Controllers
             return StiNetCoreReportResponse.ResponseAsWord2007(report);
 
         }
+        
         public IActionResult ExportAsPng()
         {
             long userId = (int)HttpContext.Session.GetInt32("UserId");
