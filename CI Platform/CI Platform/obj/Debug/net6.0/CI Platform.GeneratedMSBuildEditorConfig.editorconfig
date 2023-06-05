@@ -155,6 +155,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclx0aW1lU2hlZXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Tatvasoft/RO Task/CI Platform/CI Platform/Views/User/UsersData.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2Vyc0RhdGEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Tatvasoft/RO Task/CI Platform/CI Platform/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

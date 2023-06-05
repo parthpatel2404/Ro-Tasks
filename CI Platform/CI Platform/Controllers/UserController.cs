@@ -128,6 +128,12 @@ namespace CI_Platform.Controllers
             return View();
         }
 
+        public IActionResult UsersData()
+        {
+            var user = _UserRepository.GetUserTableList();
+            ViewBag.User = user;
+            return View();
+        }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult registration(RegistrationViewModel obj)

@@ -122,8 +122,11 @@ namespace CIPlatform.Repository.Repositories
         }
         public List<UserTable> GetUserTableList()
         {
-            List<UserTable> users = new List<UserTable>();
-            users = _RoTaskDbContext.UserTables.ToList();
+            //List<UserTable> users = new List<UserTable>();
+            //users = _RoTaskDbContext.UserTables.ToList();
+            //var users = _RoTaskDbContext.UserTables.FromSqlRaw("CALL spgetUserData").AsEnumerable().Where(x => x.UserId > 9 && x.UserId < 15).ToList();
+            var users = _RoTaskDbContext.UserTables.FromSqlRaw("CALL spgetUserData").ToList();
+
             return users;
         }
         public List<PasswordReset> GetPasswordResetList()
