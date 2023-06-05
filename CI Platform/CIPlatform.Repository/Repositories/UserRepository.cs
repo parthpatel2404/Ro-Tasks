@@ -15,21 +15,25 @@ using SmtpClient = MailKit.Net.Smtp.SmtpClient;
 using CIPlatform.Entities.ViewModel;
 using Microsoft.EntityFrameworkCore;
 using System.Web.Helpers;
+using MySql.Data.MySqlClient;
+using System.Data;
 
 namespace CIPlatform.Repository.Repositories
 {
     public class UserRepository : IUserRepository
     {
         public readonly CIPlatformDbContext _CIPlatformDbContext;
+        public readonly RoTaskDbContext _RoTaskDbContext;
         public readonly IPlatformRepository _PlatformRepository;
         public readonly IStoryRepository _StoryRepository;
 
 
-        public UserRepository(CIPlatformDbContext cIPlatformDbContext, IPlatformRepository platformRepository, IStoryRepository storyRepository)
+        public UserRepository(CIPlatformDbContext cIPlatformDbContext, IPlatformRepository platformRepository, IStoryRepository storyRepository, RoTaskDbContext roTaskDbContext)
         {
             _CIPlatformDbContext = cIPlatformDbContext;
             _PlatformRepository = platformRepository;
             _StoryRepository = storyRepository;
+            _RoTaskDbContext = roTaskDbContext;
         }
 
         public List<Banner> BannerList()
@@ -58,25 +62,68 @@ namespace CIPlatform.Repository.Repositories
 
         public void register(RegistrationViewModel register)
         {
+            //string connectionString = "server=localhost;port=3306;user=root;password=Tatva@123;database=rodatabasetask;";
+            //using (MySqlConnection connection = new MySqlConnection(connectionString))
+            //{
+            //    connection.Open();
 
-            //var count = _CIPlatformDbContext.Users.FirstOrDefault(u => u.Email == register.Email);
+            //    using (MySqlCommand command = new MySqlCommand("spInsertUserData", connection))
+            //    {
+            //        command.CommandType = CommandType.StoredProcedure;
 
-            User user = new User();
-            user.CityId = 2;
-            user.CountryId = 1;
-            user.Email = register.Email;
-            user.FirstName = register.FirstName;
-            user.LastName = register.LastName;
-            user.PhoneNumber = register.PhoneNumber;
-            user.Password = Crypto.HashPassword(register.Password);
-            _CIPlatformDbContext.Users.Add(user);
-            _CIPlatformDbContext.SaveChanges();
+            //        // Add input parameters
+            //        command.Parameters.AddWithValue("FirstName", register.FirstName);
+            //        command.Parameters.AddWithValue("LastName", register.LastName);
+            //        command.Parameters.AddWithValue("Email", register.Email);
+            //        command.Parameters.AddWithValue("PhoneNumber", register.PhoneNumber);
+            //        command.Parameters.AddWithValue("Password", register.Password);
+
+            //        // Execute the stored procedure
+            //        command.ExecuteNonQuery();
+            //    }
+            //}
+            _RoTaskDbContext.Database.ExecuteSqlRaw("CALL spInsertUserData" +
+                "(@FirstName, @LastName, @Email, @PhoneNumber, @Password)",
+                    new MySqlParameter("@FirstName", register.FirstName),
+                    new MySqlParameter("@LastName", register.LastName),
+                    new MySqlParameter("@Email", register.Email),
+                    new MySqlParameter("@PhoneNumber", register.PhoneNumber),
+                    new MySqlParameter("@Password", register.Password));
+
+            //_RoTaskDbContext.UserTables.FromSqlRaw("CALL spInsertUserData({0}, {1}, {2}, {3}, {4})", register.FirstName, register.LastName, register.Email, register.PhoneNumber, register.Password);
+
+            //UserTable userTable = new UserTable();
+            //userTable.Email = register.Email;
+            //userTable.FirstName = register.FirstName;
+            //userTable.LastName = register.LastName;
+            //userTable.PhoneNumber = register.PhoneNumber;
+            //userTable.Password = register.Password;
+            //_RoTaskDbContext.UserTables.Add(userTable);
+            //_RoTaskDbContext.SaveChanges();
+
+
+            //User user = new User();
+            //user.CityId = 2;
+            //user.CountryId = 1;
+            //user.Email = register.Email;
+            //user.FirstName = register.FirstName;
+            //user.LastName = register.LastName;
+            //user.PhoneNumber = register.PhoneNumber;
+            //user.Password = Crypto.HashPassword(register.Password);
+            //_CIPlatformDbContext.Users.Add(user);
+            //_CIPlatformDbContext.SaveChanges();
 
         }
         public List<User> GetUserList()
         {
             List<User> users = new List<User>();
             users = _CIPlatformDbContext.Users.ToList();
+            return users;
+        }
+        public List<UserTable> GetUserTableList()
+        {
+            List<UserTable> users = new List<UserTable>();
+            users = _RoTaskDbContext.UserTables.ToList();
             return users;
         }
         public List<PasswordReset> GetPasswordResetList()
@@ -269,6 +316,16 @@ namespace CIPlatform.Repository.Repositories
 
         public bool updateUserData(EditProfileViewModel editProfileView, long userId)
         {
+            UserTable userTable = new UserTable();
+            //userTable.UserId = (int)userId;
+            userTable.FirstName = editProfileView.FirstName;
+            userTable.LastName = editProfileView.LastName;
+            userTable.Email = editProfileView.FirstName;
+            userTable.PhoneNumber = editProfileView.CountryId;
+            userTable.Password = editProfileView.FirstName;
+            _RoTaskDbContext.UserTables.Add(userTable);
+            _RoTaskDbContext.SaveChanges();
+
             User user = _CIPlatformDbContext.Users.FirstOrDefault(u => u.UserId == userId);
             if (editProfileView.Profile != null)
             {
@@ -540,7 +597,7 @@ namespace CIPlatform.Repository.Repositories
         public void addNotificationList(long userId)
         {
             var mission_invite = _CIPlatformDbContext.MissionInvites.Where(u => u.ToUserId == userId).ToList();
-            var story_invite = _CIPlatformDbContext.StoryInvites.Where(u => u.ToUserId == userId).Include(s=>s.Story).ToList();
+            var story_invite = _CIPlatformDbContext.StoryInvites.Where(u => u.ToUserId == userId).Include(s => s.Story).ToList();
             var story_status = _CIPlatformDbContext.Stories.Where(s => (s.Status == "PUBLISHED" || s.Status == "DECLINED") && s.UserId == userId).ToList();
             var mission_status = _CIPlatformDbContext.MissionApplications.Where(m => (m.ApprovalStatus == "Approve" || m.ApprovalStatus == "Decline") && m.UserId == userId).ToList();
             var user_skills = _CIPlatformDbContext.UserSkills.Where(k => k.UserId == userId).Select(m => m.SkillId).ToList();
@@ -578,7 +635,7 @@ namespace CIPlatform.Repository.Repositories
                     Notification notification = new Notification();
                     notification.StoryId = item.StoryId;
                     notification.UserId = item.ToUserId;
-                    notification.FromId= item.FromUserId;
+                    notification.FromId = item.FromUserId;
                     notification.MissionId = item.Story.MissionId;
                     notification.Type = "recommendStory";
 

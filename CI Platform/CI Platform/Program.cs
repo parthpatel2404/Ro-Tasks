@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using MySql.EntityFrameworkCore.Extensions;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -51,6 +52,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<CIPlatformDbContext>();
+//My Sql.................
+builder.Services.AddDbContext<RoTaskDbContext>();
+builder.Services.AddEntityFrameworkMySQL().AddDbContext<RoTaskDbContext>(options => {
+    options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnection"));
+});
+
+
 //builder.Services.AddSingleton<ISecurityTokenValidator, CustomSecurityTokenValidator>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IPlatformRepository, PlatformRepository>();

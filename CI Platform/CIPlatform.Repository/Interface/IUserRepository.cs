@@ -16,6 +16,7 @@ namespace CIPlatform.Repository.Interface
         User? forgot(User obj);
         PasswordReset? reset(RegistrationViewModel obj, string token);
         List<User> GetUserList();
+        List<UserTable> GetUserTableList();
         List<PasswordReset> GetPasswordResetList();
         public User getUser(string Email);
         List<EditProfileViewModel> getUserList(long userId);

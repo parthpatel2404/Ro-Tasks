@@ -134,10 +134,11 @@ namespace CI_Platform.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = _UserRepository.GetUserList().Where(a => a.Email == obj.Email).Count();
+                var user = _UserRepository.GetUserTableList().Where(a => a.Email == obj.Email).Count();
                 if (user != 0)
                 {
                     TempData["error"] = "User already exists.";
+                    ViewBag.Banner = _UserRepository.BannerList();
                     return View(obj);
                 }
                 _UserRepository.register(obj);
