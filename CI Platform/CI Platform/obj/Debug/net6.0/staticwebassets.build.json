@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vLq3aHURJVNDURRnjpo9X7wKW9fQDCmCXl/HQwv10tQ=",
+  "Hash": "BfjwEkxUKo541JwWidvH/GOzioc+JxiV1OJ3yx2pms8=",
   "Source": "CI Platform",
   "BasePath": "_content/CI Platform",
   "Mode": "Default",
@@ -491,23 +491,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Assets\\doc.png"
-    },
-    {
-      "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\Assets\\Documents\\CI-Good to have.pdf",
-      "SourceId": "CI Platform",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\",
-      "BasePath": "_content/CI Platform",
-      "RelativePath": "Assets/Documents/CI-Good to have.pdf",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Assets\\Documents\\CI-Good to have.pdf"
     },
     {
       "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\Assets\\Documents\\scaffold command.txt",
@@ -2667,23 +2650,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\volunteeringMissionPage.css"
-    },
-    {
-      "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\favicon.ico",
-      "SourceId": "CI Platform",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\",
-      "BasePath": "_content/CI Platform",
-      "RelativePath": "favicon.ico",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
       "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\js\\bootstrap.bundle.min.js",

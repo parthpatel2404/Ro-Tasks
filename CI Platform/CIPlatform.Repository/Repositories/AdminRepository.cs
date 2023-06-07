@@ -1,4 +1,5 @@
-﻿using CIPlatform.Entities.Data;
+﻿using Aspose.Pdf;
+using CIPlatform.Entities.Data;
 using CIPlatform.Entities.Models;
 using CIPlatform.Entities.ViewModel;
 using CIPlatform.Repository.Interface;
@@ -8,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Security.Cryptography;
 using System.Web.Helpers;
 
 namespace CIPlatform.Repository.Repositories
@@ -34,9 +36,9 @@ namespace CIPlatform.Repository.Repositories
             adminViewModel.country = _CIPlatformDbContext.Countries.ToList();
             adminViewModel.city = _CIPlatformDbContext.Cities.ToList();
             adminViewModel.themeTitle = _CIPlatformDbContext.MissionThemes.ToList();
-            adminViewModel.totalSkill = _CIPlatformDbContext.Skills.Where(s=>s.DeletedAt == null).ToList();
+            adminViewModel.totalSkill = _CIPlatformDbContext.Skills.Where(s => s.DeletedAt == null).ToList();
             adminViewModel.banners = _CIPlatformDbContext.Banners.Where(b => b.DeletedAt == null).ToList();
-            adminViewModel.missionSkills = _CIPlatformDbContext.MissionSkills.Where(m=>m.DeletedAt == null || m.UpdatedAt > m.DeletedAt).ToList();
+            adminViewModel.missionSkills = _CIPlatformDbContext.MissionSkills.Where(m => m.DeletedAt == null || m.UpdatedAt > m.DeletedAt).ToList();
             //List<MissionSkill> missionSkills = new List<MissionSkill>();
             //List<Skill> skills = new List<Skill>();
             //foreach (var m in adminViewModel.missions)
@@ -152,7 +154,7 @@ namespace CIPlatform.Repository.Repositories
                             goalMission.GoalValue = userData.GoalValue;
                             _CIPlatformDbContext.GoalMissions.Add(goalMission);
                             _CIPlatformDbContext.SaveChanges();
-                             
+
                         }
 
                         MissionSkill missionSkill = new MissionSkill();
@@ -203,6 +205,12 @@ namespace CIPlatform.Repository.Repositories
                                     {
                                         i.CopyTo(stream);
                                     }
+                                    // Open document
+                                    Document document = new Document("wwwroot/Assets/Documents/" + i.FileName);
+                                    // Encrypt PDF  
+                                    document.Encrypt("parth", "admin", 0 /*permissions*/, CryptoAlgorithm.RC4x128);
+                                    // Save updated PDF
+                                    document.Save("wwwroot/Assets/Documents/" + i.FileName);
                                 }
                             }
                         }
@@ -390,12 +398,13 @@ namespace CIPlatform.Repository.Repositories
                             }
                         }
                         _CIPlatformDbContext.SaveChanges();
-                        
+
                         var filePath = new List<string>();
+
                         if (userData.missionDocuments != null)
                         {
-                            List<MissionDocument> MissionDocument = _CIPlatformDbContext.MissionDocuments.Where(m => m.MissionId == userData.CrudId).ToList();
-                            foreach (var item in MissionDocument)
+                            List<MissionDocument> missionDocuments = _CIPlatformDbContext.MissionDocuments.Where(m => m.MissionId == userData.CrudId).ToList();
+                            foreach (var item in missionDocuments)
                             {
                                 _CIPlatformDbContext.MissionDocuments.Remove(item);
                             }
@@ -405,20 +414,63 @@ namespace CIPlatform.Repository.Repositories
                                 docs.MissionId = mission.MissionId;
                                 docs.DocumentName = i.FileName;
                                 docs.DocumentPath = i.FileName;
+
+                                // Encrypt the file data
+                                byte[] encryptedData;
+                                byte[] key = GetEncryptionKey();
+                                byte[] iv = GetEncryptionIV();
+                                using (var memoryStream = new MemoryStream())
+                                {
+                                    i.CopyTo(memoryStream);
+                                    byte[] fileData = memoryStream.ToArray();
+                                   
+                                    encryptedData = EncryptData(fileData, key, iv); // Replace with your encryption method
+                                }
+
                                 _CIPlatformDbContext.MissionDocuments.Add(docs);
                                 _CIPlatformDbContext.SaveChanges();
 
-                                if (i.Length > 0)
+                                if (encryptedData.Length > 0)
                                 {
                                     var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/Documents", i.FileName);
                                     filePath.Add(path);
+
+                                    // Save the encrypted data to the file
                                     using (var stream = new FileStream(path, FileMode.Create))
                                     {
-                                        i.CopyTo(stream);
+                                        stream.Write(encryptedData, 0, encryptedData.Length);
+                                    }
+
+                                    // Decrypt the file data
+                                    byte[] decryptedData = DecryptData(encryptedData, key, iv);
+
+                                    // Use the decrypted data as needed
+                                    // For example, you can save it to another file or process it further
+                                    var decryptedFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/", i.FileName);
+                                    using (var decryptedStream = new FileStream(decryptedFilePath, FileMode.Create))
+                                    {
+                                        decryptedStream.Write(decryptedData, 0, decryptedData.Length);
                                     }
                                 }
                             }
                         }
+
+
+                        // Encryption method using AES algorithm
+
+
+
+                        //// Open document
+                        //Document document = new Document("wwwroot/Assets/Documents/" + i.FileName);
+                        //// Encrypt PDF  
+                        //document.Encrypt("parth", "admin", 0 /*permissions*/, CryptoAlgorithm.RC4x128);
+                        //// Save updated PDF
+                        //document.Save("wwwroot/Assets/Documents/" + i.FileName);
+                        //// Decrypt PDF  
+                        //Document document1 = new Document("wwwroot/Assets/Documents/" + i.FileName, "parth");
+                        //document1.Decrypt();
+                        //// Save updated PDF
+                        //document1.Save("wwwroot/Assets/Documents/" + i.FileName);
                         if (userData.file != null)
                         {
                             List<MissionMedium> MissionMedium = _CIPlatformDbContext.MissionMedia.Where(m => m.MissionId == userData.CrudId).ToList();
@@ -596,7 +648,69 @@ namespace CIPlatform.Repository.Repositories
             }
 
         }
+        private byte[] EncryptData(byte[] data, byte[] key, byte[] iv)
+        {
+            using (AesManaged aes = new AesManaged())
+            {
+                //// Set the encryption key and initialization vector (IV)
+                //aes.Key = key; // Replace with your method to retrieve or generate the encryption key
+                //aes.IV = iv;
 
+                using (var encryptor = aes.CreateEncryptor(key, iv))
+                using (var memoryStream = new MemoryStream())
+                {
+                    // Write the IV to the output stream
+                    memoryStream.Write(iv, 0, iv.Length);
+
+                    using (var cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
+                    {
+                        cryptoStream.Write(data, 0, data.Length);
+                        cryptoStream.FlushFinalBlock();
+                    }
+
+                    return memoryStream.ToArray();
+                }
+            }
+        }
+        private byte[] GetEncryptionKey()
+        {
+            // Create a new AES instance to generate a random key
+            using (Aes aes = Aes.Create())
+            {
+                aes.GenerateKey();
+                return aes.Key;
+            }
+        }
+
+        private byte[] GetEncryptionIV()
+        {
+            using (Aes aes = Aes.Create())
+            {
+                aes.GenerateIV();
+                return aes.IV;
+            }
+        }
+
+        private byte[] DecryptData(byte[] encryptedData, byte[] key, byte[] iv)
+        {
+            using (AesManaged aes = new AesManaged())
+            {
+                aes.Key = key;
+                aes.IV = iv;
+
+                using (var decryptor = aes.CreateDecryptor(aes.Key, aes.IV))
+                using (var memoryStream = new MemoryStream())
+                {
+                    using (var cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Write))
+                    {
+                        cryptoStream.Write(encryptedData, 0, encryptedData.Length);
+                        cryptoStream.FlushFinalBlock();
+                    }
+
+                    return memoryStream.ToArray();
+                }
+            }
+        }
 
         public AdminViewModel getViaAdmin(long Id, string type)
         {
@@ -652,7 +766,7 @@ namespace CIPlatform.Repository.Repositories
                 var check = _CIPlatformDbContext.Banners.Where(e => e.SortOrder == sortOrder).ToList();
                 if (check.Count != 0)
                 {
-                    if (check.Where(b=>b.BannerId == bannerId).Count() !=0)
+                    if (check.Where(b => b.BannerId == bannerId).Count() != 0)
                     {
                         return false;
                     }

@@ -65,3 +65,4 @@ D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform
 D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Entities\obj\Debug\net6.0\ref\CIPlatform.Entities.dll
 D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.pdb
 D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.genruntimeconfig.cache
+D:\Tatvasoft\RO Task\CI Platform\CIPlatform.Entities\obj\Debug\net6.0\CIPlatform.Entities.csproj.AssemblyReference.cache

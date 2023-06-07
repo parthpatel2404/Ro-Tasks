@@ -99,6 +99,7 @@ namespace CI_Platform.Controllers
             {
                 HttpContext.Session.SetString("Avatar", "");
             }
+            HttpContext.Response.Cookies.Append("token", returnToken, new CookieOptions { HttpOnly = true, Secure = true, SameSite = SameSiteMode.None, Expires = DateTime.Now.AddMinutes(20) });
 
             if (!string.IsNullOrEmpty(obj.ReturnUrl))
             {
@@ -111,7 +112,6 @@ namespace CI_Platform.Controllers
                 return RedirectToAction("dashboard", "Admin");
 
             }
-            HttpContext.Response.Cookies.Append("token", returnToken, new CookieOptions { HttpOnly = true, Secure = true, SameSite = SameSiteMode.None, Expires = DateTime.Now.AddMinutes(20) });
             TempData["success"] = "Login Successfully...";
             return RedirectToAction("gridView", "Platform");
             //return Ok(returnToken);

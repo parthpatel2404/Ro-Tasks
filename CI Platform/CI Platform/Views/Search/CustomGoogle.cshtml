@@ -44,29 +44,21 @@
                         <li>
                             <h3>@result.Title</h3>
                             <p>@result.Snippet</p>
-                            <a href="@result.Url">@result.Url</a>
+                            <a href="@result.Url" target="_blank">@result.Url</a>
                         </li>
                     }
                 </ul>
             }
-            else
-            {
-                   <h3>No Data Found...</h3>
-            }
 
-
-
-
-
-
-            <div>
+            @*            <div>
                 <form asp-action="CustomGoogle" class="form-floating w-75 d-flex">
-                    <input type="search" name="search" class="form-control"
-                           placeholder="" />
-                    <label for="floatingSearch" class="d-flex align-items-center ms-2">Search</label>
-                    <button type="submit" class="btn btn-outline-dark ms-2">Submit</button>
+                <input type="search" name="search" class="form-control"
+                placeholder="" />
+                <label for="floatingSearch" class="d-flex align-items-center ms-2">Search</label>
+                <button type="submit" class="btn btn-outline-dark ms-2">Submit</button>
                 </form>
-            </div>
+                </div>
+            *@
         </div>
 
     </div>
@@ -93,3 +85,10 @@
     <gcse:search></gcse:search>
     </div>
 *@
+@*                            @if (!string.IsNullOrEmpty(result.ImageUrl))
+                            {
+                                <img src="@result.ImageUrl" alt="@result.Title" />
+                            }
+*@
+                            @*//ImageUrl = item.pagemap.cse_image.FirstOrDefault()?.src*@
+        @*public string ImageUrl { get; set; }*@

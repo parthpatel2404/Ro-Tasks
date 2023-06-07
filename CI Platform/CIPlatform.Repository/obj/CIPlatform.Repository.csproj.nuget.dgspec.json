@@ -45,6 +45,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Aspose.PDF": {
+              "target": "Package",
+              "version": "[23.5.0, )"
+            },
             "MailKit": {
               "target": "Package",
               "version": "[3.5.0, )"
@@ -154,6 +158,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Aspose.PDF": {
+              "target": "Package",
+              "version": "[23.5.0, )"
+            },
             "MailKit": {
               "target": "Package",
               "version": "[3.5.0, )"
