@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "qJO816EOXB2zb20R1hJhd4W6oy5ErjZ86oRKM0kbRmw=",
+  "Source": "RoTaskWebAPI",
+  "BasePath": "_content/RoTaskWebAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

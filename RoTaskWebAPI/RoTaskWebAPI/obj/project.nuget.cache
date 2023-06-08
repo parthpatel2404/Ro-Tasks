@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "BnI0PY3Uw3EYuKFf6fO5q7QYDny1WqwvyQTd37+BJsdpn8L2CoWT2BeyKHWZA+JY/xFFPxVG2ccdoxrE9U0gmg==",
+  "success": true,
+  "projectFilePath": "D:\\Tatvasoft\\RO Task\\RoTaskWebAPI\\RoTaskWebAPI\\RoTaskWebAPI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\pci148\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\pci148\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\pci148\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\pci148\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\pci148\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\pci148\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
