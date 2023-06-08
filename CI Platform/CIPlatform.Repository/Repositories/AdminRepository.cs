@@ -417,8 +417,13 @@ namespace CIPlatform.Repository.Repositories
 
                                 // Encrypt the file data
                                 byte[] encryptedData;
-                                byte[] key = GetEncryptionKey();
-                                byte[] iv = GetEncryptionIV();
+                                string Skey = "ZXCVBNMasdfghjkl!@#$%^&*12345678";
+                                string Siv = "passwordpassword";
+                                // Convert a C# string to a byte array
+                                byte[] key = Encoding.UTF8.GetBytes(Skey);
+                                byte[] iv = Encoding.UTF8.GetBytes(Siv);
+                                //byte[] key = GetEncryptionKey();
+                                //byte[] iv = GetEncryptionIV();
                                 using (var memoryStream = new MemoryStream())
                                 {
                                     i.CopyTo(memoryStream);
@@ -439,17 +444,6 @@ namespace CIPlatform.Repository.Repositories
                                     using (var stream = new FileStream(path, FileMode.Create))
                                     {
                                         stream.Write(encryptedData, 0, encryptedData.Length);
-                                    }
-
-                                    // Decrypt the file data
-                                    byte[] decryptedData = DecryptData(encryptedData, key, iv);
-
-                                    // Use the decrypted data as needed
-                                    // For example, you can save it to another file or process it further
-                                    var decryptedFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/", i.FileName);
-                                    using (var decryptedStream = new FileStream(decryptedFilePath, FileMode.Create))
-                                    {
-                                        decryptedStream.Write(decryptedData, 0, decryptedData.Length);
                                     }
                                 }
                             }
@@ -691,26 +685,7 @@ namespace CIPlatform.Repository.Repositories
             }
         }
 
-        private byte[] DecryptData(byte[] encryptedData, byte[] key, byte[] iv)
-        {
-            using (AesManaged aes = new AesManaged())
-            {
-                aes.Key = key;
-                aes.IV = iv;
-
-                using (var decryptor = aes.CreateDecryptor(aes.Key, aes.IV))
-                using (var memoryStream = new MemoryStream())
-                {
-                    using (var cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Write))
-                    {
-                        cryptoStream.Write(encryptedData, 0, encryptedData.Length);
-                        cryptoStream.FlushFinalBlock();
-                    }
-
-                    return memoryStream.ToArray();
-                }
-            }
-        }
+        
 
         public AdminViewModel getViaAdmin(long Id, string type)
         {

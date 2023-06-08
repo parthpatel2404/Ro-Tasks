@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "BfjwEkxUKo541JwWidvH/GOzioc+JxiV1OJ3yx2pms8=",
+  "Hash": "ZjYx2AgPfH+1Hw2gp5aJFur6riOzHDhI45mVmprqLbg=",
   "Source": "CI Platform",
   "BasePath": "_content/CI Platform",
   "Mode": "Default",
@@ -491,6 +491,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Assets\\doc.png"
+    },
+    {
+      "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\Assets\\Documents\\CI-Good to have.pdf",
+      "SourceId": "CI Platform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\",
+      "BasePath": "_content/CI Platform",
+      "RelativePath": "Assets/Documents/CI-Good to have.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\Documents\\CI-Good to have.pdf"
     },
     {
       "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\Assets\\Documents\\scaffold command.txt",
@@ -2548,6 +2565,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Assets\\xlsx.png"
+    },
+    {
+      "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\CI-Good to have.pdf",
+      "SourceId": "CI Platform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\",
+      "BasePath": "_content/CI Platform",
+      "RelativePath": "CI-Good to have.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\CI-Good to have.pdf"
     },
     {
       "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\css\\bootstrap.min.css",

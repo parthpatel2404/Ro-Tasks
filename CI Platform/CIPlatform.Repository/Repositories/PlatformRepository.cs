@@ -13,6 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SmtpClient = MailKit.Net.Smtp.SmtpClient;
+using System.Security.Cryptography;
 
 namespace CIPlatform.Repository.Repositories
 {
@@ -225,6 +226,37 @@ namespace CIPlatform.Repository.Repositories
 
                 var Documents = _CIPlatformDbContext.MissionDocuments.Where(d => d.MissionId == missionListing.MissionId).ToList();
                 missionListing.Documents = Documents.Count() != 0 ? Documents : null;
+                {
+                    string Skey = "ZXCVBNMasdfghjkl!@#$%^&*12345678";
+                    string Siv = "passwordpassword";
+                    byte[] key = Encoding.UTF8.GetBytes(Skey);
+                    byte[] iv = Encoding.UTF8.GetBytes(Siv);
+                    if (missionListing.Documents != null)
+                    {
+                        foreach (var i in missionListing.Documents)
+                        {
+                            string filePath11 = "wwwroot/Assets/Documents/" + i.DocumentName;
+                            string fileExtension = Path.GetExtension(filePath11);
+                            if (fileExtension == ".pdf")
+                            {
+                                byte[] fileData = File.ReadAllBytes(filePath11);
+                                // Decrypt the file data
+                                //byte[] decryptedData = DecryptData(encryptedData, key, iv);
+                                byte[] decryptedData = DecryptData(fileData, key, iv);
+
+                                // Use the decrypted data as needed
+                                // For example, you can save it to another file or process it further
+                                var decryptedFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/", i.DocumentName);
+                                using (var decryptedStream = new FileStream(decryptedFilePath, FileMode.Create))
+                                {
+                                    decryptedStream.Write(decryptedData, 0, decryptedData.Length);
+                                }
+                            }
+
+                        }
+                    }
+
+                }
 
                 missionListing.Theme = getMissionThemes(obj.ThemeId);
                 //missionListing.Deadline = (missionListing.StartDate).AddDays(-7);
@@ -259,6 +291,26 @@ namespace CIPlatform.Repository.Repositories
                 missionListingList.Add(missionListing);
             }
             return missionListingList;
+        }
+        private byte[] DecryptData(byte[] encryptedData, byte[] key, byte[] iv)
+        {
+            using (AesManaged aes = new AesManaged())
+            {
+                aes.Key = key;
+                aes.IV = iv;
+
+                using (var decryptor = aes.CreateDecryptor(aes.Key, aes.IV))
+                using (var memoryStream = new MemoryStream())
+                {
+                    using (var cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Write))
+                    {
+                        cryptoStream.Write(encryptedData, 0, encryptedData.Length);
+                        cryptoStream.FlushFinalBlock();
+                    }
+
+                    return memoryStream.ToArray();
+                }
+            }
         }
         public List<MissionViewModel> getMisAppList(int pg, long missionId)
         {

@@ -1202,6 +1202,7 @@ D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\CI Platform.runtim
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\CI Platform.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\ref\CI Platform.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\CI Platform.pdb
+D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\Aspose.PDF.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\Azure.Core.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\Azure.Identity.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\Google.Protobuf.dll
@@ -1320,6 +1321,7 @@ D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\System.Configurati
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\System.Data.Odbc.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\System.Data.OleDb.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\System.Data.SqlClient.dll
+D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\System.Diagnostics.PerformanceCounter.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\System.Drawing.Common.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
@@ -1329,6 +1331,7 @@ D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\System.Reflection.
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\System.Reflection.MetadataLoadContext.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\System.Resources.Extensions.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\System.Runtime.Caching.dll
+D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\System.Security.Cryptography.Pkcs.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\System.Security.Permissions.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\System.Text.Encoding.CodePages.dll
@@ -1513,9 +1516,11 @@ D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\runtimes\win\lib\n
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Data.OleDb.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Diagnostics.PerformanceCounter.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\runtimes\unix\lib\net6.0\System.Drawing.Common.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Text.Encoding.CodePages.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
@@ -1543,8 +1548,3 @@ D:\Tatvasoft\RO Task\CI Platform\CI Platform\obj\Debug\net6.0\CI Platform.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\obj\Debug\net6.0\ref\CI Platform.dll
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\obj\Debug\net6.0\CI Platform.pdb
 D:\Tatvasoft\RO Task\CI Platform\CI Platform\obj\Debug\net6.0\CI Platform.genruntimeconfig.cache
-D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\Aspose.PDF.dll
-D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
-D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\System.Security.Cryptography.Pkcs.dll
-D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Diagnostics.PerformanceCounter.dll
-D:\Tatvasoft\RO Task\CI Platform\CI Platform\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
