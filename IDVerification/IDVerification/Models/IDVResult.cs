@@ -6,6 +6,32 @@
         public string label { get; set; }
         public string address { get; set; }
         public string birth_date { get; set; }
+        public string national_id_type { get; set; }
+    }
+
+    public class FaceMatchOcrData
+    {
+        public string city { get; set; }
+        public string state { get; set; }
+        public string unit_no { get; set; }
+        public string full_name { get; set; }
+        public string last_name { get; set; }
+        public DateTime birth_date { get; set; }
+        public string first_name { get; set; }
+        public DateTime issue_date { get; set; }
+        public DateTime expiry_date { get; set; }
+        public string middle_name { get; set; }
+        public string national_id { get; set; }
+        public string postal_code { get; set; }
+        public string country_code { get; set; }
+        public string country_name { get; set; }
+        public string address_line_1 { get; set; }
+        public string address_line_2 { get; set; }
+        public string national_id_type { get; set; }
+        public string national_id_tertiary { get; set; }
+        public string national_id_secondary { get; set; }
+        public string national_id_tertiary_type { get; set; }
+        public string national_id_secondary_type { get; set; }
     }
 
     public class IDVResult
@@ -30,14 +56,20 @@
         public double? longitude { get; set; }
         public string national_id { get; set; }
         public string national_id_secondary { get; set; }
+        public string national_id_tertiary { get; set; }
         public string national_id_type { get; set; }
         public string national_id_secondary_type { get; set; }
+        public string national_id_tertiary_type { get; set; }
         public DateTime created_at { get; set; }
         public bool is_cancelled { get; set; }
         public bool is_completed { get; set; }
         public bool is_id_verification_completed { get; set; }
         public bool is_quick_id_completed { get; set; }
         public bool quick_id_is_completed { get; set; }
+        public List<string> unique_ip_addresses { get; set; }
+        public DateTime quick_id_completed_at { get; set; }
+        public DateTime facematch_completed_at { get; set; }
+        public DateTime completed_at { get; set; }
         public string final_report_pdf_url_TEMP { get; set; }
         public string report_pdf_url_TEMP { get; set; }
         public string result { get; set; }
@@ -79,13 +111,32 @@
         public string facematch_portrait_age_range { get; set; }
         public string facematch_duplicate_signature_keys { get; set; }
         public string facematch_id_type { get; set; }
-
+        public string facematch_id_country { get; set; }
+        public DateTime? facematch_id_expiry { get; set; }
+        public FaceMatchOcrData facematch_ocr_data { get; set; }
+        public bool? facematch_mrz_validated { get; set; }
+        public string facematch_id_front_url_TEMP { get; set; }
+        public string facematch_id_back_url_TEMP { get; set; }
+        public string facematch_id_front_original_url_TEMP { get; set; }
+        public string facematch_id_back_original_url_TEMP { get; set; }
+        public string facematch_face_from_id_url_TEMP { get; set; }
+        public string facematch_face_from_selfie_url_TEMP { get; set; }
+        public string facematch_face_from_liveness_url_TEMP { get; set; }
+        public string facematch_selfie_url_TEMP { get; set; }
+        public string facematch_liveness_url_TEMP { get; set; }
+        public string facematch_liveness_video1_url_TEMP { get; set; }
+        public string facematch_liveness_video2_url_TEMP { get; set; }
+        public int facematch_liveness_probability { get; set; }
+        public int facematch_liveness_quality { get; set; }
+        public bool? is_bankmatch_completed { get; set; }
+        public bool? bankmatch_is_completed { get; set; }
+        public string bankmatch_bank_name { get; set; }
+        public string bankmatch_bank_logo_url_TEMP { get; set; }
+        public string bankmatch_overall_result { get; set; }
+        public string facematch_id_front_o { get; set; }
+        public string facematch_id_front_c { get; set; }
+        public string facematch_liveness_o { get; set; }
+        public string facematch_liveness_c { get; set; }
     }
 }
 
-//using Newtonsoft.Json;
-
-//// Assuming jsonString contains the JSON data you provided
-//string jsonString = "..." // JSON data
-
-//VerificationResult verificationResult = JsonConvert.DeserializeObject<VerificationResult>(jsonString);
