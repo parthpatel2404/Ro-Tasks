@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ZjYx2AgPfH+1Hw2gp5aJFur6riOzHDhI45mVmprqLbg=",
+  "Hash": "g+52hQlIaSrwXpt/GcXwWQhKEmk9BfDCMF8fbTTkxiE=",
   "Source": "CI Platform",
   "BasePath": "_content/CI Platform",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CI Platform.bundle.scp.css"
+    },
+    {
+      "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\achieved.png",
+      "SourceId": "CI Platform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\",
+      "BasePath": "_content/CI Platform",
+      "RelativePath": "achieved.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\achieved.png"
     },
     {
       "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\Assets\\404-Page-image.png",
@@ -491,6 +508,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Assets\\doc.png"
+    },
+    {
+      "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\Assets\\Documents\\achieved.png",
+      "SourceId": "CI Platform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\",
+      "BasePath": "_content/CI Platform",
+      "RelativePath": "Assets/Documents/achieved.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\Documents\\achieved.png"
     },
     {
       "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\Assets\\Documents\\CI-Good to have.pdf",
@@ -3704,6 +3738,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\Training Plan-2022-23-Part5-ModuleWiseIntegration-.net.pdf",
+      "SourceId": "CI Platform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\",
+      "BasePath": "_content/CI Platform",
+      "RelativePath": "Training Plan-2022-23-Part5-ModuleWiseIntegration-.net.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Training Plan-2022-23-Part5-ModuleWiseIntegration-.net.pdf"
     }
   ]
 }

@@ -23,29 +23,37 @@ namespace IDVerification.Controllers
         [Route("/idv/single/idv-result")]
         public async Task<IActionResult> GetIDVResult(string FirstName, string LastName)
         {
-            string filePath="";
+            string filePath = "";
             string jsonString = "";
             IDVResult iDVResult = null;
-            if (FirstName == "Mock" && LastName == "Pass")
+            if (string.IsNullOrEmpty(FirstName) || string.IsNullOrEmpty(LastName))
             {
-                filePath = @"D:/Tatvasoft/RO Task/IDVerification/IDVerification/Documents/pass.json";
+                return BadRequest("Firstname and Lastname are required.");
             }
-            else if (FirstName == "Mock" && LastName == "Fail")
+            FirstName = FirstName.ToLower();
+            LastName = LastName.ToLower();
+            if (FirstName == "mock" && LastName == "pass")
             {
-                filePath = @"D:/Tatvasoft/RO Task/IDVerification/IDVerification/Documents/fail.json";
+                var a = Directory.GetCurrentDirectory();
+                //filePath = @"D:/Tatvasoft/RO Task/IDVerification/IDVerification/Documents/pass.json";
+                 filePath = Path.Combine(Directory.GetCurrentDirectory(), "Documents/pass.json");
             }
-            else if (FirstName == "Mock" && LastName == "Partial")
+            else if (FirstName == "mock" && LastName == "fail")
             {
-                filePath = @"D:/Tatvasoft/RO Task/IDVerification/IDVerification/Documents/partial.json";
+                filePath = Path.Combine(Directory.GetCurrentDirectory(), "Documents/fail.json");
+            }
+            else if (FirstName == "mock" && LastName == "partial")
+            {
+                filePath = Path.Combine(Directory.GetCurrentDirectory(), "Documents/partial.json");
             }
             else
             {
-                return BadRequest("Enter Valid Name");
+                return BadRequest("Enter valid Firstname and Lastname");
             }
 
             jsonString = System.IO.File.ReadAllText(filePath);
             iDVResult = JsonConvert.DeserializeObject<IDVResult>(jsonString);
-            
+
             return Created("", iDVResult);
         }
     }
