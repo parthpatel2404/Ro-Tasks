@@ -1,4 +1,4 @@
-With ID passwrod
+ßπq…YÕËÍM–§‚bWith ID passwrod
 Scaffold-Dbcontext -provider Microsoft.EntityFrameworkCore.SqlServer -connection "Data Source=PCLPT160\SQL2019;DataBase=Muhafil;User ID=sa;Password=Tatva@123;" -OutputDir "Models" -ContextDir "Data"
 for windows cred
 Scaffold-Dbcontext -provider Microsoft.EntityFrameworkCore.SqlServer -connection "Data Source=PCLPT160\SQL2019;; initial catalog=Muhafil; Trusted_Connection=True" -OutputDir "Models" -ContextDir "Data"
@@ -19,8 +19,24 @@ Scaffold-DbContext Name=ConnectionStrings:Employee Microsoft.EntityFrameworkCore
 Scaffold-DbContext 'Server=PCLPT73\\SQL2019;Initial Catalog=EmployeeManagementSystem;Persist Security Info=False;User ID=sa;Password=Tatva@123;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=False;Connection Timeout=30;' Microsoft.EntityFrameworkCore.SqlServer -OutputDir DataModels -Context EmployeeDbContext
 
 
-Force to update database
+MS Sql Command Force to update database
 Scaffold-Dbcontext -provider Microsoft.EntityFrameworkCore.SqlServer -connection "Data Source=PCI148\SQL2017;DataBase=CIPlatform;User ID=sa;Password=Tatva@123;Encrypt=False;TrustServerCertificate=False;" -OutputDir "Models" -ContextDir "Data" -Context CIPlatformDbContext -f
+
+My Sql Command 
+Scaffold-DbContext "server=localhost;port=3306;user=root;password=Tatva@123;database=rodatabasetask" MySql.EntityFrameworkCore -OutputDir "Models" -ContextDir "Data" -Context RoTaskDbContext -f
+
 
 Localhost
 https://localhost:7001;http://localhost:5061
+
+
+
+Your new search engine has been created
+Copy the following code and paste it into your site's <body> section, where you want the search box and the search results to render.
+
+<script async src="https://cse.google.com/cse.js?cx=53d298e86b5694353">
+</script>
+<div class="gcse-search"></div>
+
+RoTask API KEY = AIzaSyDMrgEhZivUaX2TrgB_N7rFxXsNXG5jt44
+Search engine ID = 53d298e86b5694353

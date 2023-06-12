@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Web.Helpers;
+using System.Drawing;
 
 namespace CIPlatform.Repository.Repositories
 {
@@ -399,7 +400,7 @@ namespace CIPlatform.Repository.Repositories
                         }
                         _CIPlatformDbContext.SaveChanges();
 
-                        var filePath = new List<string>();
+                        var filePath = new List<string>();  
 
                         if (userData.missionDocuments != null)
                         {
@@ -415,7 +416,7 @@ namespace CIPlatform.Repository.Repositories
                                 docs.DocumentName = i.FileName;
                                 docs.DocumentPath = i.FileName;
 
-                                // Encrypt the file data
+                                //// Encrypt the file data
                                 byte[] encryptedData;
                                 string Skey = "ZXCVBNMasdfghjkl!@#$%^&*12345678";
                                 string Siv = "passwordpassword";
@@ -428,7 +429,7 @@ namespace CIPlatform.Repository.Repositories
                                 {
                                     i.CopyTo(memoryStream);
                                     byte[] fileData = memoryStream.ToArray();
-                                   
+
                                     encryptedData = EncryptData(fileData, key, iv); // Replace with your encryption method
                                 }
 
@@ -437,15 +438,61 @@ namespace CIPlatform.Repository.Repositories
 
                                 if (encryptedData.Length > 0)
                                 {
-                                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/Documents", i.FileName);
+                                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/Documents/Encrypt", i.FileName);
                                     filePath.Add(path);
 
                                     // Save the encrypted data to the file
-                                    using (var stream = new FileStream(path, FileMode.Create))
-                                    {
-                                        stream.Write(encryptedData, 0, encryptedData.Length);
-                                    }
+                                    File.WriteAllBytes(path, encryptedData);
+
+                                    //using (var stream = new FileStream(path, FileMode.Create))
+                                    //{
+                                    //    stream.Write(encryptedData, 0, encryptedData.Length);
+                                    //    i.CopyTo(stream);
+                                    //}
                                 }
+                                //byte[] encryptedData;
+                                //string Skey = "ZXCVBNMasdfghjkl!@#$%^&*12345678";
+                                //string Siv = "passwordpassword";
+                                //// Convert a C# string to a byte array
+                                //byte[] key = Encoding.UTF8.GetBytes(Skey);
+                                //byte[] iv = Encoding.UTF8.GetBytes(Siv);
+                                ////byte[] key = GetEncryptionKey();
+                                ////byte[] iv = GetEncryptionIV();
+                                //using (var memoryStream = new MemoryStream())
+                                //{
+                                //    i.CopyTo(memoryStream);
+                                //    byte[] fileData = memoryStream.ToArray();
+
+                                //    encryptedData = EncryptData(fileData, key, iv); // Replace with your encryption method
+                                //}
+
+                                //_CIPlatformDbContext.MissionDocuments.Add(docs);
+                                //_CIPlatformDbContext.SaveChanges();
+
+                                //if (encryptedData.Length > 0)
+                                //{
+                                //    var fileName = Guid.NewGuid().ToString(); // Generate a unique file name
+                                //    var fileExtension = Path.GetExtension(i.FileName).ToLowerInvariant();
+                                //    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/Documents", i.FileName);
+                                //    filePath.Add(path);
+
+                                //    // Save the encrypted data to the file
+                                //    using (var stream = new FileStream(path, FileMode.Create))
+                                //    {
+                                //        stream.Write(encryptedData, 0, encryptedData.Length);
+                                //    }
+
+                                //    if (fileExtension == ".png" || fileExtension == ".jpg" || fileExtension == ".jpeg")
+                                //    {
+                                //        using (var image = System.Drawing.Image.FromFile(filePath))
+                                //        {
+                                //            // Perform operations on the image here
+                                //            // Example: Resize the image to a specific width and height
+                                //            var resizedImage = new Bitmap(image, 800, 600);
+                                //            resizedImage.Save(filePath); // Save the resized image
+                                //        }
+                                //    }
+                                //}
                             }
                         }
 

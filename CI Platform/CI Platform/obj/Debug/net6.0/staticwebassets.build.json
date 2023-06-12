@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "g+52hQlIaSrwXpt/GcXwWQhKEmk9BfDCMF8fbTTkxiE=",
+  "Hash": "Xu8Erk1SUCx1nVq5VOWWc1Gr5Mv3KCjPBw0LZpBuFgM=",
   "Source": "CI Platform",
   "BasePath": "_content/CI Platform",
   "Mode": "Default",
@@ -49,23 +49,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CI Platform.bundle.scp.css"
-    },
-    {
-      "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\achieved.png",
-      "SourceId": "CI Platform",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\",
-      "BasePath": "_content/CI Platform",
-      "RelativePath": "achieved.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\achieved.png"
     },
     {
       "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\Assets\\404-Page-image.png",
@@ -510,12 +493,12 @@
       "OriginalItemSpec": "wwwroot\\Assets\\doc.png"
     },
     {
-      "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\Assets\\Documents\\achieved.png",
+      "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\Assets\\Documents\\Decrypt\\Narendra-Modi.jpg",
       "SourceId": "CI Platform",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\",
       "BasePath": "_content/CI Platform",
-      "RelativePath": "Assets/Documents/achieved.png",
+      "RelativePath": "Assets/Documents/Decrypt/Narendra-Modi.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -524,15 +507,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Assets\\Documents\\achieved.png"
+      "OriginalItemSpec": "wwwroot\\Assets\\Documents\\Decrypt\\Narendra-Modi.jpg"
     },
     {
-      "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\Assets\\Documents\\CI-Good to have.pdf",
+      "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\Assets\\Documents\\Encrypt\\CI-Good to have.pdf",
       "SourceId": "CI Platform",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\",
       "BasePath": "_content/CI Platform",
-      "RelativePath": "Assets/Documents/CI-Good to have.pdf",
+      "RelativePath": "Assets/Documents/Encrypt/CI-Good to have.pdf",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -541,15 +524,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Assets\\Documents\\CI-Good to have.pdf"
+      "OriginalItemSpec": "wwwroot\\Assets\\Documents\\Encrypt\\CI-Good to have.pdf"
     },
     {
-      "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\Assets\\Documents\\scaffold command.txt",
+      "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\Assets\\Documents\\Encrypt\\Narendra-Modi.jpg",
       "SourceId": "CI Platform",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\",
       "BasePath": "_content/CI Platform",
-      "RelativePath": "Assets/Documents/scaffold command.txt",
+      "RelativePath": "Assets/Documents/Encrypt/Narendra-Modi.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -558,15 +541,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Assets\\Documents\\scaffold command.txt"
+      "OriginalItemSpec": "wwwroot\\Assets\\Documents\\Encrypt\\Narendra-Modi.jpg"
     },
     {
-      "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\Assets\\Documents\\Training Plan-2022-23-Part5-ModuleWiseIntegration-.net.pdf",
+      "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\Assets\\Documents\\Encrypt\\scaffold command.txt",
       "SourceId": "CI Platform",
       "SourceType": "Discovered",
       "ContentRoot": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\",
       "BasePath": "_content/CI Platform",
-      "RelativePath": "Assets/Documents/Training Plan-2022-23-Part5-ModuleWiseIntegration-.net.pdf",
+      "RelativePath": "Assets/Documents/Encrypt/scaffold command.txt",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -575,7 +558,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Assets\\Documents\\Training Plan-2022-23-Part5-ModuleWiseIntegration-.net.pdf"
+      "OriginalItemSpec": "wwwroot\\Assets\\Documents\\Encrypt\\scaffold command.txt"
+    },
+    {
+      "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\Assets\\Documents\\Encrypt\\Training Plan-2022-23-Part5-ModuleWiseIntegration-.net.pdf",
+      "SourceId": "CI Platform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\",
+      "BasePath": "_content/CI Platform",
+      "RelativePath": "Assets/Documents/Encrypt/Training Plan-2022-23-Part5-ModuleWiseIntegration-.net.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\Documents\\Encrypt\\Training Plan-2022-23-Part5-ModuleWiseIntegration-.net.pdf"
     },
     {
       "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\Assets\\down.png",
@@ -1273,6 +1273,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Assets\\my-story.png"
+    },
+    {
+      "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\Assets\\Narendra-Modi.jpg",
+      "SourceId": "CI Platform",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\",
+      "BasePath": "_content/CI Platform",
+      "RelativePath": "Assets/Narendra-Modi.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\Narendra-Modi.jpg"
     },
     {
       "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\Assets\\new-message.png",
@@ -2601,23 +2618,6 @@
       "OriginalItemSpec": "wwwroot\\Assets\\xlsx.png"
     },
     {
-      "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\CI-Good to have.pdf",
-      "SourceId": "CI Platform",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\",
-      "BasePath": "_content/CI Platform",
-      "RelativePath": "CI-Good to have.pdf",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\CI-Good to have.pdf"
-    },
-    {
       "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\css\\bootstrap.min.css",
       "SourceId": "CI Platform",
       "SourceType": "Discovered",
@@ -3738,23 +3738,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
-    },
-    {
-      "Identity": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\Training Plan-2022-23-Part5-ModuleWiseIntegration-.net.pdf",
-      "SourceId": "CI Platform",
-      "SourceType": "Discovered",
-      "ContentRoot": "D:\\Tatvasoft\\RO Task\\CI Platform\\CI Platform\\wwwroot\\",
-      "BasePath": "_content/CI Platform",
-      "RelativePath": "Training Plan-2022-23-Part5-ModuleWiseIntegration-.net.pdf",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\Training Plan-2022-23-Part5-ModuleWiseIntegration-.net.pdf"
     }
   ]
 }
