@@ -1,0 +1,15 @@
+D:\Tatvasoft\RO Task\IDVerification\IDVerification\obj\Release\net6.0\PubTmp\Out\IDVerification.exe
+D:\Tatvasoft\RO Task\IDVerification\IDVerification\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
+D:\Tatvasoft\RO Task\IDVerification\IDVerification\obj\Release\net6.0\PubTmp\Out\appsettings.json
+D:\Tatvasoft\RO Task\IDVerification\IDVerification\obj\Release\net6.0\PubTmp\Out\Documents\fail.json
+D:\Tatvasoft\RO Task\IDVerification\IDVerification\obj\Release\net6.0\PubTmp\Out\Documents\partial.json
+D:\Tatvasoft\RO Task\IDVerification\IDVerification\obj\Release\net6.0\PubTmp\Out\Documents\pass.json
+D:\Tatvasoft\RO Task\IDVerification\IDVerification\obj\Release\net6.0\PubTmp\Out\IDVerification.dll
+D:\Tatvasoft\RO Task\IDVerification\IDVerification\obj\Release\net6.0\PubTmp\Out\IDVerification.deps.json
+D:\Tatvasoft\RO Task\IDVerification\IDVerification\obj\Release\net6.0\PubTmp\Out\IDVerification.runtimeconfig.json
+D:\Tatvasoft\RO Task\IDVerification\IDVerification\obj\Release\net6.0\PubTmp\Out\IDVerification.pdb
+D:\Tatvasoft\RO Task\IDVerification\IDVerification\obj\Release\net6.0\PubTmp\Out\Microsoft.OpenApi.dll
+D:\Tatvasoft\RO Task\IDVerification\IDVerification\obj\Release\net6.0\PubTmp\Out\Newtonsoft.Json.dll
+D:\Tatvasoft\RO Task\IDVerification\IDVerification\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+D:\Tatvasoft\RO Task\IDVerification\IDVerification\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Tatvasoft\RO Task\IDVerification\IDVerification\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll

@@ -1,4 +1,4 @@
-ßπq…YÕËÍM–§‚bWith ID passwrod
+With ID passwrod
 Scaffold-Dbcontext -provider Microsoft.EntityFrameworkCore.SqlServer -connection "Data Source=PCLPT160\SQL2019;DataBase=Muhafil;User ID=sa;Password=Tatva@123;" -OutputDir "Models" -ContextDir "Data"
 for windows cred
 Scaffold-Dbcontext -provider Microsoft.EntityFrameworkCore.SqlServer -connection "Data Source=PCLPT160\SQL2019;; initial catalog=Muhafil; Trusted_Connection=True" -OutputDir "Models" -ContextDir "Data"

@@ -696,8 +696,12 @@ namespace CIPlatform.Repository.Repositories
                 //// Set the encryption key and initialization vector (IV)
                 //aes.Key = key; // Replace with your method to retrieve or generate the encryption key
                 //aes.IV = iv;
-
-                using (var encryptor = aes.CreateEncryptor(key, iv))
+                aes.BlockSize = 128;
+                aes.KeySize = 256;
+                aes.Key = key;
+                aes.IV = iv;
+                aes.Mode = CipherMode.CBC;
+                using (var encryptor = aes.CreateEncryptor(aes.Key, aes.IV))
                 using (var memoryStream = new MemoryStream())
                 {
                     // Write the IV to the output stream

@@ -236,39 +236,21 @@ namespace CIPlatform.Repository.Repositories
                         foreach (var i in missionListing.Documents)
                         {
                             string filePath11 = "wwwroot/Assets/Documents/Encrypt/" + i.DocumentName;
-                            var path = Path.Combine(Directory.GetCurrentDirectory(), filePath11);
-
                             string fileExtension = Path.GetExtension(filePath11);
                             if (fileExtension != null)
                             {
-                                //byte[] fileData = File.ReadAllBytes(filePath11);
+                                byte[] fileData = File.ReadAllBytes(filePath11);
                                 // Decrypt the file data
                                 //byte[] decryptedData = DecryptData(encryptedData, key, iv);
-                                //byte[] decryptedData = DecryptData(fileData, key, iv);
-                                using (AesManaged aes = new AesManaged())
-                                {
-                                    aes.Key = key;
-                                    aes.IV = iv;
-                                    aes.Padding = PaddingMode.PKCS7;
-
-                                    using (var input = new FileStream(path, FileMode.Open))
-                                    {
-                                        var decryptedFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/Documents/Decrypt", i.DocumentName);
-                                        using (var output = new FileStream(decryptedFilePath, FileMode.Create))
-                                        using (var cryptoStream = new CryptoStream(input, aes.CreateDecryptor(), CryptoStreamMode.Read))
-                                        {
-                                            cryptoStream.CopyTo(output);
-                                        }
-                                    }
-                                }
+                                byte[] decryptedData = DecryptData(fileData, key, iv);
 
                                 // Use the decrypted data as needed
                                 // For example, you can save it to another file or process it further
-                                //using (var decryptedStream = new FileStream(decryptedFilePath, FileMode.Create))
-                                //{
-                                //    decryptedStream.Write(decryptedData, 0, decryptedData.Length);
-                                //}
-                                //File.WriteAllBytes(decryptedFilePath, fileData);
+                                var decryptedFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets/Documents/Decrypt/", i.DocumentName);
+                                using (var decryptedStream = new FileStream(decryptedFilePath, FileMode.Create))
+                                {
+                                    decryptedStream.Write(decryptedData, 0, decryptedData.Length);
+                                }
                             }
 
                         }
@@ -310,31 +292,29 @@ namespace CIPlatform.Repository.Repositories
             }
             return missionListingList;
         }
-        //private byte[] DecryptData(byte[] encryptedData, byte[] key, byte[] iv)
-        //{
-        //    using (AesManaged aes = new AesManaged())
-        //    {
-        //        aes.Key = key;
-        //        aes.IV = iv;
-        //        aes.Padding = PaddingMode.PKCS7;
+        private byte[] DecryptData(byte[] encryptedData, byte[] key, byte[] iv)
+        {
+            using (AesManaged aes = new AesManaged())
+            {
+                aes.BlockSize = 128;
+                aes.KeySize = 256;
+                aes.Key = key;
+                aes.IV = iv;
+                aes.Mode = CipherMode.CBC;
 
-        //        using (var input = new FileStream(encryptedData,FileMode.Open))
-        //        {
-        //            using (var output= new FileStream())
-        //        }
-        //        using (var decryptor = aes.CreateDecryptor(aes.Key, aes.IV))
-        //        using (var memoryStream = new MemoryStream())
-        //        {
-        //            using (var cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Write))
-        //            {
-        //                cryptoStream.Write(encryptedData, 0, encryptedData.Length);
-        //                cryptoStream.FlushFinalBlock();
-        //            }
+                using (var decryptor = aes.CreateDecryptor(aes.Key, aes.IV))
+                using (var memoryStream = new MemoryStream())
+                {
+                    using (var cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Write))
+                    {
+                        cryptoStream.Write(encryptedData, 0, encryptedData.Length);
+                        cryptoStream.FlushFinalBlock();
+                    }
 
-        //            return memoryStream.ToArray();
-        //        }
-        //    }
-        //}
+                    return memoryStream.ToArray();
+                }
+            }
+        }
         public List<MissionViewModel> getMisAppList(int pg, long missionId)
         {
             var pageSize = 1;
