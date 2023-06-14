@@ -1,0 +1,373 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;600;700;800&display=swap");
+
+/* universal style  */
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans", sans-serif;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+} */
+
+.main-img {
+    height: 75% !important;
+}
+
+
+.text1 {
+    font-family: NotoSans-Light;
+    font-size: 38px;
+    line-height: 38px;
+}
+
+.goal-info {
+    position: relative;
+    width: 100%;
+    border-top: 1px solid #E8E8E8;
+    text-align: center;
+}
+
+.duration,
+.duration1 {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #E8E8E8;
+    border-radius: 18px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translate(0, -55%);
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+.progress {
+    height: 10px;
+    border-radius: 20px;
+}
+
+.progress-bar {
+    background-color: #f88634;
+}
+
+.seats p,
+.deadline p {
+    margin-block-end: 0;
+    margin-block-start: 0;
+}
+
+.seats span,
+.deadline p {
+    margin-left: 10px;
+}
+
+/* .duration1 {
+    width: 176px;
+    height: 33px;
+    align-items: center;
+} */
+
+
+
+.btns {
+    display: flex;
+    justify-content: center;
+    column-gap: 40px;
+}
+
+.main-btn {
+    width: 300px;
+    height: 40px;
+    border: 2px solid #757575;
+    border-radius: 100px;
+    font-size: 17px;
+}
+
+    .main-btn:hover {
+        background-color: #ADADAD;
+        color: white;
+        font-size: 18px;
+    }
+
+.applyButton {
+    border: 2px solid #F88634;
+    border-radius: 100px;
+    color: #F88634;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+    .applyButton:hover {
+        background-color: #F88634;
+        color: white;
+    }
+
+.views {
+    border: 1px solid #E8E8E8;
+    border-radius: 100px;
+    color: #000000;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+    .views:hover {
+        background-color: #ADADAD;
+        border: 1px solid #E8E8E8;
+    }
+
+.img-btn {
+    margin-top: -20px;
+    height: 35px;
+    width: 127px;
+    border-radius: 18px;
+    color: #414141;
+    background-color: #ffffff;
+    border-radius: 20px;
+    font-size: 15px;
+}
+
+.line {
+    position: relative;
+    width: 100%;
+    border-top: 1px solid #e8e8e8;
+    text-align: center;
+}
+
+
+.apply-btn {
+    border: 2px solid #f88634;
+    border-radius: 100px;
+    color: #f88634;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+    .apply-btn:hover {
+        background-color: #f88634;
+        color: white;
+    }
+
+
+.location-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #000000 0% 0% no-repeat padding-box;
+    border-radius: 18px;
+    opacity: 0.5;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    padding-left: 13px;
+    padding-right: 13px;
+    margin: 10px;
+    border: none;
+}
+
+.like-img {
+    position: absolute;
+    top: 35%;
+    right: 0;
+    background: #000000 0% 0% no-repeat padding-box;
+    border-radius: 18px;
+    opacity: 0.5;
+    margin: 10px;
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 5px;
+    padding-bottom: 4px;
+    font-size: 21px;
+}
+
+    .like-img:hover {
+        color: black;
+        font-size: 24px;
+    }
+
+.unlike-img {
+    position: absolute;
+    top: 40%;
+    right: 0;
+    background: #000000;
+    border-radius: 100px;
+    opacity: 0.8;
+    margin: 10px;
+    font-size: 21px;
+    color: white
+}
+
+    .unlike-img:hover {
+        font-size: 24px;
+    }
+
+
+.stop-img {
+    position: absolute;
+    top: 60%;
+    right: 0;
+    background: #000000 0% 0% no-repeat padding-box;
+    border-radius: 18px;
+    opacity: 0.5;
+    margin: 10px;
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    color: white;
+}
+
+    .stop-img:hover {
+        color: white;
+        font-size: 24px;
+    }
+
+.img-event {
+    position: relative;
+}
+
+
+@media (max-width: 376px) {
+
+    .text1 {
+        font-size: 20px;
+        line-height: 20px;
+    }
+
+    .text2 {
+        font-size: 14px !important;
+    }
+
+    .seats1 {
+        margin-left: 0 !important;
+    }
+
+    .btns {
+        column-gap: 5px;
+    }
+
+    .main-btn {
+        width: 150px;
+        font-size: 12px;
+    }
+
+    .resBox {
+        width: 40%;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 10px;
+    }
+}
+
+@media(max-width:426px) and (min-width:377px) {
+
+    .text1 {
+        font-size: 20px;
+        line-height: 10px;
+    }
+
+    .text2 {
+        font-size: 12px !important;
+    }
+
+    .seats1 {
+        margin-left: 0 !important;
+    }
+
+    .btns {
+        column-gap: 5px;
+    }
+
+    .main-btn {
+        width: 185px;
+        font-size: 12px;
+    }
+
+    .resBox {
+        width: 40%;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 10px;
+    }
+}
+
+@media(max-width:769px) and (min-width:427px) {
+
+    .text1 {
+        font-size: 32px;
+        line-height: 20px;
+    }
+
+    .text2 {
+        font-size: 18px !important;
+    }
+
+    .seats1 {
+        margin-left: 0 !important;
+    }
+
+    .btns {
+        column-gap: 15px;
+    }
+
+    .main-btn {
+        width: 300px;
+        font-size: 20px;
+    }
+
+    .resBox {
+        width: 25%;
+    }
+}
+
+@media(min-width:426px) {
+    .resBox {
+        width: 24%;
+        margin-right: 1%;
+    }
+}
+
+
+.nav-tabs .nav-link:focus,
+.nav-tabs .nav-link:hover,
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    border-color: transparent;
+    color: #505050;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+    border-bottom: 3px solid black;
+    color: black;
+    font-weight: 500;
+}
+
+.nav-link {
+    color: #ADADAD;
+    font-size: 15px;
+    line-height: 18px;
+    padding: 14px 18px;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid #ADADAD;
+}
+
+.tab-content {
+    margin-top: 25px;
+}
+
+.tab-pane {
+    font-size: 15px;
+    line-height: 24px;
+    color: #3E3E3E;
+}
+
+.ex1 {
+    background-color: rgb(231, 231, 231);
+    height: 410px;
+    overflow: auto;
+}

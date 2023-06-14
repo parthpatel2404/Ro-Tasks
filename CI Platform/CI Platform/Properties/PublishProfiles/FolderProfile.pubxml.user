@@ -3,4 +3,8 @@
 https://go.microsoft.com/fwlink/?LinkID=208121. 
 -->
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>D:\Publish\CI Platform</_PublishTargetUrl>
+    <History>True|2023-06-13T12:06:36.8384005Z;True|2023-06-13T10:15:46.9370148+05:30;True|2023-06-13T09:51:37.9318126+05:30;</History>
+  </PropertyGroup>
 </Project>

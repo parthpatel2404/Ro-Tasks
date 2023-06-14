@@ -319,15 +319,15 @@ namespace CIPlatform.Repository.Repositories
 
         public bool updateUserData(EditProfileViewModel editProfileView, long userId)
         {
-            UserTable userTable = new UserTable();
-            //userTable.UserId = (int)userId;
-            userTable.FirstName = editProfileView.FirstName;
-            userTable.LastName = editProfileView.LastName;
-            userTable.Email = editProfileView.FirstName;
-            userTable.PhoneNumber = editProfileView.CountryId;
-            userTable.Password = editProfileView.FirstName;
-            _RoTaskDbContext.UserTables.Add(userTable);
-            _RoTaskDbContext.SaveChanges();
+            //UserTable userTable = new UserTable();
+            ////userTable.UserId = (int)userId;
+            //userTable.FirstName = editProfileView.FirstName;
+            //userTable.LastName = editProfileView.LastName;
+            //userTable.Email = editProfileView.FirstName;
+            //userTable.PhoneNumber = editProfileView.CountryId;
+            //userTable.Password = editProfileView.FirstName;
+            //_RoTaskDbContext.UserTables.Add(userTable);
+            //_RoTaskDbContext.SaveChanges();
 
             User user = _CIPlatformDbContext.Users.FirstOrDefault(u => u.UserId == userId);
             if (editProfileView.Profile != null)

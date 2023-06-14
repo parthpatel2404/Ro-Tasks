@@ -705,7 +705,7 @@ namespace CIPlatform.Repository.Repositories
                 using (var memoryStream = new MemoryStream())
                 {
                     // Write the IV to the output stream
-                    memoryStream.Write(iv, 0, iv.Length);
+                    //memoryStream.Write(iv, 0, iv.Length);
 
                     using (var cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
                     {
