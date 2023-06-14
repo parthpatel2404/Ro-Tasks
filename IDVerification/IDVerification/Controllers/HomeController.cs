@@ -70,21 +70,20 @@ namespace IDVerification.Controllers
 
             return Created("", iDVResult);
         }
-        //Workbook workbook = new Workbook();
-        //workbook.LoadFromFile("Input.xls", ExcelVersion.Version97to2003);
 
-        //    // Save the workbook as XLSX format
-        //    workbook.SaveToFile("Output.xlsx", ExcelVersion.Version2016);
-        //    MemoryStream outputStream = new MemoryStream();
-        //workbook.SaveToStream(outputStream);
         [HttpPost]
-        [Route("AddExcelToDb")]
+        [Route("AddExcel(xls/xlsx/csv)ToDb")]
         public IActionResult AddExcelToDb(IFormFile excelFile)
         {
             if (Path.GetExtension(excelFile.FileName).Equals(".xls", StringComparison.OrdinalIgnoreCase))
             {
                 // Convert XLS to XLSX format
                 excelFile = ConvertXlsToXlsx(excelFile);
+            }
+            if (Path.GetExtension(excelFile.FileName).Equals(".csv", StringComparison.OrdinalIgnoreCase))
+            {
+                // Convert CSV to XLSX format
+                excelFile = ConvertCsvToXlsx(excelFile);
             }
             //string filePath = Path.Combine(Directory.GetCurrentDirectory(), "Documents/FATF_Jurisdiction_Ratings.xlsx"); 
             //string fileName = Path.GetFileName(filePath);
@@ -118,7 +117,7 @@ namespace IDVerification.Controllers
                                 var cellValue = worksheet.Cells[row, col].Value?.ToString() ?? string.Empty;
                                 if (cellValue.Contains(","))
                                 {
-                                    cellValue = cellValue.Replace(",","-");
+                                    cellValue = cellValue.Replace(",", "-");
                                 }
                                 csvRow += $"{cellValue.Trim()},";
                             }
@@ -132,7 +131,7 @@ namespace IDVerification.Controllers
                         using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                         {
                             var records = csv.GetRecords<FatfJurisdictionRating>().ToList();
-                           
+
                             foreach (var record in records)
                             {
                                 _IDVDbContext.FatfJurisdictionRatings.Add(record);
@@ -174,6 +173,47 @@ namespace IDVerification.Controllers
             System.IO.File.Delete(xlsxFilePath);
 
             return xlsxFile;
+        }
+
+        private IFormFile ConvertCsvToXlsx(IFormFile csvFile)
+        {
+            // Read the CSV file content
+            using (var reader = new StreamReader(csvFile.OpenReadStream()))
+            {
+                var csvContent = reader.ReadToEnd();
+
+                // Create a new XLSX file path
+                var xlsxFilePath = Path.ChangeExtension(Path.GetTempFileName(), ".xlsx");
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+                // Convert CSV to XLSX using EPPlus
+                using (var package = new ExcelPackage())
+                {
+                    var worksheet = package.Workbook.Worksheets.Add("Sheet1");
+                    var rows = csvContent.Split('\n');
+
+                    for (int i = 0; i < rows.Length; i++)
+                    {
+                        var cells = rows[i].Split(',');
+                        for (int j = 0; j < cells.Length; j++)
+                        {
+                            worksheet.Cells[i + 1, j + 1].Value = cells[j];
+                        }
+                    }
+
+                    package.SaveAs(new FileInfo(xlsxFilePath));
+                }
+
+                // Create a new IFormFile from the converted XLSX file
+                var xlsxFileBytes = System.IO.File.ReadAllBytes(xlsxFilePath);
+                var xlsxFileName = Path.GetFileNameWithoutExtension(csvFile.FileName) + ".xlsx";
+                var xlsxFile = new FormFile(new MemoryStream(xlsxFileBytes), 0, xlsxFileBytes.Length, null, xlsxFileName);
+
+                // Delete the temporary XLSX file
+                System.IO.File.Delete(xlsxFilePath);
+
+                return xlsxFile;
+            }
         }
     }
 }
