@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "9NsR47q383D/r9dNBLs7R89Hl3SAV9y3jRwt3f9OhDil3buK5LEDDLaky1nt6goHfulb5s7wGoEuKl+XwdcIwA==",
+  "dgSpecHash": "ydKqW/Sf94SsRRPM83+KSPI/6KwJICb6QzB51L/D4N6R0B0uoIyJQpVTW0fdICEYjkr3ZyGdO4SH+mFbQUzdlA==",
   "success": true,
   "projectFilePath": "D:\\Tatvasoft\\RO Task\\IDVerification\\IDVerification\\IDVerification.csproj",
   "expectedPackageFiles": [
@@ -40,6 +40,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Users\\pci148\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\pci148\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.14.0\\microsoft.visualstudio.azure.containers.tools.targets.1.14.0.nupkg.sha512",
     "C:\\Users\\pci148\\.nuget\\packages\\microsoft.win32.systemevents\\6.0.0\\microsoft.win32.systemevents.6.0.0.nupkg.sha512",
     "C:\\Users\\pci148\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
     "C:\\Users\\pci148\\.nuget\\packages\\mysql.data\\8.0.33\\mysql.data.8.0.33.nupkg.sha512",
