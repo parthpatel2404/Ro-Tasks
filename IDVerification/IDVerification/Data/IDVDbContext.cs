@@ -22,27 +22,21 @@ public partial class IDVDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySQL("server=localhost;port=3306;user=root;password=Tatva@123;database=rodatabasetask");
+        => optionsBuilder.UseMySQL("server=host.docker.internal;port=3306;user=root;password=Tatva@123;database=rodatabasetask");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<FatfJurisdictionRating>(entity =>
         {
-            entity.HasKey(e => e.JurisdictionId).HasName("PRIMARY");
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
 
             entity.ToTable("fatf_jurisdiction_ratings");
 
-            entity.Property(e => e.JurisdictionId).HasColumnName("Jurisdiction_ID");
-            entity.Property(e => e.Comments).HasMaxLength(500);
-            entity.Property(e => e.CountryEffectivenessRating)
-                .HasMaxLength(45)
-                .HasColumnName("Country Effectiveness Rating");
-            entity.Property(e => e.EffectivenessScore).HasColumnName("Effectiveness Score");
-            entity.Property(e => e.Jurisdiction).HasMaxLength(45);
-            entity.Property(e => e.TechnicalComplianceScore).HasColumnName("Technical Compliance Score");
-            entity.Property(e => e.TechnicalComplianceTcRating)
-                .HasMaxLength(45)
-                .HasColumnName("Technical Compliance (TC) Rating");
+            entity.Property(e => e.CountryEffectiveRating).HasMaxLength(25);
+            entity.Property(e => e.EffectiveScore).HasPrecision(10);
+            entity.Property(e => e.Jurisdiction).HasMaxLength(60);
+            entity.Property(e => e.TechnicalComplianceRating).HasMaxLength(25);
+            entity.Property(e => e.TechnicalComplianceScore).HasPrecision(10);
         });
 
         modelBuilder.Entity<UserTable>(entity =>

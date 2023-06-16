@@ -7,17 +7,17 @@ namespace IDVerification.Models;
 public partial class FatfJurisdictionRating
 {
     [Ignore]
-    public int JurisdictionId { get; set; }
+    public int Id { get; set; }
 
     public string? Jurisdiction { get; set; }
 
-    public float? EffectivenessScore { get; set; }
+    public decimal? EffectiveScore { get; set; }
 
-    public string? CountryEffectivenessRating { get; set; }
+    public string? CountryEffectiveRating { get; set; }
 
-    public float? TechnicalComplianceScore { get; set; }
+    public decimal? TechnicalComplianceScore { get; set; }
 
-    public string? TechnicalComplianceTcRating { get; set; }
+    public string? TechnicalComplianceRating { get; set; }
 
     public string? Comments { get; set; }
 }
