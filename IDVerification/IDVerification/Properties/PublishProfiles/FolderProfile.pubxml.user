@@ -5,6 +5,6 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>D:\Publish\IDVerification</_PublishTargetUrl>
-    <History>True|2023-06-13T04:20:20.7373095Z;</History>
+    <History>True|2023-06-20T10:46:55.1964394Z;True|2023-06-20T16:15:25.3240648+05:30;True|2023-06-20T16:15:17.5532924+05:30;</History>
   </PropertyGroup>
 </Project>

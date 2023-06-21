@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+  idverification:
+    image: ${DOCKER_REGISTRY-}idverification
+    build:
+      context: .
+      dockerfile: IDVerification/Dockerfile
+    environment:
+      - MySqlConnection=server=192.168.1.148;port=3306;user=root;password=Tatva@123;database=rodatabasetask;
+  #  depends_on:
+  #    - mysql
+  #mysql:
+  #  image: mysql:latest
+  #  environment:
+  #    - MYSQL_ROOT_PASSWORD=Tatva@123
+  #    - MYSQL_DATABASE=rodatabasetask

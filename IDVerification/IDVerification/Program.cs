@@ -8,9 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEntityFrameworkMySQL().AddDbContext<IDVDbContext>(options => {
-    options.UseMySQL(builder.Configuration.GetConnectionString("MySqlConnection"));
-});
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+    string abc= Environment.GetEnvironmentVariable("MySqlConnection");
+    options.UseMySQL(Environment.GetEnvironmentVariable("MySqlConnection"));
+});// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

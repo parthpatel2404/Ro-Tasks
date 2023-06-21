@@ -10,7 +10,22 @@
       "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
       "DisplayName": "Miscellaneous Files",
       "ColorIndex": -1
+    },
+    "c1c87ff6-208c-494f-b8f3-c8fa1029492b": {
+      "ProjectGuid": "c1c87ff6-208c-494f-b8f3-c8fa1029492b",
+      "DisplayName": "docker-compose",
+      "ColorIndex": 1
+    },
+    "bdcc45dc-3e37-428f-9ba3-a96e162c2c33": {
+      "ProjectGuid": "bdcc45dc-3e37-428f-9ba3-a96e162c2c33",
+      "DisplayName": "docker-compose",
+      "ColorIndex": 2
+    },
+    "4c9c8885-80ab-46c0-b5a6-fc07150b2ccd": {
+      "ProjectGuid": "4c9c8885-80ab-46c0-b5a6-fc07150b2ccd",
+      "DisplayName": "docker-compose",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 4
 }

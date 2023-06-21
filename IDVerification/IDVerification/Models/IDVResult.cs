@@ -138,5 +138,30 @@
         public string facematch_liveness_o { get; set; }
         public string facematch_liveness_c { get; set; }
     }
+
+    public class Entity
+    {
+        public string idField { get; set; }
+        public string typeField { get; set; }
+        public string nameField { get; set; }
+        public string nameInEnglishField { get; set; }
+        public bool hasParentField { get; set; }
+    }
+
+    public class Edge
+    {
+        public string nodeIdField { get; set; }
+        public string typeField { get; set; }
+        public int? percentageField { get; set; }
+        public string roleField { get; set; }
+    }
+
+    public class EntityData
+    {
+        public int levelField { get; set; }
+        public Entity entityField { get; set; }
+        public List<Edge> edgesField { get; set; }
+    }
+
 }
 

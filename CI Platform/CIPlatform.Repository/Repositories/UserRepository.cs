@@ -62,33 +62,33 @@ namespace CIPlatform.Repository.Repositories
 
         public void register(RegistrationViewModel register)
         {
-            //string connectionString = "server=localhost;port=3306;user=root;password=Tatva@123;database=rodatabasetask;";
-            //using (MySqlConnection connection = new MySqlConnection(connectionString))
-            //{
-            //    connection.Open();
+            string connectionString = "server=localhost;port=3306;user=root;password=Tatva@123;database=rodatabasetask;";
+            using (MySqlConnection connection = new MySqlConnection(connectionString))
+            {
+                connection.Open();
 
-            //    using (MySqlCommand command = new MySqlCommand("spInsertUserData", connection))
-            //    {
-            //        command.CommandType = CommandType.StoredProcedure;
+                using (MySqlCommand command = new MySqlCommand("spInsertUserData", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
 
-            //        // Add input parameters
-            //        command.Parameters.AddWithValue("FirstName", register.FirstName);
-            //        command.Parameters.AddWithValue("LastName", register.LastName);
-            //        command.Parameters.AddWithValue("Email", register.Email);
-            //        command.Parameters.AddWithValue("PhoneNumber", register.PhoneNumber);
-            //        command.Parameters.AddWithValue("Password", register.Password);
+                    // Add input parameters
+                    command.Parameters.AddWithValue("FirstName", register.FirstName);
+                    command.Parameters.AddWithValue("LastName", register.LastName);
+                    command.Parameters.AddWithValue("Email", register.Email);
+                    command.Parameters.AddWithValue("PhoneNumber", register.PhoneNumber);
+                    command.Parameters.AddWithValue("Password", register.Password);
 
-            //        // Execute the stored procedure
-            //        command.ExecuteNonQuery();
-            //    }
-            //}
-            _RoTaskDbContext.Database.ExecuteSqlRaw("CALL spInsertUserData" +
-                "(@FirstName, @LastName, @Email, @PhoneNumber, @Password)",
-                    new MySqlParameter("@FirstName", register.FirstName),
-                    new MySqlParameter("@LastName", register.LastName),
-                    new MySqlParameter("@Email", register.Email),
-                    new MySqlParameter("@PhoneNumber", register.PhoneNumber),
-                    new MySqlParameter("@Password", register.Password));
+                    // Execute the stored procedure
+                    command.ExecuteNonQuery();
+                }
+            }
+            //_RoTaskDbContext.Database.ExecuteSqlRaw("CALL spInsertUserData" +
+            //    "(@FirstName, @LastName, @Email, @PhoneNumber, @Password)",
+            //        new MySqlParameter("@FirstName", register.FirstName),
+            //        new MySqlParameter("@LastName", register.LastName),
+            //        new MySqlParameter("@Email", register.Email),
+            //        new MySqlParameter("@PhoneNumber", register.PhoneNumber),
+            //        new MySqlParameter("@Password", register.Password));
 
             //_RoTaskDbContext.UserTables.FromSqlRaw("CALL spInsertUserData({0}, {1}, {2}, {3}, {4})", register.FirstName, register.LastName, register.Email, register.PhoneNumber, register.Password);
 

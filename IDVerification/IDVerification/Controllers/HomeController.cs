@@ -75,6 +75,33 @@ namespace IDVerification.Controllers
         [Route("AddExcel(xls/xlsx/csv)ToDb")]
         public IActionResult AddExcelToDb(IFormFile excelFile)
         {
+            //List<UserTable> resultList = new List<UserTable>();
+            //string connectionString = "server=192.168.1.148;port=3306;user=root;password=Tatva@123;database=rodatabasetask;";
+            //using (MySqlConnection connection = new MySqlConnection(connectionString))
+            //{
+            //    connection.Open();
+
+            //    using (MySqlCommand command = new MySqlCommand("spgetUserData", connection))
+            //    {
+            //        command.CommandType = CommandType.StoredProcedure;
+
+            //        using (MySqlDataReader reader = command.ExecuteReader())
+            //        {
+            //            while (reader.Read())
+            //            {
+            //                // Retrieve data from the reader and populate your object
+            //                UserTable userData = new UserTable
+            //                {
+            //                    UserId = reader.GetInt32("Id"),
+            //                    FirstName = reader.GetString("Name"),
+            //                };
+
+            //                resultList.Add(userData);
+            //            }
+            //        }
+            //    }
+            //}
+
             if (Path.GetExtension(excelFile.FileName).Equals(".xls", StringComparison.OrdinalIgnoreCase))
             {
                 // Convert XLS to XLSX format
@@ -141,12 +168,17 @@ namespace IDVerification.Controllers
                         }
                     }
                 }
-                catch (InvalidDataException ex)
+                catch (InvalidDataException e)
                 {
                     return BadRequest("The selected file is not a valid Excel file.");
                 }
+                catch (Exception e)
+                {
+                    return BadRequest("Input is not appropriate!!! "+e);
+                }
             }
         }
+
 
         private IFormFile ConvertXlsToXlsx(IFormFile xlsFile)
         {
