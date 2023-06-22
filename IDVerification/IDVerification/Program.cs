@@ -7,14 +7,33 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddEntityFrameworkMySQL().AddDbContext<IDVDbContext>(options => {
-    string abc= Environment.GetEnvironmentVariable("MySqlConnection");
-    options.UseMySQL(Environment.GetEnvironmentVariable("MySqlConnection"));
-});// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.AddEntityFrameworkMySQL().AddDbContext<IDVDbContext>();
+//builder.Services.AddEntityFrameworkMySQL().AddDbContext<IDVDbContext>(options => {
+//    string abc= Environment.GetEnvironmentVariable("MySqlConnection");
+//    options.UseMySQL(Environment.GetEnvironmentVariable("MySqlConnection"));
+//});// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Add CORS configuration
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+
+app.UseCors(x => x
+           .AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader());
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

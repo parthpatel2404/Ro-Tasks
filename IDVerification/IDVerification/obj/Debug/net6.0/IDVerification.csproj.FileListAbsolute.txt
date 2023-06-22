@@ -81,4 +81,3 @@ D:\Tatvasoft\RO Task\IDVerification\IDVerification\obj\Debug\net6.0\IDVerificati
 D:\Tatvasoft\RO Task\IDVerification\IDVerification\obj\Debug\net6.0\ref\IDVerification.dll
 D:\Tatvasoft\RO Task\IDVerification\IDVerification\obj\Debug\net6.0\IDVerification.pdb
 D:\Tatvasoft\RO Task\IDVerification\IDVerification\obj\Debug\net6.0\IDVerification.genruntimeconfig.cache
-D:\Tatvasoft\RO Task\IDVerification\IDVerification\obj\Debug\net6.0\IDVerification.csproj.AssemblyReference.cache

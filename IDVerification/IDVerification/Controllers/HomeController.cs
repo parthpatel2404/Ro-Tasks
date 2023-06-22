@@ -2,8 +2,10 @@
 //using DocumentFormat.OpenXml.Spreadsheet;
 using IDVerification.Data;
 using IDVerification.Models;
+using IDVerification.VIewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using OfficeOpenXml;
@@ -174,7 +176,7 @@ namespace IDVerification.Controllers
                 }
                 catch (Exception e)
                 {
-                    return BadRequest("Input is not appropriate!!! "+e);
+                    return BadRequest("Input is not appropriate!!! " + e);
                 }
             }
         }
@@ -246,6 +248,132 @@ namespace IDVerification.Controllers
 
                 return xlsxFile;
             }
+        }
+
+        [HttpPost]
+        [Route("/mission")]
+        public IActionResult getMissions(long missionId)
+        {
+            var mission = (from m in _IDVDbContext.Missions
+                           where m.MissionId == missionId
+                           join city in _IDVDbContext.Cities
+                           on m.CityId equals city.CityId
+                           join country in _IDVDbContext.Countries
+                           on city.CountryId equals country.CountryId
+                           select new
+                           {
+                               Id = m.MissionId,
+                               m.Title,
+                               m.ShortDescription,
+                               m.Description,
+                               m.StartDate,
+                               m.EndDate,
+                               m.MissionType,
+                               m.Status,
+                               m.OrganizationName,
+                               m.OrganizationDetail,
+                               m.Availability,
+                               m.CreatedAt,
+                               m.UpdatedAt,
+                               m.DeletedAt,
+                               m.SeatLeft,
+                               m.TotalSeats,
+                               m.Deadline,
+                               Invites = m.MissionInvites.Select(x => new { Id = x.MissionInviteId, x.FromUserId, x.ToUserId }),
+                               Ratings = m.MissionRatings.Select(x => new { Id = x.MissionRatingId, x.MissionId, x.Rating }),
+                               Address = city.Name + ',' + country.Name + '(' + country.Iso + ')',
+                               Theme = new { Id = m.Theme.MissionThemeId, Title = m.Theme.Title }
+                           }).AsQueryable().FirstOrDefault();
+            //var json = JsonConvert.SerializeObject(mission);
+            //var iDVResult = JsonConvert.DeserializeObject<IDVResult>(jsonString);
+
+            return Ok(mission);
+        }
+
+        [HttpPost]
+        [Route("/spGetMissions")]
+        public IActionResult spGetMissions(long missionId)
+        {
+            MissionViewModel mvm = new MissionViewModel();
+
+            using (MySqlConnection connection = new MySqlConnection("server=localhost;port=3306;user=root;password=Tatva@123;database=rodatabasetask;"))
+            {
+                connection.Open();
+
+                using (MySqlCommand command = new MySqlCommand("spGetMissions", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("MissionId", missionId);
+
+                    using (MySqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            {
+                                mvm.Id = reader.IsDBNull(reader.GetOrdinal("Id")) ? 0 : reader.GetInt32(reader.GetOrdinal("Id"));
+                                mvm.Address = reader.IsDBNull(reader.GetOrdinal("Address")) ? string.Empty : reader.GetString(reader.GetOrdinal("Address"));
+                                mvm.Title = reader.IsDBNull(reader.GetOrdinal("title")) ? string.Empty : reader.GetString(reader.GetOrdinal("title"));
+                                mvm.ShortDescription = reader.IsDBNull(reader.GetOrdinal("short_description")) ? string.Empty : reader.GetString(reader.GetOrdinal("short_description"));
+                                mvm.Description = reader.IsDBNull(reader.GetOrdinal("description")) ? string.Empty : reader.GetString(reader.GetOrdinal("description"));
+                                mvm.StartDate = reader.IsDBNull(reader.GetOrdinal("start_date")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("start_date"));
+                                mvm.EndDate = reader.IsDBNull(reader.GetOrdinal("end_date")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("end_date"));
+                                mvm.MissionType = reader.IsDBNull(reader.GetOrdinal("mission_type")) ? string.Empty : reader.GetString(reader.GetOrdinal("mission_type"));
+                                mvm.Status = reader.IsDBNull(reader.GetOrdinal("status")) ? string.Empty : reader.GetString(reader.GetOrdinal("status"));
+                                mvm.OrganizationName = reader.IsDBNull(reader.GetOrdinal("organization_name")) ? string.Empty : reader.GetString(reader.GetOrdinal("organization_name"));
+                                mvm.OrganizationDetail = reader.IsDBNull(reader.GetOrdinal("organization_detail")) ? string.Empty : reader.GetString(reader.GetOrdinal("organization_detail"));
+                                mvm.Availability = reader.IsDBNull(reader.GetOrdinal("availability")) ? string.Empty : reader.GetString(reader.GetOrdinal("availability"));
+                                mvm.CreatedAt = reader.IsDBNull(reader.GetOrdinal("created_at")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("created_at"));
+                                mvm.UpdatedAt = reader.IsDBNull(reader.GetOrdinal("updated_at")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("updated_at"));
+                                mvm.DeletedAt = reader.IsDBNull(reader.GetOrdinal("deleted_at")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("deleted_at"));
+                                mvm.SeatLeft = reader.IsDBNull(reader.GetOrdinal("seat_left")) ? 0 : reader.GetInt32(reader.GetOrdinal("seat_left"));
+                                mvm.TotalSeats = reader.IsDBNull(reader.GetOrdinal("total_seats")) ? 0 : reader.GetInt32(reader.GetOrdinal("total_seats"));
+                                mvm.Deadline = reader.IsDBNull(reader.GetOrdinal("deadline")) ? (DateTime?)null : reader.GetDateTime(reader.GetOrdinal("deadline"));
+                                //mvm.Deadline = reader.IsDBNull(reader.GetOrdinal("deadline")) ? DateTime.MinValue : reader.GetDateTime(reader.GetOrdinal("deadline"));
+
+                            }
+                        }
+                        // Retrieve mission theme data
+                        reader.NextResult();
+                        if (reader.Read())
+                        {
+                            mvm.Theme = new VIewModels.MissionTheme()
+                            {
+                                Id = reader.IsDBNull(reader.GetOrdinal("Id")) ? 0 : Convert.ToInt32(reader["Id"]),
+                                Title = reader.IsDBNull(reader.GetOrdinal("Title")) ? string.Empty : reader["Title"].ToString()
+                            };
+                        }
+
+                        // Retrieve mission invite data
+                        mvm.Invites = new List<VIewModels.MissionInvite>();
+                        reader.NextResult();
+                        while (reader.Read())
+                        {
+                            mvm.Invites.Add(new VIewModels.MissionInvite
+                            {
+                                Id = reader.IsDBNull(reader.GetOrdinal("Id")) ? 0 : Convert.ToInt32(reader["Id"]),
+                                FromUserId = reader.IsDBNull(reader.GetOrdinal("from_user_id")) ? 0 : Convert.ToInt32(reader["from_user_id"]),
+                                ToUserId = reader.IsDBNull(reader.GetOrdinal("to_user_id")) ? 0 : Convert.ToInt32(reader["to_user_id"])
+                            });
+                        }
+
+                        // Retrieve mission rating data
+                        mvm.Ratings = new List<VIewModels.MissionRating>();
+                        reader.NextResult();
+                        while (reader.Read())
+                        {
+                            mvm.Ratings.Add(new VIewModels.MissionRating
+                            {
+                                Id = reader.IsDBNull(reader.GetOrdinal("Id")) ? 0 : Convert.ToInt32(reader["Id"]),
+                                MissionId = reader.IsDBNull(reader.GetOrdinal("mission_id")) ? 0 : Convert.ToInt32(reader["mission_id"]),
+                                Rating = reader.IsDBNull(reader.GetOrdinal("RATING")) ? 0 : Convert.ToInt32(reader["RATING"])
+                            });
+                        }
+
+                        connection.Close();
+                    }
+                }
+            }
+            return Ok(mvm);
         }
     }
 }
